@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#13080f">
+  <meta name="description" content="קישור המשתתפת לקמה בקול, חדר הבוקר של מועדון אמא מגשימה">
+  <title>קישור החדר | קמה בקול</title>
+  <link rel="stylesheet" href="styles.css?v=20261101-lock17">
+  <link rel="stylesheet" href="minute-before.css?v=20261031e">
+</head>
+<body class="participant-page minute-before">
+  <main class="participant-shell">
+    <p class="eyebrow">קמה בקול · חדר הבוקר של מועדון אמא מגשימה</p>
+    <p id="roomConnection" class="room-connection">מתחברת לחדר...</p>
+
+    <section id="participantWaiting" class="participant-step">
+      <h1>את בתוך<br><em>הבוקר.</em></h1>
+      <p class="lead">הטלפון יכול לנוח לידך בזמן שאת נמצאת בתוך הבוקר, והשלב הבא ייפתח כאן בדיוק כשקרן תפתח אותו על מסך הקבוצה, כך שאין צורך לבדוק מתי מתקדמים.</p>
+      <div class="waiting-pulse" aria-hidden="true"></div>
+    </section>
+
+    <section id="participantNotebook" class="participant-step" hidden>
+      <p class="eyebrow">עכשיו למחברת</p>
+      <h1 id="participantNotebookTitle">מה אני<br><em>מוסיפה?</em></h1>
+      <p id="participantNotebookLead" class="lead">הטלפון יכול לנוח לידך. כתבי במחברת עד שקרן תפתח את השאלה הבאה.</p>
+      <div class="waiting-pulse" aria-hidden="true"></div>
+    </section>
+
+    <section id="participantFocus" class="participant-step" hidden>
+      <h1>הכוונה שלי<br><em>להיום.</em></h1>
+      <p class="lead">מתוך כוונת הלב שעולה עכשיו, כתבי מילה אחת או משפט קצר שיזכירו לך לאן את רוצה לכוון היום את תשומת הלב.</p>
+      <form id="participantWordForm" class="participant-form">
+        <label for="participantWord">מילה או משפט קצר, בלי הסבר</label>
+        <input id="participantWord" type="text" maxlength="72" autocomplete="off" enterkeyhint="send" required placeholder="לדוגמה: אני חוזרת אל הקול שלי">
+        <button class="primary-button" type="submit">לשלוח אל החדר</button>
+      </form>
+    </section>
+
+    <section id="participantExit" class="participant-step" hidden>
+      <p class="eyebrow">05:58 עד 06:00 · איך אני יוצאת</p>
+      <h1>שתי דלתות.<br><em>תנועה אחת.</em></h1>
+      <p class="lead">כתבי שני משפטים קצרים. הם יופיעו בלי שם בתוך גל התנועה של החדר.</p>
+      <form id="participantExitForm" class="participant-form movement-form">
+        <label for="participantEntryPhrase">נכנסתי הבוקר עם...</label>
+        <input id="participantEntryPhrase" type="text" maxlength="72" autocomplete="off" required placeholder="לדוגמה: רעש בראש ועייפות בגוף">
+        <label for="participantExitPhrase">אני יוצאת עכשיו עם...</label>
+        <input id="participantExitPhrase" type="text" maxlength="72" autocomplete="off" required placeholder="לדוגמה: שקט, כיוון ומקום לנשום">
+        <button class="primary-button" type="submit">להכניס את התנועה שלי לחדר</button>
+      </form>
+      <div id="personalShift" class="personal-shift" hidden></div>
+    </section>
+
+    <p id="participantStatus" class="participant-status" role="status" aria-live="polite"></p>
+    <p class="privacy-note">אנחנו לא מבקשות ממך שם או טקסט מהמחברת. רק מה שתבחרי לשתף ברגע הכוונה ובסגירה יישלח בעילום שם, יישמר זמנית ויימחק מן החדר לאחר יממה.</p>
+  </main>
+  <script src="participant.js?v=20261101-lock17?v=20261031f"></script>
+</body>
+</html>

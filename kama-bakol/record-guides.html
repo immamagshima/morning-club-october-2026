@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>אולפן ההנחיות של קרן | קמה בקול</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { overflow: auto; background: var(--paper); }
+    .recording-studio { width: min(1040px, 100%); margin: 0 auto; padding: clamp(24px, 5vw, 64px) 18px 72px; }
+    .studio-head { max-width: 760px; }
+    .studio-head h1 { font-size: clamp(42px, 8vw, 76px); }
+    .guide-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 18px; }
+    .guide-tab { min-height: 48px; padding: 10px 18px; border: 1px solid var(--wine); border-radius: 999px; background: transparent; color: var(--wine); cursor: pointer; font-weight: 850; }
+    .guide-tab.is-active { background: var(--wine); color: white; }
+    .studio-grid { display: grid; grid-template-columns: minmax(280px, .8fr) minmax(320px, 1.2fr); gap: 24px; align-items: start; }
+    .recorder-card, .script-card { border: 1px solid rgb(75 23 40 / .12); border-radius: 28px; background: rgb(255 255 255 / .82); box-shadow: var(--shadow); }
+    .recorder-card { position: sticky; top: 18px; padding: 24px; text-align: center; }
+    .record-timer { margin: 8px 0 18px; color: var(--wine); font-size: 48px; font-weight: 900; font-variant-numeric: tabular-nums; }
+    .record-button { width: 146px; height: 146px; border: 0; border-radius: 50%; background: var(--coral); color: var(--ink); cursor: pointer; font-weight: 900; box-shadow: 0 18px 42px rgb(244 127 107 / .30); }
+    .record-button.is-recording { background: var(--wine); color: white; animation: breathe 1.7s ease-in-out infinite; }
+    .record-status { min-height: 48px; color: #75666b; }
+    .record-result { display: none; margin-top: 22px; }
+    .record-result audio { width: 100%; }
+    .download-recording { display: inline-block; margin-top: 14px; padding: 12px 18px; border-radius: 999px; background: var(--wine); color: white; font-weight: 850; text-decoration: none; }
+    .recording-note { margin-top: 18px; color: #75666b; font-size: 13px; text-align: right; }
+    .script-card { padding: clamp(22px, 4vw, 38px); }
+    .script-card h2 { font-size: clamp(32px, 5vw, 52px); }
+    .script-card h3 { margin: 30px 0 8px; color: var(--pulse); }
+    .script-card p { margin: 0 0 15px; }
+    .pause { display: block; margin: 18px 0; color: #8b777d; font-size: 13px; font-weight: 800; }
+    .direction { padding: 12px 14px; border-radius: 14px; background: var(--ivory); color: #67575c; font-size: 13px; }
+    .guide-script[hidden] { display: none; }
+    @media (max-width: 760px) {
+      .studio-grid { grid-template-columns: 1fr; }
+      .recorder-card { position: static; }
+      .guide-tabs { display: grid; grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="recording-studio">
+    <header class="studio-head">
+      <p class="eyebrow">קמה בקול · אולפן ההנחיות</p>
+      <h1>הקול שלך<br><em>מחזיק את החדר.</em></h1>
+      <p class="lead">בוחרת תרגול, קוראת בקצב שלך ומקליטה. הקובץ נשאר אצלך במכשיר עד שתורידי ותשלחי לעריכה.</p>
+    </header>
+
+    <nav class="guide-tabs" aria-label="בחירת תרגול">
+      <button class="guide-tab is-active" type="button" data-guide-target="protection">1. בועת אור ומרכבת אור</button>
+      <button class="guide-tab" type="button" data-guide-target="shower">2. שלוש שטיפות פנימיות</button>
+    </nav>
+
+    <div class="studio-grid">
+      <section class="recorder-card" aria-labelledby="recorderTitle">
+        <p class="eyebrow">הקלטה נקייה</p>
+        <h2 id="recorderTitle">מוכנה?</h2>
+        <div id="recordTimer" class="record-timer">00:00</div>
+        <button id="recordButton" class="record-button" type="button">להתחיל<br>להקליט</button>
+        <p id="recordStatus" class="record-status">השאירי שלוש שניות שקט בהתחלה וחמש בסוף.</p>
+        <div id="recordResult" class="record-result">
+          <audio id="recordPlayer" controls></audio>
+          <a id="recordDownload" class="download-recording" download>להוריד את ההקלטה</a>
+        </div>
+        <p class="recording-note">בלי מוזיקה בחדר. מוזיקה עדינה וניקוי רעשים נוסיף בעריכה, כדי לשמור על הקול שלך קרוב ואנושי.</p>
+      </section>
+
+      <article id="protection" class="script-card guide-script" data-guide-script="protection">
+        <p class="eyebrow">משך יעד: 4 עד 5 דקות</p>
+        <h2>בועת אור<br><em>ומרכבת אור</em></h2>
+        <p class="direction">קול קרוב, נמוך וחם. לא מיסטי, לא מלמד. את מדברת לאישה אחת.</p>
+
+        <p>אני מזמינה אותך לעצום עיניים, אם זה נעים לך.</p>
+        <p>לא צריך לעשות את זה נכון. רק להיות איתי רגע.</p>
+        <span class="pause">[שקט של 4 שניות]</span>
+        <p>תרגישי את הגוף שלך במקום שבו הוא נמצא. את הכיסא, את הרצפה, את האוויר על העור.</p>
+        <p>קחי נשימה. ועוד אחת.</p>
+        <span class="pause">[שקט של 5 שניות]</span>
+        <p>עכשיו תדמייני נקודה קטנה של אור במרכז החזה. לא אור מסנוור. אור שנעים להסתכל עליו מבפנים.</p>
+        <p>עם כל נשימה הוא מתרחב עוד קצת. אל הכתפיים. אל הבטן. אל הגב. אל כל הגוף.</p>
+        <span class="pause">[שקט של 6 שניות]</span>
+        <p>ועכשיו האור עובר את קו הגוף ויוצר סביבך בועה.</p>
+        <p>בועה רכה. לא חומה. לא משהו שסוגר אותך.</p>
+        <p>היא רק מזכירה: אני כאן. זה המרחב שלי. ומה שלא שלי, לא חייב להיכנס.</p>
+        <span class="pause">[שקט של 8 שניות. במסך מפעילים את בועת האור]</span>
+        <p>תני לבועה להגיע בדיוק למרחק שנעים לך. קרוב, רחוק, לא משנה. הגוף שלך יודע.</p>
+        <p>ועכשיו, סביב הבועה הזאת, מגיעה שכבה נוספת. מרכבת אור.</p>
+        <p>אור מלפנים. אור מאחור. אור מימין. אור משמאל. אור מעלייך. ואור מתחתייך.</p>
+        <span class="pause">[שקט של 8 שניות. במסך מפעילים את מרכבת האור]</span>
+        <p>את לא נעלמת בתוך האור הזה. בדיוק להפך. את נהיית יותר נוכחת.</p>
+        <p>פתוחה, אבל לא פרוצה. רגישה, אבל לא סופגת את הכול.</p>
+        <p>מה ששייך לך נשאר איתך. ומה שלא שלך, יכול לעבור לידך ולהמשיך.</p>
+        <span class="pause">[שקט של 7 שניות]</span>
+        <p>קחי עוד נשימה אחת.</p>
+        <p>ותגידי לעצמך בשקט: אני יוצאת אל היום שלי איתי.</p>
+        <span class="pause">[שקט של 5 שניות]</span>
+        <p>וכשמתאים לך, תפקחי עיניים.</p>
+      </article>
+
+      <article id="shower" class="script-card guide-script" data-guide-script="shower" hidden>
+        <p class="eyebrow">משך יעד: כ־5 דקות</p>
+        <h2>שלוש שטיפות<br><em>פנימיות</em></h2>
+        <p class="direction">הגוף נרגע כי מישהי מחזיקה בשבילו את הקצב. אל תמהרי בין האיברים.</p>
+
+        <p>אם נעים לך, תעצמי עיניים.</p>
+        <p>אנחנו לא מתקנות עכשיו כלום. רק נותנות לגוף מקלחת מבפנים.</p>
+        <p>שלוש שטיפות. כל אחת לוקחת איתה שכבה אחרת.</p>
+        <span class="pause">[שקט של 4 שניות]</span>
+
+        <h3>שטיפה ראשונה</h3>
+        <p>תדמייני אור נקי שמגיע מהמקור הכי גבוה והכי מיטיב בשבילך.</p>
+        <p>אם המילים האלה לא יושבות לך, פשוט תני לזה להיות אור שמרגיש בטוח.</p>
+        <p>הוא נוגע בקודקוד הראש. יורד אל המצח. אל העיניים. אל הלסת. אל הגרון.</p>
+        <p>ממשיך אל הכתפיים, לאורך הידיים, עד קצות האצבעות.</p>
+        <p>עובר בחזה, בבטן, באגן. יורד דרך הירכיים, הברכיים, השוקיים וכפות הרגליים.</p>
+        <p>כל העייפות של הלילה יורדת איתו אל האדמה. לא צריך להבין אותה. רק לתת לה לרדת.</p>
+        <span class="pause">[שקט של 7 שניות]</span>
+
+        <h3>שטיפה שנייה</h3>
+        <p>ושוב. אור נקי נכנס דרך קודקוד הראש.</p>
+        <p>הפעם הוא שוטף את כל הרעש. כל מה שכבר רץ קדימה. כל השיחות שעוד לא קרו וכבר מנהלות אותך.</p>
+        <p>הוא יורד דרך הפנים והגרון. משחרר מילים שנתקעו ומילים שלא שייכות לבוקר הזה.</p>
+        <p>יורד דרך הלב והבטן. שוטף לחץ. שוטף מאמץ. שוטף את הצורך להספיק את היום לפני שהוא בכלל התחיל.</p>
+        <p>ממשיך עד כפות הרגליים. ומה שלא צריך לצאת איתך מכאן, ממשיך למטה ויוצא.</p>
+        <span class="pause">[שקט של 8 שניות]</span>
+
+        <h3>שטיפה שלישית</h3>
+        <p>ועכשיו, פעם אחרונה.</p>
+        <p>האור יורד דרך קודקוד הראש, אבל הפעם הוא לא רק מנקה. הוא ממלא.</p>
+        <p>ממלא את הראש בשקט. את הגרון בקול שלך. את הלב במקום. את הבטן בידיעה.</p>
+        <p>ממלא את האגן ביציבות. את הרגליים בכוח ללכת. את כפות הרגליים בחיבור לאדמה.</p>
+        <p>כל הגוף מקודקוד הראש ועד הרגליים, נקי יותר. שקט יותר. שלך.</p>
+        <span class="pause">[שקט של 8 שניות]</span>
+        <p>לא גוף חדש. לא חיים חדשים.</p>
+        <p>את. רק קצת יותר פנויה להיות כאן.</p>
+        <p>קחי נשימה עמוקה.</p>
+        <p>ותגידי לעצמך בשקט: אני לא לוקחת את כל הלילה איתי אל היום.</p>
+        <span class="pause">[שקט של 6 שניות]</span>
+        <p>תזיזי בעדינות אצבעות בידיים. אצבעות ברגליים.</p>
+        <p>וכשמתאים לך, תפקחי עיניים.</p>
+      </article>
+    </div>
+  </main>
+
+  <script>
+    const tabs = [...document.querySelectorAll('.guide-tab')];
+    const scripts = [...document.querySelectorAll('.guide-script')];
+    let activeGuide = location.hash === '#shower' ? 'shower' : 'protection';
+    const filenames = {
+      protection: '01-הגנות-בועת-אור-ומרכבת-אור-RAW',
+      shower: '02-שלוש-שטיפות-פנימיות-RAW'
+    };
+
+    function showGuide(id) {
+      activeGuide = id;
+      tabs.forEach(tab => tab.classList.toggle('is-active', tab.dataset.guideTarget === id));
+      scripts.forEach(script => { script.hidden = script.dataset.guideScript !== id; });
+      history.replaceState(null, '', `#${id}`);
+    }
+    tabs.forEach(tab => tab.addEventListener('click', () => showGuide(tab.dataset.guideTarget)));
+    showGuide(activeGuide);
+
+    const button = document.getElementById('recordButton');
+    const timer = document.getElementById('recordTimer');
+    const status = document.getElementById('recordStatus');
+    const result = document.getElementById('recordResult');
+    const player = document.getElementById('recordPlayer');
+    const download = document.getElementById('recordDownload');
+    let recorder, stream, startedAt, timerHandle, currentUrl;
+    let chunks = [];
+
+    const formatTime = ms => {
+      const total = Math.floor(ms / 1000);
+      return `${String(Math.floor(total / 60)).padStart(2, '0')}:${String(total % 60).padStart(2, '0')}`;
+    };
+    const updateTimer = () => { timer.textContent = formatTime(Date.now() - startedAt); };
+    const mimeType = () => ['audio/webm;codecs=opus', 'audio/mp4', 'audio/webm'].find(type => MediaRecorder.isTypeSupported(type)) || '';
+
+    async function startRecording() {
+      button.disabled = true;
+      result.style.display = 'none';
+      status.textContent = 'מבקשת גישה למיקרופון...';
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
+        const type = mimeType();
+        recorder = type ? new MediaRecorder(stream, { mimeType: type, audioBitsPerSecond: 128000 }) : new MediaRecorder(stream);
+        chunks = [];
+        recorder.ondataavailable = event => { if (event.data.size) chunks.push(event.data); };
+        recorder.onstop = finishRecording;
+        recorder.start(1000);
+        startedAt = Date.now();
+        timerHandle = setInterval(updateTimer, 250);
+        updateTimer();
+        button.classList.add('is-recording');
+        button.innerHTML = 'לעצור<br>ולשמור';
+        button.disabled = false;
+        status.textContent = 'מקליטה עכשיו. קחי את הזמן.';
+      } catch (error) {
+        button.disabled = false;
+        status.textContent = 'לא התקבלה גישה למיקרופון. אשרי Microphone ליד כתובת האתר ונסי שוב.';
+      }
+    }
+
+    function stopRecording() {
+      button.disabled = true;
+      status.textContent = 'שומרת את ההקלטה...';
+      clearInterval(timerHandle);
+      recorder.stop();
+      stream.getTracks().forEach(track => track.stop());
+    }
+
+    function finishRecording() {
+      const type = recorder.mimeType || 'audio/webm';
+      const blob = new Blob(chunks, { type });
+      if (currentUrl) URL.revokeObjectURL(currentUrl);
+      currentUrl = URL.createObjectURL(blob);
+      const extension = type.includes('mp4') ? 'm4a' : 'webm';
+      player.src = currentUrl;
+      download.href = currentUrl;
+      download.download = `${filenames[activeGuide]}.${extension}`;
+      result.style.display = 'block';
+      button.classList.remove('is-recording');
+      button.innerHTML = 'להקליט<br>טייק נוסף';
+      button.disabled = false;
+      status.textContent = 'הטייק מוכן. הקשיבי או הורידי אותו.';
+    }
+
+    button.addEventListener('click', () => recorder?.state === 'recording' ? stopRecording() : startRecording());
+  </script>
+</body>
+</html>
