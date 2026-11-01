@@ -2,7 +2,7 @@
 .minute-before .navigation-dock{display:grid;grid-template-columns:minmax(70px,1fr) auto auto minmax(70px,1fr);grid-template-areas:"back timer position next";gap:12px;height:auto;min-height:70px}
 .minute-before #backButton{grid-area:back}.minute-before #nextButton{grid-area:next}.minute-before .stage-timer{grid-area:timer}.minute-before .scene-position{grid-area:position}
 .minute-before .stage-timer button{font:700 16px Polin,sans-serif;min-height:44px}
-.minute-before .scene[data-scene-id="shower"] .body-scan.inner-shower-art{background:radial-gradient(ellipse at 50% 18%,#fffdf0 0%,#ffe1c9 40%,#f5eedf 78%);border-radius:45% 55% 42% 58% / 35% 42% 58% 65%;border:0;box-shadow:0 8px 40px #ed08741a;isolation:isolate}
+
 .minute-before .inner-shower-art::before,.minute-before .inner-shower-art::after{content:none}
 .minute-before .gratitude-technique-scene h2::before{font-family:Polin,sans-serif}
 .minute-before .song-library-review{margin-block:18px}.minute-before .scene-song h2{overflow:visible}
@@ -34,7 +34,7 @@
 .minute-before .scene[data-scene-id="closing-song"] #songLibraryReview{margin:20px 0}
 .minute-before .scene[data-scene-id="closing-song"] #finishMorning,.minute-before .scene[data-scene-id="closing-song"] #resetMorning{position:relative;display:inline-flex;inset:auto;margin:12px}
 
-@media(min-width:701px) and (max-width:900px){.minute-before .scene[data-scene-id="shower"] .scene-inner.shower-scene{display:flex;flex-direction:column;height:auto;min-height:100%;align-items:stretch;justify-content:flex-start;padding:28px}.minute-before .scene[data-scene-id="shower"] .shower-scene>*{grid-area:auto;grid-column:auto;grid-row:auto;flex:none;min-width:0;max-width:100%;width:auto;margin-inline:0}.minute-before .scene[data-scene-id="shower"] .shower-scene h2{font-size:48px;line-height:1.12}.minute-before .scene[data-scene-id="shower"] .body-scan.inner-shower-art{align-self:center;width:300px;height:360px;margin:20px auto}.minute-before .scene[data-scene-id="shower"] .voice-guide-button{align-self:center}}
+@media(min-width:701px) and (max-width:900px){.minute-before .scene[data-scene-id="shower"] .scene-inner.shower-scene{display:flex;flex-direction:column;height:auto;min-height:100%;align-items:stretch;justify-content:flex-start;padding:28px}.minute-before .scene[data-scene-id="shower"] .shower-scene>*{grid-area:auto;grid-column:auto;grid-row:auto;flex:none;min-width:0;max-width:100%;width:auto;margin-inline:0}.minute-before .scene[data-scene-id="shower"] .shower-scene h2{font-size:48px;line-height:1.12}.minute-before .scene[data-scene-id="shower"] .voice-guide-button{align-self:center}}
 
 .minute-before #movementShareWall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;max-height:none;overflow:visible;gap:12px;margin:20px 0}
 .minute-before #movementShareWall .movement-share{padding:16px;font-size:18px;line-height:1.4;overflow-wrap:anywhere}
@@ -50,21 +50,6 @@
 .minute-before #groupFocusPanel.is-expanded-field .group-word-wall{min-height:65vh}
 .minute-before .is-expanded-field .field-fullscreen-exit{display:block;grid-column:1/-1;min-height:44px;position:sticky;top:0;z-index:30;background:#163fad;color:white;border:0;padding:12px;font:700 18px Polin,sans-serif}
 
-/* Browser review: airy day windows and a dawn-like closing field. */
-.minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-plan-row{border:1px solid #d7cdbd;border-radius:36px 12px 28px 16px;background:#fffaf0;box-shadow:4px 6px 0 #17161412;overflow:hidden}
-.minute-before .scene[data-scene-id="planning"] .day-window-gallery .morning-window{background:linear-gradient(160deg,#fffdf4,#fff0d5)}
-.minute-before .scene[data-scene-id="planning"] .day-window-gallery .noon-window{background:linear-gradient(160deg,#fffdf4,#ffe8dd)}
-.minute-before .scene[data-scene-id="planning"] .day-window-gallery .evening-window{background:linear-gradient(160deg,#fffdf4,#e7edff)}
-.minute-before .scene[data-scene-id="planning"] .day-window-art::before,.minute-before .scene[data-scene-id="planning"] .day-window-art::after{border-color:#163fad30;background:#163fad20;transform:rotate(-4deg)}
-.minute-before .scene[data-scene-id="planning"] .day-window-art i{background:#163fad14}
-.minute-before .scene[data-scene-id="planning"] .day-slots span{background:#fffdf8;border-color:#17161430;box-shadow:none}
-.minute-before .scene-closing .movement-door{border:0;min-height:220px;padding:28px;border-radius:46% 54% 44% 56% / 37% 42% 58% 63%;box-shadow:0 12px 32px #163fad12;color:#171614;isolation:isolate}
-.minute-before .scene-closing .entry-door{background:radial-gradient(ellipse at 55% 28%,#fffdf2 0%,#e7ecff 50%,#d3ddf6 100%)}
-.minute-before .scene-closing .exit-door{background:radial-gradient(ellipse at 50% 28%,#fffdf0 0%,#ffe2c6 50%,#ffbd9e 100%)}
-.minute-before .scene-closing .movement-door::after{inset:-20% -10%;border:0;border-radius:45%;background:linear-gradient(165deg,transparent 15%,#fffaf088 42%,#ed087414 65%,transparent 75%);opacity:1;animation:closing-dawn-flow 9s ease-in-out infinite alternate;z-index:0}
-@keyframes closing-dawn-flow{from{transform:translateY(-14px) rotate(-8deg)}to{transform:translateY(28px) rotate(8deg)}}
-@media(prefers-reduced-motion:reduce){.minute-before .scene-closing .movement-door::after{animation:none}}
-
 .minute-before.has-expanded-field #experience{z-index:10000;overflow:visible}
 .minute-before #groupFocusPanel.is-expanded-field,.minute-before #movementShareWall.is-expanded-field{grid-auto-rows:max-content;padding-top:80px}
 .minute-before .is-expanded-field .field-fullscreen-exit{position:absolute;top:16px;left:16px;right:auto;bottom:auto;align-self:start;justify-self:start;width:auto;height:auto;max-height:52px;min-height:44px;margin:0;border-radius:10px}
@@ -72,8 +57,8 @@
 .minute-before #movementShareWall.is-expanded-field:not(:has(.movement-share))::after{content:'השיתופים יופיעו כאן אחרי שהמשתתפות ישלחו אותם.';grid-column:1/-1;font:700 28px/1.4 Polin,sans-serif;padding:32px;align-self:start}
 
 .minute-before .live-participant-link-bar{bottom:var(--navigation-clearance,96px)}
-.minute-before .eyebrow,.minute-before .scene[data-theme="deep"] .eyebrow{font-family:Polin,Arial,sans-serif;font-weight:700}
-.minute-before .drain-words span:nth-child(7n + 3){font-family:Barlev,Polin,sans-serif}
+
+
 @media(max-width:760px){.minute-before .live-participant-link-bar{bottom:var(--navigation-clearance,150px);grid-template-columns:minmax(0,1fr) auto;gap:6px;padding:6px 8px}.minute-before .live-participant-link-bar strong{display:none}.minute-before .live-participant-link-bar input{min-height:44px;font-size:12px;padding:6px}.minute-before .live-participant-link-bar .primary-button{min-height:44px;padding:6px 10px;font-size:13px}.minute-before.has-live-link .scene.is-active .scene-inner{padding-bottom:calc(var(--live-link-height,64px) + 40px);height:auto;min-height:100%}}
 
 .minute-before.presentation-fallback .app-shell{grid-template-rows:auto minmax(0,1fr) auto;height:100dvh}

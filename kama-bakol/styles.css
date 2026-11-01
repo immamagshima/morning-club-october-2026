@@ -4665,11 +4665,6 @@ h2 em::after {
 @keyframes drain-lift{0%,100%{transform:translateY(14px) rotate(-3deg);opacity:.45}50%{transform:translateY(-20px) rotate(2deg);opacity:1}}
 @keyframes drain-bloom{0%,100%{transform:scale(.85);opacity:.5}50%{transform:scale(1.15) rotate(-4deg);opacity:1}}
 @keyframes drain-drift{0%,100%{transform:translateX(-18px);opacity:.55}50%{transform:translateX(22px) rotate(4deg);opacity:1}}
-.inner-shower-svg{filter:drop-shadow(0 0 28px #ffbd8655)}
-.body-scan.inner-shower-art{background:radial-gradient(ellipse,#fff9e8 15%,#ffc8ba88 50%,transparent 73%);border:0;box-shadow:none}
-.body-scan .energy-centers{opacity:.18}
-.body-scan.is-scanning .inner-shower-svg{animation:shower-breath 8s ease-in-out infinite}
-@keyframes shower-breath{0%,100%{transform:scale(.97);filter:drop-shadow(0 0 18px #ffbd8688)}50%{transform:scale(1.035);filter:drop-shadow(0 0 38px #ed087455)}}
 @media(max-width:700px){.navigation-dock{flex-wrap:wrap}.stage-timer{order:4;flex-basis:100%;gap:6px}.stage-timer button{font-size:14px}.scene[data-scene-id="arrival-energy"] .sleep-dawn-art{max-width:85%}.scene-song h2{font-size:clamp(32px,8vw,64px)}}
 @media(prefers-reduced-motion:reduce){.drain-words span,.body-scan.is-scanning .inner-shower-svg{animation:none!important}}
 
@@ -4677,11 +4672,5 @@ h2 em::after {
 
 .navigation-dock{grid-template-columns:minmax(70px,1fr) auto auto minmax(70px,1fr);grid-template-areas:"back timer position next";gap:12px}
 #backButton{grid-area:back}#nextButton{grid-area:next}.stage-timer{grid-area:timer}.scene-position{grid-area:position}
-.scene[data-scene-id="shower"] .body-scan.inner-shower-art{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 18%,#fffdf0 0%,#ffe1c9 40%,#f5eedf 78%);border-radius:45% 55% 42% 58% / 35% 42% 58% 65%;border:0;box-shadow:0 8px 40px #ed08741a;isolation:isolate}
-.shower-source{position:absolute;width:100px;height:100px;left:calc(50% - 50px);top:10%;background:#fffdf0;border-radius:50%;box-shadow:0 0 60px 35px #fff9dd;filter:blur(8px)}
-.shower-veil{position:absolute;inset:-50% 5% auto;width:90%;height:65%;background:linear-gradient(170deg,#fffdf0dd,#ff651b44,#ed087422,transparent);clip-path:polygon(0 10%,25% 0,55% 7%,85% 2%,100% 15%,93% 90%,75% 95%,40% 88%,10% 100%);animation:shower-veil-flow 8s ease-in-out infinite;animation-play-state:paused;opacity:.65}
-.veil-two{animation-delay:-2.6s;filter:hue-rotate(12deg)}.veil-three{animation-delay:-5.2s;filter:hue-rotate(-15deg)}
-.is-scanning .shower-veil{animation-play-state:running}
-@keyframes shower-veil-flow{0%{transform:translateY(-50%) rotate(-7deg);opacity:0}20%,70%{opacity:.8}100%{transform:translateY(260%) rotate(7deg);opacity:0}}
 @media(max-width:700px){.navigation-dock{grid-template-columns:1fr auto 1fr;grid-template-areas:"back position next" "timer timer timer";gap:5px;padding:6px 12px}.stage-timer{flex-basis:auto}.stage-timer button{min-height:44px}.stage-timer output{font-size:16px}.scene-position span{font-size:16px}}
-@media(prefers-reduced-motion:reduce){.shower-veil{animation:none;inset:15% 5% auto;opacity:.25}.veil-two{top:35%}.veil-three{top:55%}}
+

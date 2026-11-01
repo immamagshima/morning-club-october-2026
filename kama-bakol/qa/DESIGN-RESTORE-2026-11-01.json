@@ -1,0 +1,50 @@
+{
+  "release": "2026-11-01-design-restore1",
+  "version": "13585274-754d-462f-8a8c-85fe11770bf7",
+  "baseline": "2026-10-31, confirmed by Keren",
+  "restored": [
+    "original shower artwork",
+    "original day windows",
+    "original entry and exit doors",
+    "baseline eyebrow typography"
+  ],
+  "preserved": [
+    "stage timers",
+    "45-second fruit timing",
+    "audio fades",
+    "12 direct recordings",
+    "participant synchronization",
+    "new morning generation reset",
+    "fullscreen fields",
+    "responsive navigation"
+  ],
+  "runtime_files_unchanged": true,
+  "viewport_checks": 100,
+  "viewport_failures": 0,
+  "viewports": [
+    [
+      320,
+      568
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1024,
+      768
+    ],
+    [
+      1440,
+      900
+    ]
+  ],
+  "limitations": [
+    "phone sizes simulated, no physical handset",
+    "no repeated full human listening test"
+  ]
+}
