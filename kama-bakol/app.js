@@ -637,7 +637,7 @@
   const fruitField = document.getElementById("fruitField");
   const gratitudeFruits = [
     ["🍎", "תפוח"], ["🍊", "תפוז"], ["🍋", "לימון"], ["🍐", "אגס"], ["🍑", "אפרסק"],
-    ["🍓", "תות"], ["🍒", "דובדבנים"], ["🫐", "אוכמניות"], ["🍇", "ענבים"], ["🥭", "מנגו"]
+    ["🍓", "תות"]
   ];
   gratitudeFruits.forEach(([symbol, name], index) => {
     const fruitMark = document.createElement("span");
