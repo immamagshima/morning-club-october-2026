@@ -1,6 +1,6 @@
 # קמה בקול, נעילת גרסה 1.11.2026
 
-סטטוס: PUBLIC DEPLOYED AND VERIFIED.  גרסת lock22 עברה בדיקות דפדפן ושרת. פרסום ציבורי ואימות סופי מתועדים להלן. אין להשתמש בקובץ file:// להפעלת הקבוצה.
+סטטוס: PUBLIC DEPLOYED AND VERIFIED.  גרסת lock22 עברה בדיקות דפדפן ושרת. פרסום ציבורי ואימות סופי הושלמו. אין להשתמש בקובץ file:// להפעלת הקבוצה.
 
 ## הכרעות קרן
 
@@ -64,6 +64,6 @@
 - Optional song begins after 06:00. Draw and playback passed: 178.60 seconds, paused=false, time>0, no media error.
 - Final group participant URL verified: /participant?room=kama-bakol-club-2026.
 - Local dist updated. Prior generated dist retained under output/dist-before-release-2026-11-01.
-- GitHub source archival was rejected by automatic approval review due to a Google Docs link and infrastructure details. Separate approval requested for sanitized source. Cloudflare publication is complete and independent of this archive.
 
-Sanitized public source archive approved separately by Keren. Private document link and account/database identifiers removed from this source copy.
+- Sanitized source archive published and read back: https://github.com/immamagshima/morning-club-october-2026/tree/main/kama-bakol
+- Source commit: 12114b23a0824001776c8e512802402d43468187. Private document URL, local paths, Cloudflare account ID and D1 ID removed from public source configuration.
