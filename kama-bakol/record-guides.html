@@ -226,6 +226,9 @@
     }
 
     button.addEventListener('click', () => recorder?.state === 'recording' ? stopRecording() : startRecording());
+    if (new URLSearchParams(location.search).get('mode') === 'record') {
+      requestAnimationFrame(() => { document.getElementById('recordButton').focus(); document.getElementById('recordButton').scrollIntoView({block:'center'}); });
+    }
   </script>
 </body>
 </html>

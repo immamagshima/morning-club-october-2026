@@ -69,3 +69,26 @@
 .minute-before #movementShareWall .movement-entry{color:#163fad;opacity:1}
 .minute-before #movementShareWall .movement-exit{color:#171614;font-weight:700}
 .minute-before #movementShareWall .movement-entry,.minute-before #movementShareWall .movement-exit{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
+
+/* Inner shower only: warm paper light, preserving the approved scene frame. */
+.minute-before .scene[data-scene-id="shower"] .body-scan.soft-light-shower {
+  position:relative;isolation:isolate;overflow:hidden;
+  background:radial-gradient(ellipse at 44% 14%,#fffdf3 0%,#fff5df 38%,#ffe6d3 73%,#f7eadc 100%);
+  border:1px solid #ffefe0;border-radius:46% 54% 43% 57% / 38% 42% 58% 62%;
+  box-shadow:8px 9px 0 #1716140a,0 0 42px #ffb88018;
+}
+.minute-before .body-scan.soft-light-shower::before,.minute-before .body-scan.soft-light-shower::after {content:none}
+.soft-light-shower .soft-shower-glow {position:absolute;left:7%;top:-6%;width:89%;height:40%;background:radial-gradient(ellipse,#fffef7 8%,#fff6ccaa 42%,#ffd5b530 68%,transparent 78%);filter:blur(14px);opacity:.9;transform:rotate(-8deg)}
+.soft-light-shower .soft-shower-wash {position:absolute;left:-16%;top:-56%;width:132%;height:65%;border-radius:46% 54% 35% 65% / 52% 44% 56% 48%;filter:blur(2.5px);opacity:.45;transform-origin:50% 40%;animation:soft-shower-descend 12s ease-in-out infinite;animation-play-state:paused;will-change:transform,opacity}
+.soft-light-shower .wash-peach {background:linear-gradient(164deg,#fffdf2aa 10%,#ffc59cbb 46%,#ffa78077 72%,transparent 91%);animation-delay:-1s}
+.soft-light-shower .wash-rose {background:linear-gradient(175deg,#fff9e9a0 18%,#ffc4b58c 47%,#ed08742b 71%,transparent 94%);animation-delay:-5s;left:-23%;width:145%;border-radius:62% 38% 54% 46% / 36% 60% 40% 64%}
+.soft-light-shower .wash-dawn {background:linear-gradient(158deg,#fffef3b0 14%,#ffe4a1a0 48%,#163fad12 74%,transparent 95%);animation-delay:-9s;left:-10%;border-radius:38% 62% 64% 36% / 62% 34% 66% 38%}
+.soft-light-shower .soft-shower-rest {position:absolute;bottom:-14%;left:-15%;width:135%;height:42%;background:radial-gradient(ellipse,#fffaf0c0 18%,#fff4df70 48%,transparent 72%);filter:blur(12px)}
+.soft-light-shower.is-scanning .soft-shower-wash {animation-play-state:running}
+.soft-light-shower.is-scanning .soft-shower-glow {animation:soft-shower-breathe 9s ease-in-out infinite alternate}
+@keyframes soft-shower-descend {0%{transform:translate3d(-2%,-24%,0) rotate(-9deg) scale(.92);opacity:0}18%{opacity:.85}55%{transform:translate3d(3%,125%,0) rotate(4deg) scale(1.1);opacity:.9}85%{opacity:.5}100%{transform:translate3d(-1%,260%,0) rotate(-3deg) scale(1.16);opacity:0}}
+@keyframes soft-shower-breathe {from{transform:translateY(-3%) rotate(-8deg) scale(.97);opacity:.72}to{transform:translateY(5%) rotate(4deg) scale(1.08);opacity:1}}
+@media(prefers-reduced-motion:reduce){.soft-light-shower .soft-shower-wash,.soft-light-shower.is-scanning .soft-shower-glow{animation:none!important;will-change:auto}.soft-light-shower .soft-shower-wash{top:6%;height:58%;opacity:.4;transform:rotate(-8deg)}.soft-light-shower .wash-rose{top:28%;transform:rotate(9deg)}.soft-light-shower .wash-dawn{top:51%;transform:rotate(-5deg)}}
+
+.minute-before .shower-guide-tools{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;width:100%;margin-top:10px}
+.minute-before .shower-guide-tools .secondary-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-size:16px;flex:1 1 180px;white-space:normal;text-align:center}

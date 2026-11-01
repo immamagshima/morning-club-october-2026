@@ -1,0 +1,34 @@
+{
+  "release": "2026-11-02-soft-shower3",
+  "version": "98293b35-e94e-4087-80d1-d90f7460a54f",
+  "scope": [
+    "only shower artwork",
+    "live script link",
+    "recorder link opening existing studio in shower mode"
+  ],
+  "preserved": [
+    "scene layout",
+    "five-minute timer",
+    "shower before protection",
+    "audio and fade",
+    "participant sync",
+    "06:00 practice end"
+  ],
+  "qa": {
+    "responsive": [
+      320,
+      390,
+      768,
+      1024,
+      1440
+    ],
+    "horizontalOverflow": false,
+    "nextReachable": true,
+    "independentVisualReview": "pass after stronger wash contrast at 1440 and 390",
+    "animation": "three veils running and paused with changing transforms",
+    "reducedMotion": "static light composition present in deployed CSS",
+    "audio": "actual playback, duration249.42, pause and fade observed",
+    "guide": "shower script visible; recording button available; no automatic microphone access",
+    "recordingBoundary": "No new take recorded and no microphone permission requested in QA"
+  }
+}
