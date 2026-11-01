@@ -1,7 +1,7 @@
 {
   "totalSeconds": 3600,
   "practiceEnd": "06:00",
-  "optionalSong": "after 06:00",
+  "optionalSong": "after06:00",
   "schedule": [
     {
       "scene": "threshold",
@@ -76,30 +76,30 @@
     {
       "scene": "supplements-example",
       "start": "05:33",
-      "end": "05:34",
-      "seconds": 60,
-      "caption": "פעימה 4 · 05:33 עד 05:34 · לפני שכותבות"
+      "end": "05:35",
+      "seconds": 120,
+      "caption": "פעימה 4 · 05:33 עד 05:35 · שתי דקות לפני שכותבות"
     },
     {
       "scene": "supplements-flow",
-      "start": "05:34",
+      "start": "05:35",
       "end": "05:39",
-      "seconds": 300,
-      "caption": "פעימה 4 · 05:34 עד 05:39 · חמש דקות כתיבה"
+      "seconds": 240,
+      "caption": "פעימה 4 · 05:35 עד 05:39 · ארבע דקות כתיבה"
     },
     {
       "scene": "gratitude-technique",
       "start": "05:39",
-      "end": "05:42",
-      "seconds": 180,
-      "caption": "פעימה 5 · 05:39 עד 05:42 · שלוש דקות להסבר ולמעבר לכתיבה"
+      "end": "05:41",
+      "seconds": 120,
+      "caption": "פעימה 5 · 05:39 עד 05:41 · שתי דקות להסבר ולמעבר לכתיבה"
     },
     {
       "scene": "gratitude-practice",
-      "start": "05:42",
+      "start": "05:41",
       "end": "05:47",
-      "seconds": 300,
-      "caption": "פעימה 5 · 05:42 עד 05:47 · חמש דקות כתיבה"
+      "seconds": 360,
+      "caption": "פעימה 5 · 05:41 עד 05:47 · שש דקות כתיבה"
     },
     {
       "scene": "shower",
@@ -129,6 +129,5 @@
       "seconds": 120,
       "caption": "05:58 עד 06:00 · עדות"
     }
-  ],
-  "release": "2026-11-02-shower-first"
+  ]
 }

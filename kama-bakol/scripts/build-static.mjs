@@ -16,6 +16,8 @@ const files = [
   "supplements-data.js",
   "supplements-library.html",
   "supplements-library.js",
+  "youtube-library-data.js",
+  "movement-wave.js",
   "closing-songs-data.js"
 ];
 

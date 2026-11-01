@@ -1,0 +1,16 @@
+{
+  "opening-flute-1min.mp3": {
+    "decodedSeconds": 60.0,
+    "targetSeconds": 60,
+    "last100msRms": 0.0019763753849668907,
+    "beforeFadeRms": 0.07957753703855311,
+    "tailQuieter": true
+  },
+  "gratitude-flute-6min.mp3": {
+    "decodedSeconds": 359.931,
+    "targetSeconds": 360,
+    "last100msRms": 0.001768323430821283,
+    "beforeFadeRms": 0.2706830189466453,
+    "tailQuieter": true
+  }
+}

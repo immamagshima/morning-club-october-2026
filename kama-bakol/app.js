@@ -3,7 +3,17 @@
 
   const roomParams = new URLSearchParams(window.location.search);
   const roomId = roomParams.get("room") || "kama-bakol-club-2026";
-  const facilitatorToken = roomParams.get("control") || "";
+  const facilitatorSessionKey = `kerenMorningFacilitator:${roomId}`;
+  let facilitatorToken = roomParams.get("control") || "";
+  try {
+    if (facilitatorToken) sessionStorage.setItem(facilitatorSessionKey, facilitatorToken);
+    else facilitatorToken = sessionStorage.getItem(facilitatorSessionKey) || "";
+  } catch (_) { /* The active tab can still use its original link. */ }
+  if (roomParams.has("control")) {
+    const cleanUrl = new URL(window.location.href);
+    cleanUrl.searchParams.delete("control");
+    history.replaceState(null, "", cleanUrl.href);
+  }
   const isLocalPreview = ["127.0.0.1", "localhost"].includes(window.location.hostname);
   const STORAGE_KEY = `kerenMorningClubV5:${roomId}`;
   const CLOSING_DECK_KEY = `kerenMorningClubClosingDeckV3:${roomId}`;
@@ -37,7 +47,8 @@
     supplements: [],
     customSupplements: [],
     fruits: [],
-    gratitudeRemaining: 300,
+    gratitudeRemaining: 360,
+    gratitudeDuration: 360,
     gratitudeRunning: false,
     drainRemaining: 1200,
     drainRunning: false,
@@ -58,6 +69,7 @@
   let holdCompleted = false;
   let closingSongAudio = null;
   let activeGuideAudio = null;
+  let gratitudeMusic = null, gratitudeMusicEnabled = false;
 
   if (!Array.isArray(state.supplements)) state.supplements = state.supplement ? [state.supplement] : [];
   if (!Array.isArray(state.customSupplements)) state.customSupplements = [];
@@ -66,6 +78,11 @@
     try {
       const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY));
       if (parsed && parsed.version === 4) {
+        if(Number(parsed.gratitudeDuration||300)!==360){
+          const previousDuration=Number(parsed.gratitudeDuration||300);
+          const elapsed=previousDuration-Number(parsed.gratitudeRemaining??previousDuration);
+          parsed.gratitudeRemaining=Math.max(0,Math.min(360,360-elapsed));parsed.gratitudeDuration=360;
+        }
         if (parsed.sceneOrder !== "shower-first") {
           const previousIndex = Number(parsed.scene);
           if (previousIndex === 14) parsed.scene = 15;
@@ -251,6 +268,7 @@
     mediaFades.set(audio, { id, volume });
   }
   function stopSound() {
+    if(gratitudeMusic && !gratitudeMusic.paused) fadeMedia(gratitudeMusic);
     stopYoutube();
     if (soundStop) soundStop();
     soundStop = null;
@@ -647,7 +665,7 @@
   const fruitField = document.getElementById("fruitField");
   const gratitudeFruits = [
     ["🍎", "תפוח"], ["🍊", "תפוז"], ["🍋", "לימון"], ["🍐", "אגס"], ["🍑", "אפרסק"],
-    ["🍓", "תות"]
+    ["🍓", "תות"], ["🍒", "דובדבנים"], ["🫐", "אוכמניות"]
   ];
   gratitudeFruits.forEach(([symbol, name], index) => {
     const fruitMark = document.createElement("span");
@@ -661,7 +679,17 @@
     fruitMark.appendChild(fruit);
     fruitField.appendChild(fruitMark);
   });
-  const gratitudeDuration = 300;
+  const gratitudeDuration = 360;
+  gratitudeMusic=document.getElementById('gratitudeMusic');gratitudeMusic.volume=.22;
+  const gratitudeMusicToggle=document.getElementById('gratitudeMusicToggle');
+  function updateGratitudeMusicButton(){const playing=!gratitudeMusic.paused;gratitudeMusicToggle.setAttribute('aria-pressed',String(playing));gratitudeMusicToggle.textContent=playing?'להפסיק את מוזיקת החליל':'להפעיל חליל בזמן הכתיבה';}
+  async function playGratitudeMusic(){
+    gratitudeMusic.currentTime=gratitudeRemaining>0?gratitudeDuration-gratitudeRemaining:0;
+    try{await resumeMedia(gratitudeMusic);updateGratitudeMusicButton();document.getElementById('gratitudeMusicStatus').textContent='החליל מתנגן. בסיום הוא ייעלם בפייד־אאוט.';}catch(_){gratitudeMusicEnabled=false;document.getElementById('gratitudeMusicStatus').textContent='המוזיקה לא נפתחה. אפשר להמשיך בשקט או לנסות שוב.';}
+  }
+  gratitudeMusicToggle.addEventListener('click',()=>{if(!gratitudeMusic.paused){gratitudeMusicEnabled=false;fadeMedia(gratitudeMusic);}else{gratitudeMusicEnabled=true;playGratitudeMusic();}});
+  gratitudeMusic.addEventListener('play',updateGratitudeMusicButton);gratitudeMusic.addEventListener('pause',updateGratitudeMusicButton);
+  gratitudeMusic.addEventListener('ended',()=>{gratitudeMusicEnabled=false;updateGratitudeMusicButton();document.getElementById('gratitudeMusicStatus').textContent='שש דקות החליל הושלמו.';});
   let gratitudeRemaining = Math.min(gratitudeDuration, Math.max(0, Number(state.gratitudeRemaining ?? gratitudeDuration)));
   let gratitudeRunning = false;
   let gratitudeDeadline = 0;
@@ -676,13 +704,14 @@
     document.getElementById("gratitudeTimerReadout").textContent = `${String(Math.floor(gratitudeRemaining / 60)).padStart(2, "0")}:${String(gratitudeRemaining % 60).padStart(2, "0")}`;
     document.getElementById("gratitudeTimerToggle").textContent = gratitudeRunning ? "לעצור לרגע" : gratitudeRemaining === gratitudeDuration ? "להתחיל את זמן ההודיות" : gratitudeRemaining === 0 ? "הזמן הושלם" : "להמשיך לכתוב";
     document.getElementById("gratitudeTimeNote").textContent = gratitudeRemaining === 0
-      ? "חמש דקות הכתיבה הושלמו. אין צורך לספור כמה יצא, רק להניח לעט ולתת לתודה להישאר בגוף."
+      ? "שש דקות הכתיבה הושלמו. אין צורך לספור כמה יצא, רק להניח לעט ולתת לתודה להישאר בגוף."
       : ripeCount === 0
         ? `אין מספר שצריך להגיע אליו. הפרי הראשון יבשיל בעוד ${Math.max(0,45-elapsed)} שניות.`
         : `${ripeCount} פירות הבשילו כסימני זמן, והיד ממשיכה לכתוב בלי לספור הודיות.`;
   }
   function stopGratitudeTimer() {
     gratitudeRunning = false;
+    if(gratitudeMusic&&!gratitudeMusic.paused)fadeMedia(gratitudeMusic);
     if (gratitudeTimerInterval) window.clearInterval(gratitudeTimerInterval);
     gratitudeTimerInterval = null;
     activeTimerStop = null;
@@ -695,6 +724,7 @@
     if (gratitudeRunning || gratitudeRemaining === 0) return stopGratitudeTimer();
     gratitudeRunning = true;
     gratitudeDeadline = Date.now() + gratitudeRemaining * 1000;
+    if(gratitudeMusicEnabled&&gratitudeMusic.paused)playGratitudeMusic();
     activeTimerStop = stopGratitudeTimer;
     state.gratitudeRunning = true;
     saveState();
@@ -855,6 +885,7 @@
     wall.dataset.density = actual.length > 18 ? "many" : actual.length > 8 ? "medium" : "few";
     document.getElementById("movementShareCount").textContent = actual.length === 1 ? "שיתוף אחד בחדר" : actual.length ? `${actual.length} שיתופים בחדר` : "";
     content.replaceChildren();
+    window.KEREN_MOVEMENT_WAVE?.setMovements(actual);
     if (!actual.length) {
       const waiting = document.createElement("p");
       waiting.className = "movement-field-empty";
@@ -882,6 +913,7 @@
 
   document.getElementById("toggleMovementMotion").addEventListener("click", (event) => {
     const paused = document.getElementById("movementShareWall").classList.toggle("is-motion-paused");
+    window.KEREN_MOVEMENT_WAVE?.setPaused(paused);
     event.currentTarget.setAttribute("aria-pressed", String(paused));
     event.currentTarget.textContent = paused ? "להמשיך את תנועת המילים" : "לעצור את תנועת המילים";
   });
@@ -955,6 +987,7 @@
 
   const closingDeckSource = window.KEREN_CLOSING_SONGS || { version: "empty", songs: [] };
   const closingSongCandidates = Array.isArray(closingDeckSource.songs) ? closingDeckSource.songs : [];
+  const manualSongs = window.KEREN_YOUTUBE_LIBRARY?.songs || closingSongCandidates;
   const seenClosingSongIds = new Set();
   const closingSongs = closingSongCandidates.filter((song) => song.approved && (song.audio || /^[A-Za-z0-9_-]{11}$/.test(song.youtubeId || '')));
   const songDeck = document.getElementById("songDeck");
@@ -1071,99 +1104,93 @@
 
   function renderSongLibrary() {
     if (!songLibraryCards) return;
-    const bag = reconcileClosingDeckBag();
-    const usedIds = new Set(bag.used);
-    const activeIds = new Set(closingSongs.map((song) => song.id));
-    const programLength = Math.max(Number(closingDeckSource.programLength) || closingSongCandidates.length, closingSongCandidates.length);
+    const bag=reconcileClosingDeckBag();const remaining=new Set(bag.remaining);songDeckDots.querySelectorAll('span').forEach(dot=>dot.classList.toggle('is-used',!remaining.has(dot.dataset.songId)));
+    const normalise = text => String(text).normalize('NFKD').replace(/\p{M}/gu,'').toLocaleLowerCase();
+    const query=normalise(document.getElementById('songLibrarySearch')?.value||'').trim();
+    const songs=manualSongs.filter(song=>!query||normalise(song.title).includes(query));
     songLibraryCards.replaceChildren();
-    closingSongCandidates.forEach((song, index) => {
-      const card = document.createElement("article");
-      const isActive = activeIds.has(song.id);
-      const isUsed = isActive && usedIds.has(song.id);
-      card.className = `song-library-card quality-${song.quality || "חיבור"}${isUsed ? " is-used" : ""}`;
-      const number = document.createElement("small");
-      number.textContent = String(index + 1).padStart(2, "0");
-      const title = document.createElement("strong");
-      title.textContent = song.title;
-      const quality = document.createElement("span");
-      const status = !isActive ? "ממתין לאישור ולאודיו" : isUsed ? "כבר נשמע בסבב הזה" : "מחכה בחפיסה";
-      quality.textContent = `${song.quality || "שיר בוקר"} · ${status}`;
-      card.append(number, title, quality);
-      if (isActive) {
-        const choose = document.createElement('button'); choose.type='button'; choose.textContent='לבחור את השיר';
-        choose.addEventListener('click', () => { stopSound(); renderClosingSong(song, true); }); card.appendChild(choose);
-      }
-      songLibraryCards.appendChild(card);
+    songs.forEach(song=>{
+      const card=document.createElement('article');card.className='song-library-card quality-חיבור';
+      const number=document.createElement('small');number.textContent=String(song.playlistIndex||manualSongs.indexOf(song)+1).padStart(2,'0');
+      const title=document.createElement('strong');title.textContent=song.title;
+      const source=document.createElement('span');source.textContent='ניגון מוטמע מתוך השירים שלי ביוטיוב';
+      const choose=document.createElement('button');choose.type='button';choose.textContent='לבחור את השיר';choose.setAttribute('aria-label',`לבחור את השיר: ${song.title}`);
+      choose.addEventListener('click',()=>{stopSound();renderClosingSong(song,true);});card.append(number,title,source,choose);songLibraryCards.appendChild(card);
     });
-    for (let index = closingSongCandidates.length; index < programLength; index += 1) {
-      const card = document.createElement("article");
-      card.className = "song-library-card is-empty";
-      const number = document.createElement("small");
-      number.textContent = String(index + 1).padStart(2, "0");
-      const title = document.createElement("strong");
-      title.textContent = "מחכה לשיר הנכון";
-      const status = document.createElement("span");
-      status.textContent = "מקום פתוח בחפיסת 12 השירים";
-      card.append(number, title, status);
-      songLibraryCards.appendChild(card);
-    }
-    const missingCount = Math.max(0, programLength - closingSongCandidates.length);
-    const reviewCopy = document.querySelector("#songLibraryReview > p");
-    if (reviewCopy && missingCount) {
-      reviewCopy.textContent = `${closingSongCandidates.length} שירים נמצאים כרגע בבדיקה, ועוד ${missingCount} מקומות נשארו פתוחים עד שנרכיב חפיסה מדויקת של ${programLength}. שום שיר לא נכנס להגרלה לפני שאישרת אותו וקובץ האודיו שלו מחובר.`;
-    }
-    const remainingIds = new Set(bag.remaining);
-    songDeckDots.querySelectorAll("span").forEach((dot) => {
-      dot.classList.toggle("is-used", !remainingIds.has(dot.dataset.songId));
-    });
+    document.getElementById('songLibraryCount').textContent=query?`${songs.length} תוצאות מתוך ${manualSongs.length} רשומות בפלייליסט`:`כל ${manualSongs.length} הרשומות בפלייליסט השירים שלי`;
+    if(!songs.length){const empty=document.createElement('p');empty.textContent='לא נמצא שיר בשם הזה. אפשר לנסות מילה אחרת.';songLibraryCards.appendChild(empty);}
   }
+  document.getElementById('songLibrarySearch').addEventListener('input',renderSongLibrary);
 
   let youtubePlayer = null, youtubeReady = false, youtubeVideo = '', youtubeFade = null;
-  function youtubeCommand(command, args = []) {
-    const frame=document.getElementById('closingYoutubeFrame');
-    if(frame && frame.src !== 'about:blank') frame.contentWindow?.postMessage(JSON.stringify({event:'command',func:command,args}), new URL(frame.src).origin);
+  let youtubeApiPromise = null, youtubeLoadSequence = 0, youtubeMetadataId = '';
+  function ensureYoutubeApi() {
+    if (window.YT?.Player) return Promise.resolve();
+    if (youtubeApiPromise) return youtubeApiPromise;
+    youtubeApiPromise = new Promise((resolve,reject) => {
+      const previous = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => { if (typeof previous === 'function') previous(); resolve(); };
+      const script = document.createElement('script');script.src='https://www.youtube.com/iframe_api';script.onerror=()=>reject(new Error('YouTube API unavailable'));document.head.appendChild(script);
+    });
+    return youtubeApiPromise;
+  }
+  function youtubeCommand(command,args=[]) {
+    if (youtubeReady && typeof youtubePlayer?.[command] === 'function') youtubePlayer[command](...args);
   }
   function stopYoutube() {
-    if (!youtubeVideo || youtubeFade) return;
-    let volume = 100;
-    youtubeFade = setInterval(() => {
-      volume = Math.max(0, volume - 5); youtubeCommand('setVolume',[volume]);
-      if (!volume) { clearInterval(youtubeFade); youtubeFade = null; youtubeCommand('pauseVideo'); youtubeCommand('setVolume',[100]); }
-    }, 60);
+    if (!youtubeVideo || !youtubeReady || youtubeFade) return;
+    const initial = youtubePlayer.getVolume();const started=performance.now();
+    youtubeFade=setInterval(()=>{const progress=Math.min(1,(performance.now()-started)/1200);youtubePlayer.setVolume(Math.max(0,initial*(1-progress)));if(progress===1){clearInterval(youtubeFade);youtubeFade=null;youtubePlayer.pauseVideo();youtubePlayer.setVolume(initial);}},30);
   }
-  window.addEventListener('message', (event) => {
-    const frame = document.getElementById('closingYoutubeFrame');
-    if (!['https://www.youtube.com','https://www.youtube-nocookie.com'].includes(event.origin) || event.source !== frame?.contentWindow) return;
-    let message; try { message = typeof event.data === 'string' ? JSON.parse(event.data) : event.data; } catch { return; }
-    const info = message?.info || {};
-    if (message?.event === 'onReady' || message?.event === 'infoDelivery') youtubeReady = true;
-    if (info.playerState != null) {
-      const playing = info.playerState === 1;
-      closingSongPlay.setAttribute('aria-pressed', String(playing));
-      closingSongPlay.querySelector('.sr-only').textContent = playing ? 'להשהות את השיר' : 'להשמיע את השיר';
-      if (playing) closingSongStatus.textContent = 'השיר מתנגן.';
-      else if (info.playerState === 0) closingSongStatus.textContent = 'השיר הסתיים. אפשר לצאת איתו אל היום.';
-      else if (info.playerState === 2) closingSongStatus.textContent = 'השיר מושהה. אפשר להמשיך מהנגן.';
+  function updateYoutubeMetadata() {
+    if (!youtubeReady || !youtubeVideo) return;
+    const info=youtubePlayer.getVideoData?.()||{};const duration=youtubePlayer.getDuration();
+    closingSongStatus.dataset.youtubeState=String(youtubePlayer.getPlayerState());
+    if(info.video_id)closingSongStatus.dataset.videoId=info.video_id;
+    if (duration>0 && info.video_id) {
+      if (youtubeMetadataId !== info.video_id) {
+        youtubeMetadataId=info.video_id;youtubeVideo=info.video_id;
+        const song=manualSongs.find(s=>s.youtubeId===info.video_id);
+        if(song){document.getElementById('closingSongName').textContent=song.title;state.closingSongId=song.id;takeClosingSong.href=song.listenUrl;saveState();}
+        stageDurations['closing-song']=Math.ceil(duration);delete stageTimes['closing-song'];if(stageId()==='closing-song'&&!stageTick)renderStageTimer();
+      }
+      const current=youtubePlayer.getCurrentTime();closingSongProgress.style.setProperty('--song-progress',`${Math.min(100,current/duration*100)}%`);
+      if(duration-current<=1.2 && youtubePlayer.getPlayerState()===1)stopYoutube();
     }
-    if (info.duration && info.currentTime != null) {
-      closingSongProgress.style.setProperty('--song-progress', `${Math.min(100,info.currentTime/info.duration*100)}%`);
-      if (info.duration-info.currentTime <= 1.2 && info.playerState === 1) stopYoutube();
-    }
-  });
-  document.getElementById('closingYoutubeFrame').addEventListener('load', () => {
-    const frame=document.getElementById('closingYoutubeFrame');if(frame.src !== 'about:blank')frame.contentWindow?.postMessage(JSON.stringify({event:'listening',id:'closingYoutubeFrame'}),new URL(frame.src).origin);
-  });
-  function loadYoutube(song) {
-    if (youtubeFade) { clearInterval(youtubeFade); youtubeFade = null; }
-    const frame = document.getElementById('closingYoutubeFrame');
-    youtubeReady = false; youtubeVideo = song.youtubeId || '';
-    frame.hidden = !youtubeVideo;
-    frame.src = youtubeVideo ? `https://www.youtube-nocookie.com/embed/${youtubeVideo}?enablejsapi=1&playsinline=1&rel=0&origin=${encodeURIComponent(location.origin)}` : 'about:blank';
+  }
+  setInterval(updateYoutubeMetadata,300);
+  async function loadYoutube(song) {
+    const sequence=++youtubeLoadSequence;
+    if(youtubeFade){clearInterval(youtubeFade);youtubeFade=null;}
+    youtubeVideo=song.youtubeId||'';youtubeMetadataId='';
+    const frame=document.getElementById('closingYoutubeFrame');frame.hidden=!youtubeVideo;
+    if(!youtubeVideo){if(youtubeReady)youtubePlayer.pauseVideo();return;}
+    closingSongPlay.disabled=true;closingSongStatus.textContent='טוענת את השיר מתוך רשימת השירים שלך...';
+    try {
+      await ensureYoutubeApi();if(sequence!==youtubeLoadSequence)return;
+      const cue=()=>{
+        if(sequence!==youtubeLoadSequence)return;
+        youtubePlayer.setVolume(100);
+        if(song.playlistIndex)youtubePlayer.cuePlaylist({listType:'playlist',list:'PLeSXjAqYXF5w',index:song.playlistIndex-1});
+        else youtubePlayer.cueVideoById(song.youtubeId);
+        closingSongPlay.disabled=false;closingSongStatus.textContent='השיר מוכן ביוטיוב. אפשר להפעיל כאן או בתוך הנגן.';
+      };
+      if(youtubePlayer){if(youtubeReady)cue();return;}
+      youtubePlayer=new YT.Player('closingYoutubeFrame',{host:'https://www.youtube.com',width:'640',height:'360',videoId:song.youtubeId,
+        playerVars:{enablejsapi:1,playsinline:1,rel:0,origin:location.origin,list:'PLeSXjAqYXF5w',listType:'playlist'},
+        events:{onReady:()=>{youtubeReady=true;if(sequence!==youtubeLoadSequence){const latest=manualSongs.find(s=>s.id===state.closingSongId);if(latest?.youtubeId)loadYoutube(latest);else youtubePlayer.pauseVideo();return;}cue();},onStateChange:event=>{
+          if(!youtubeVideo)return;
+          const playing=event.data===1;closingSongPlay.setAttribute('aria-pressed',String(playing));closingSongPlay.querySelector('.sr-only').textContent=playing?'להשהות את השיר':'להשמיע את השיר';
+          if(playing)closingSongStatus.textContent='השיר מתנגן.';else if(event.data===2)closingSongStatus.textContent='השיר מושהה.';else if(event.data===0)closingSongStatus.textContent='השיר הסתיים. אפשר לצאת איתו אל היום.';
+          updateYoutubeMetadata();
+        },onError:event=>{closingSongPlay.disabled=true;closingSongStatus.textContent=`יוטיוב לא מאפשר כרגע לנגן את הסרטון הזה כאן (${event.data}). אפשר לבחור שיר אחר או לפתוח אותו בקישור.`;}}});
+    } catch(_) {closingSongPlay.disabled=true;closingSongStatus.textContent='נגן יוטיוב לא נטען. אפשר לנסות שוב או לפתוח את השיר בקישור.';}
   }
 
   async function renderClosingSong(song, moveFocus = false) {
     if (!song) return;
     const selection = ++songSelection;
+    if(youtubeVideo && youtubeReady && youtubePlayer.getPlayerState()===1){stopYoutube();await new Promise(resolve=>setTimeout(resolve,1250));if(selection!==songSelection)return;}
     if (!closingSongAudio.paused) {
       fadeMedia(closingSongAudio);
       await new Promise(resolve=>setTimeout(resolve,1250));
@@ -1193,8 +1220,8 @@
     closingSongPlay.setAttribute("aria-pressed", "false");
     loadYoutube({...song,youtubeId:song.audio ? '' : song.youtubeId});
     if (song.youtubeId && !song.audio) {
-      closingSongPlay.disabled = false;
-      closingSongStatus.textContent = 'הנגן מחובר ליוטיוב. לחצי על הנגן להשמעה. אם הוא לא נטען, פתחי את השיר בקישור שמתחתיו.';
+      closingSongPlay.disabled = !youtubeReady;
+      closingSongStatus.textContent = 'טוענת נגן יוטיוב לבחירה מתוך כל השירים שלך...';
     } else if (song.audio) {
       closingSongAudio.src = song.audio;
       closingSongPlay.disabled = false;
@@ -1235,7 +1262,7 @@
   } else {
     const bag = reconcileClosingDeckBag();
     songDeckNote.textContent = `זה בוקר ${Math.min(bag.used.length + 1, closingSongs.length)} בסבב. ${bag.remaining.length} שירים חדשים עדיין מחכים בחפיסה, ושיר שכבר נשמע לא ייבחר שוב.`;
-    const savedSong = closingSongs.find((song) => song.id === state.closingSongId);
+    const savedSong = closingSongs.find((song) => song.id === state.closingSongId) || manualSongs.find((song) => song.id === state.closingSongId);
     if (savedSong) renderClosingSong(savedSong);
   }
   renderSongLibrary();
@@ -1338,8 +1365,8 @@
   window.addEventListener('resize',updateDockClearance);
   const stageDurations = { threshold:30, 'opening-song':60, 'arrival-sleep':60, 'arrival-energy':60,
     'arrival-add':90, 'arrival-release':90, 'arrival-preserve':90, drain:1200,
-    'focus-intention':120, 'focus-collective':180, 'supplements-example':60, 'supplements-flow':300,
-    'gratitude-technique':180, 'gratitude-practice':300, protection:180, shower:300, planning:180,
+    'focus-intention':120, 'focus-collective':180, 'supplements-example':120, 'supplements-flow':240,
+    'gratitude-technique':120, 'gratitude-practice':360, protection:180, shower:300, planning:180,
     closing:120, 'closing-song':180, 'whatsapp-share':60 };
   const stageTimes = {};
   let stageTick = null, stageDeadline = 0;
