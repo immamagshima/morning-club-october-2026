@@ -79,7 +79,7 @@
   background: #d9d0bf;
 }
 .minute-before .scene[data-module="2"],
-.minute-before .scene[data-module="7"] { --scene-accent: var(--mb-orange); }
+.minute-before .scene[data-scene-id="shower"] { --scene-accent: var(--mb-orange); }
 .minute-before .scene[data-module="3"],
 .minute-before .scene[data-module="5"] { --scene-accent: var(--mb-pink); }
 

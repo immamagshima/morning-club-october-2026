@@ -24,6 +24,7 @@
 
   const defaultState = {
     version: 4,
+    sceneOrder: "shower-first",
     scene: 0,
     completedModules: [],
     sleep: 5,
@@ -64,7 +65,16 @@
   function loadState() {
     try {
       const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if (parsed && parsed.version === 4) return { ...defaultState, ...parsed };
+      if (parsed && parsed.version === 4) {
+        if (parsed.sceneOrder !== "shower-first") {
+          const previousIndex = Number(parsed.scene);
+          if (previousIndex === 14) parsed.scene = 15;
+          else if (previousIndex === 15) parsed.scene = 14;
+          parsed.completedModules = (parsed.completedModules || []).map(id => id === 6 ? 7 : id === 7 ? 6 : id);
+          parsed.sceneOrder = "shower-first";
+        }
+        return { ...defaultState, ...parsed };
+      }
     } catch (_) {}
     return { ...defaultState };
   }

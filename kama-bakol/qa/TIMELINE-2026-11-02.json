@@ -102,18 +102,18 @@
       "caption": "פעימה 5 · 05:42 עד 05:47 · חמש דקות כתיבה"
     },
     {
-      "scene": "protection",
+      "scene": "shower",
       "start": "05:47",
-      "end": "05:50",
-      "seconds": 180,
-      "caption": "פעימה 6 · 05:47 עד 05:50"
+      "end": "05:52",
+      "seconds": 300,
+      "caption": "פעימה 6 · 05:47 עד 05:52"
     },
     {
-      "scene": "shower",
-      "start": "05:50",
+      "scene": "protection",
+      "start": "05:52",
       "end": "05:55",
-      "seconds": 300,
-      "caption": "פעימה 7 · 05:50 עד 05:55"
+      "seconds": 180,
+      "caption": "פעימה 7 · 05:52 עד 05:55"
     },
     {
       "scene": "planning",
@@ -129,5 +129,6 @@
       "seconds": 120,
       "caption": "05:58 עד 06:00 · עדות"
     }
-  ]
+  ],
+  "release": "2026-11-02-shower-first"
 }
