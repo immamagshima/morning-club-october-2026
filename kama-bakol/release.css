@@ -92,3 +92,43 @@
 
 .minute-before .shower-guide-tools{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;width:100%;margin-top:10px}
 .minute-before .shower-guide-tools .secondary-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-size:16px;flex:1 1 180px;white-space:normal;text-align:center}
+
+/* Closing shares only: an open, readable living field. No cards, no dropped pairs. */
+.minute-before #movementShareWall.living-movement-field{display:block;position:relative;min-height:210px;width:100%;padding:14px 18px 24px;margin:20px 0;border:0;border-radius:0;background:radial-gradient(ellipse at 18% 65%,#ed087408,transparent 55%),radial-gradient(ellipse at 82% 30%,#163fad08,transparent 58%),#fffaf0;color:#171614;box-shadow:none;max-height:none;overflow:visible}
+.minute-before #movementShareWall .movement-field-toolbar{position:relative;z-index:3;display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px;padding:6px 0;background:#fffaf0}
+.minute-before #movementShareWall .movement-field-toolbar button{min-height:44px;font:700 16px/1.3 Polin,Arial,sans-serif;padding:10px 16px;white-space:normal}
+.minute-before #movementShareWall .movement-field-count{font:700 15px/1.4 Polin,Arial,sans-serif;color:#514b44}
+.minute-before #movementShareWall .movement-flow-content{display:flex;flex-flow:row wrap;align-content:flex-start;align-items:center;justify-content:center;gap:32px 44px;width:100%;min-width:0;padding:22px 12px;box-sizing:border-box}
+.minute-before #movementShareWall .movement-share{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:0 1 380px;max-width:100%;min-width:0;gap:7px;margin:0;padding:10px 8px;border:0;border-radius:0;background:transparent;box-shadow:none;color:#171614;text-align:center;font:750 26px/1.5 Polin,Arial,sans-serif;animation:living-movement-drift calc(9s + var(--share-index)*.17s) ease-in-out infinite alternate;animation-delay:calc(var(--share-index)*-.91s);transform:translateY(0);overflow:visible}
+.minute-before #movementShareWall .movement-share::after{content:"";width:52px;height:2px;margin-top:6px;background:linear-gradient(90deg,transparent,#ed087450,transparent)}
+.minute-before #movementShareWall .movement-entry,.minute-before #movementShareWall .movement-exit{display:block;max-width:100%;white-space:normal;text-overflow:clip;overflow:visible;overflow-wrap:anywhere}
+.minute-before #movementShareWall .movement-entry{font-size:.8em;line-height:1.5;font-weight:600;color:#163fad;opacity:.9}
+.minute-before #movementShareWall .movement-exit{font-size:1em;font-weight:850;color:#171614}
+.minute-before #movementShareWall[data-density="many"] .movement-share{font-size:22px;flex-basis:320px}
+.minute-before #movementShareWall.is-expanded-field{display:block;position:fixed;inset:0;z-index:10000;margin:0;width:100vw;max-width:none;min-height:0;padding:16px 28px 40px;overflow:auto;scrollbar-gutter:stable;overscroll-behavior:contain;height:100dvh;background:#fffaf0}
+.minute-before #movementShareWall.is-expanded-field .movement-field-toolbar{position:sticky;top:0;z-index:5;padding:4px 0 16px 160px;margin-bottom:8px}
+.minute-before #movementShareWall.is-expanded-field #openMovementField{display:none}
+.minute-before #movementShareWall.is-expanded-field .movement-flow-content{gap:40px 48px;padding:26px 18px 48px}
+.minute-before #movementShareWall.is-expanded-field[data-density="few"] .movement-share{font-size:clamp(28px,3vw,42px);flex-basis:540px}
+.minute-before #movementShareWall.is-expanded-field[data-density="medium"] .movement-share{font-size:30px;flex-basis:390px}
+.minute-before #movementShareWall.is-expanded-field .field-fullscreen-exit{position:fixed;top:16px;left:18px;right:auto;z-index:20;min-height:44px}
+.minute-before #movementShareWall.is-expanded-field::after{content:none}
+.minute-before #movementShareWall .movement-field-empty{font:600 22px/1.6 Polin,Arial,sans-serif;text-align:center;color:#514b44;max-width:650px;margin:30px auto}
+.minute-before #movementShareWall.is-motion-paused .movement-share{animation-play-state:paused}
+@keyframes living-movement-drift{from{transform:translate3d(-5px,7px,0) rotate(-.2deg)}to{transform:translate3d(5px,-7px,0) rotate(.2deg)}}
+@media(max-width:700px){.minute-before #movementShareWall.living-movement-field{padding:12px 10px 20px}.minute-before #movementShareWall .movement-field-toolbar{align-items:stretch}.minute-before #movementShareWall .movement-field-toolbar button{flex:1 1 180px}.minute-before #movementShareWall .movement-flow-content{gap:28px;padding:18px 8px}.minute-before #movementShareWall .movement-share{font-size:24px;flex-basis:100%}.minute-before #movementShareWall.is-expanded-field{padding:16px 12px 36px}.minute-before #movementShareWall.is-expanded-field .movement-field-toolbar{padding:54px 0 12px}.minute-before #movementShareWall.is-expanded-field .movement-flow-content{padding:18px 8px 40px;gap:30px}.minute-before #movementShareWall.is-expanded-field .movement-share{flex-basis:100%;font-size:26px}.minute-before #movementShareWall.is-expanded-field[data-density="many"] .movement-share{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.minute-before #movementShareWall .movement-share{animation:none!important;transform:none!important}}
+
+.minute-before #movementShareWall.living-movement-field.is-expanded-field:not(:has(.movement-share))::after{content:none}
+
+/* Manual song choice: keep the button horizontal and full card width. */
+.minute-before .scene[data-scene-id="closing-song"] .song-library-card{grid-template-columns:26px minmax(0,1fr);grid-template-rows:auto 1fr auto;gap:8px 6px;padding:12px;align-content:stretch}
+.minute-before .scene[data-scene-id="closing-song"] .song-library-card>small{grid-column:1;grid-row:1;align-self:start;font-size:15px}
+.minute-before .scene[data-scene-id="closing-song"] .song-library-card>strong{grid-column:2;grid-row:1;min-width:0;overflow-wrap:anywhere;line-height:1.3}
+.minute-before .scene[data-scene-id="closing-song"] .song-library-card>span{grid-column:1/-1;grid-row:2;align-self:start;font-size:14px;line-height:1.45}
+.minute-before .scene[data-scene-id="closing-song"] .song-library-card>button{grid-column:1/-1;grid-row:3;align-self:end;display:inline-flex;align-items:center;justify-content:center;width:100%;min-width:0;min-height:44px;padding:10px 12px;white-space:nowrap;font:700 16px/1.3 Polin,Arial,sans-serif;text-align:center;color:#fffaf0;background:#163fad;border:1px solid #171614;border-radius:8px;box-shadow:2px 3px 0 #171614;cursor:pointer}
+.minute-before .scene[data-scene-id="closing-song"] .song-library-card>button:hover{background:#12368f}
+.minute-before .scene[data-scene-id="closing-song"] .song-library-card>button:focus-visible{outline:3px solid #ed0874;outline-offset:3px}
+
+.minute-before .scene[data-scene-id="closing-song"] .song-library-card.is-used{opacity:1;filter:none}
+.minute-before .scene[data-scene-id="closing-song"] .song-library-card.is-used strong{text-decoration:none}

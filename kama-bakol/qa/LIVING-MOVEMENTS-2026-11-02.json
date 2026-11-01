@@ -1,0 +1,34 @@
+{
+  "release": "2026-11-02-living-movements4",
+  "version": "c9b898ec-31b4-4a85-b54a-b565f88f6c41",
+  "scope": [
+    "open flowing entry/exit text instead of cards",
+    "prominent fullscreen viewport portal",
+    "visible pause/resume and close/Escape",
+    "all valid room shares without previous client30/server60 caps",
+    "YouTube link label",
+    "horizontal full-width manual song buttons"
+  ],
+  "qa": {
+    "isolatedRoom": "qa-movement-field-1102-65",
+    "syntheticPairs": 65,
+    "textSpans": 130,
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1440
+    ],
+    "fieldPortal": "fixed at 0,0 and viewport dimensions",
+    "allPairsRetained": true,
+    "lastPairReachableByScroll": true,
+    "pauseResume": "passed across all widths",
+    "escapeAndClose": "passed",
+    "stablePoll": "unchanged data does not rebuild text nodes or restart animation",
+    "participantFlow": "actual entry/exit submitted through participant UI and shown on host in separate qa-movement-live-1102 room",
+    "motion": "slow 5-7px drift, open text without card backgrounds; reduced-motion CSS disables animation",
+    "manualSong": "12 buttons, horizontal nowrap 44px minimum; choosing third song updates card title",
+    "groupData": "real group room not modified"
+  }
+}

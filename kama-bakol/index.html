@@ -10,9 +10,9 @@
   <meta name="theme-color" content="#163fad">
   <meta name="description" content="קמה בקול, טקס הבוקר החי של מועדון מגשימה עם קרן בן עמי">
   <title>קמה בקול | טקס הבוקר של מועדון מגשימה</title>
-  <link rel="stylesheet" href="styles.css?v=20261102-soft-shower3">
-  <link rel="stylesheet" href="minute-before.css?v=20261102-soft-shower3">
-<link rel="stylesheet" href="release.css?v=20261102-soft-shower3">
+  <link rel="stylesheet" href="styles.css?v=20261102-living-movements4">
+  <link rel="stylesheet" href="minute-before.css?v=20261102-living-movements4">
+<link rel="stylesheet" href="release.css?v=20261102-living-movements4">
 </head>
 <body class="minute-before" data-scene="threshold">
   <a class="skip-link" href="#experience">דלגי לתוכן</a>
@@ -541,8 +541,14 @@
               <span>עם מה שנפתח, התבהר או התרכך בי</span>
             </article>
           </div>
-          <div id="movementShareWall" class="movement-share-wall" aria-live="polite" aria-label="שיתופי הכניסה והיציאה האנונימיים"></div>
-          <button type="button" class="secondary-button" data-field-fullscreen="movementShareWall">להגדיל את גל התנועה</button>
+          <div id="movementShareWall" class="movement-share-wall living-movement-field" aria-live="polite" aria-label="שיתופי הכניסה והיציאה האנונימיים">
+            <div class="movement-field-toolbar">
+              <button id="openMovementField" type="button" class="primary-button" data-field-fullscreen="movementShareWall">כל השיתופים במסך מלא</button>
+              <button id="toggleMovementMotion" type="button" class="secondary-button" aria-pressed="false">לעצור את תנועת המילים</button>
+              <span id="movementShareCount" class="movement-field-count"></span>
+            </div>
+            <div id="movementFlowContent" class="movement-flow-content"></div>
+          </div>
           <button id="finishWithoutSong" class="primary-button" type="button">לסיים את הבוקר בלי שיר</button>
           <button id="closingCopyRoomLink" class="primary-button closing-link-button" type="button">להקפיץ שוב את הקישור לחדר</button>
           <p id="movementFieldNote" class="presence-message">אותו קישור של הבוקר נפתח עכשיו לשני משפטים קצרים, גם למי שהגיעה מעט אחרי שהתחלנו.</p>
@@ -586,7 +592,7 @@
             <button id="drawClosingSong" class="primary-button song-draw-button" type="button">לפתוח את השיר</button>
             <small id="songDeckNote">בכל בוקר נפתח שיר חדש מתוך חפיסת 12 השירים, ושיר שכבר נשמע יוצא מן ההגרלה עד סוף הסבב.</small>
           </div>
-          <a class="secondary-button" href="https://www.youtube.com/watch?v=mf_DdsN3xQw&amp;list=PLeSXjAqYXF5w" target="_blank" rel="noopener noreferrer">לכל השירים שלי ביוטיוב</a>
+          <a class="secondary-button" href="https://www.youtube.com/watch?v=mf_DdsN3xQw&amp;list=PLeSXjAqYXF5w" target="_blank" rel="noopener noreferrer">רשימת השירים ביוטיוב</a>
           <details id="songLibraryReview" class="song-library-review">
             <summary>בחירה מתוך רשימת השירים</summary>
             <p>אפשר לפתוח שיר אינטואיטיבית, או לבחור כאן שיר מסוים מתוך 12 השירים המחוברים. בכל בוקר ייפתח קלף אחד בלי לדעת מראש איזה שיר מחכה בו, ואחרי ההשמעה הוא יעבור אל ״כבר נשמע״ ולא יחזור להגרלה של הסבב.</p>
@@ -644,7 +650,7 @@
 
   <div id="completionToast" class="toast" role="status" aria-live="polite">הבוקר הושלם. קחי אותו איתך אל היום.</div>
   <script src="supplements-data.js"></script>
-  <script src="closing-songs-data.js?v=20261102-soft-shower3"></script>
-  <script src="app.js?v=20261102-soft-shower3"></script>
+  <script src="closing-songs-data.js?v=20261102-living-movements4"></script>
+  <script src="app.js?v=20261102-living-movements4"></script>
 </body>
 </html>

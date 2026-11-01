@@ -839,16 +839,28 @@
 
 
 
+  let lastMovementSignature = null;
   function renderMovementField(movements = []) {
     const actual = Array.isArray(movements)
-      ? movements.filter((item) => item?.entryPhrase && item?.exitPhrase).slice(-30)
+      ? movements.filter((item) => item?.entryPhrase && item?.exitPhrase)
       : [];
     const visible = actual;
     const wall = document.getElementById("movementShareWall");
     if (!wall) return;
-    const fullscreenExit = wall.querySelector('.field-fullscreen-exit');
-    wall.replaceChildren();
-    if(fullscreenExit) wall.appendChild(fullscreenExit);
+    const content = document.getElementById("movementFlowContent");
+    if (!content) return;
+    const signature = JSON.stringify(actual.map(item => [item.entryPhrase, item.exitPhrase]));
+    if (signature === lastMovementSignature) return;
+    lastMovementSignature = signature;
+    wall.dataset.density = actual.length > 18 ? "many" : actual.length > 8 ? "medium" : "few";
+    document.getElementById("movementShareCount").textContent = actual.length === 1 ? "שיתוף אחד בחדר" : actual.length ? `${actual.length} שיתופים בחדר` : "";
+    content.replaceChildren();
+    if (!actual.length) {
+      const waiting = document.createElement("p");
+      waiting.className = "movement-field-empty";
+      waiting.textContent = "השיתופים יופיעו כאן אחרי שהמשתתפות ישלחו אותם.";
+      content.appendChild(waiting);
+    }
     visible.forEach((item, index) => {
       const pair = document.createElement("div");
       pair.className = "movement-share";
@@ -860,13 +872,19 @@
       exit.className = "movement-exit";
       exit.textContent = `אני יוצאת עם ${item.exitPhrase}`;
       pair.append(entry, exit);
-      wall.appendChild(pair);
+      content.appendChild(pair);
     });
     const note = document.getElementById("movementFieldNote");
     if (note) note.textContent = actual.length
       ? `${actual.length} תנועות אנונימיות כבר נוכחות על המסך. אותו קישור נשאר פתוח לעוד משתתפות.`
       : "השיתופים יופיעו כאן אחרי שהמשתתפות ישלחו אותם. אפשר גם להישאר עם הדברים במחברת.";
   }
+
+  document.getElementById("toggleMovementMotion").addEventListener("click", (event) => {
+    const paused = document.getElementById("movementShareWall").classList.toggle("is-motion-paused");
+    event.currentTarget.setAttribute("aria-pressed", String(paused));
+    event.currentTarget.textContent = paused ? "להמשיך את תנועת המילים" : "לעצור את תנועת המילים";
+  });
 
   function renderGroupSummary(summary) {
     renderMovementField(summary.movements);

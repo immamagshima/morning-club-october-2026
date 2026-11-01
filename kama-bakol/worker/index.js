@@ -230,7 +230,7 @@ async function api(request, env, ctx, url) {
        FROM participants WHERE room = ?`
     ).bind(room).first();
     const movementRows = await env.DB.prepare(
-      "SELECT entry_phrase AS entryPhrase, exit_phrase AS exitPhrase FROM movement_shares WHERE room = ? AND entry_phrase IS NOT NULL AND exit_phrase IS NOT NULL ORDER BY updated_at ASC LIMIT 60"
+      "SELECT entry_phrase AS entryPhrase, exit_phrase AS exitPhrase FROM movement_shares WHERE room = ? AND entry_phrase IS NOT NULL AND exit_phrase IS NOT NULL ORDER BY updated_at ASC"
     ).bind(room).all();
     const rounded = Object.fromEntries(Object.entries(row || {}).map(([key, value]) => [key, value == null ? null : (key.includes("Average") ? Math.round(Number(value) * 100) / 100 : Number(value))]));
     return json({ ...rounded, movements: movementRows.results || [] });
