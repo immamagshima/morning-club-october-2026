@@ -1311,7 +1311,7 @@
   const stageDurations = { threshold:30, 'opening-song':60, 'arrival-sleep':60, 'arrival-energy':60,
     'arrival-add':90, 'arrival-release':90, 'arrival-preserve':90, drain:1200,
     'focus-intention':120, 'focus-collective':180, 'supplements-example':60, 'supplements-flow':300,
-    'gratitude-technique':120, 'gratitude-practice':300, protection:180, shower:300, planning:180,
+    'gratitude-technique':180, 'gratitude-practice':300, protection:180, shower:300, planning:180,
     closing:120, 'closing-song':180, 'whatsapp-share':60 };
   const stageTimes = {};
   let stageTick = null, stageDeadline = 0;

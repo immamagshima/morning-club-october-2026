@@ -1,0 +1,133 @@
+{
+  "totalSeconds": 3600,
+  "practiceEnd": "06:00",
+  "optionalSong": "after 06:00",
+  "schedule": [
+    {
+      "scene": "threshold",
+      "start": "05:00",
+      "end": "05:00:30",
+      "seconds": 30,
+      "caption": "פתיח · 05:00 עד 05:00:30"
+    },
+    {
+      "scene": "opening-song",
+      "start": "05:00:30",
+      "end": "05:01:30",
+      "seconds": 60,
+      "caption": "צליל כניסה · 05:00:30 עד 05:01:30"
+    },
+    {
+      "scene": "arrival-sleep",
+      "start": "05:01:30",
+      "end": "05:02:30",
+      "seconds": 60,
+      "caption": "פעימה 1 · 05:01:30 עד 05:02:30 · הגעה 1 מתוך 5"
+    },
+    {
+      "scene": "arrival-energy",
+      "start": "05:02:30",
+      "end": "05:03:30",
+      "seconds": 60,
+      "caption": "פעימה 1 · 05:02:30 עד 05:03:30 · הגעה 2 מתוך 5"
+    },
+    {
+      "scene": "arrival-add",
+      "start": "05:03:30",
+      "end": "05:05",
+      "seconds": 90,
+      "caption": "פעימה 1 · 05:03:30 עד 05:05 · התבוננות 3 מתוך 5"
+    },
+    {
+      "scene": "arrival-release",
+      "start": "05:05",
+      "end": "05:06:30",
+      "seconds": 90,
+      "caption": "פעימה 1 · 05:05 עד 05:06:30 · התבוננות 4 מתוך 5"
+    },
+    {
+      "scene": "arrival-preserve",
+      "start": "05:06:30",
+      "end": "05:08",
+      "seconds": 90,
+      "caption": "פעימה 1 · 05:06:30 עד 05:08 · התבוננות 5 מתוך 5"
+    },
+    {
+      "scene": "drain",
+      "start": "05:08",
+      "end": "05:28",
+      "seconds": 1200,
+      "caption": "פעימה 2 · 05:08 עד 05:28"
+    },
+    {
+      "scene": "focus-intention",
+      "start": "05:28",
+      "end": "05:30",
+      "seconds": 120,
+      "caption": "פעימה 3 · 05:28 עד 05:30"
+    },
+    {
+      "scene": "focus-collective",
+      "start": "05:30",
+      "end": "05:33",
+      "seconds": 180,
+      "caption": "פעימה 3 · 05:30 עד 05:33 · שלוש דקות לשדה הקולקטיבי"
+    },
+    {
+      "scene": "supplements-example",
+      "start": "05:33",
+      "end": "05:34",
+      "seconds": 60,
+      "caption": "פעימה 4 · 05:33 עד 05:34 · לפני שכותבות"
+    },
+    {
+      "scene": "supplements-flow",
+      "start": "05:34",
+      "end": "05:39",
+      "seconds": 300,
+      "caption": "פעימה 4 · 05:34 עד 05:39 · חמש דקות כתיבה"
+    },
+    {
+      "scene": "gratitude-technique",
+      "start": "05:39",
+      "end": "05:42",
+      "seconds": 180,
+      "caption": "פעימה 5 · 05:39 עד 05:42 · שלוש דקות להסבר ולמעבר לכתיבה"
+    },
+    {
+      "scene": "gratitude-practice",
+      "start": "05:42",
+      "end": "05:47",
+      "seconds": 300,
+      "caption": "פעימה 5 · 05:42 עד 05:47 · חמש דקות כתיבה"
+    },
+    {
+      "scene": "protection",
+      "start": "05:47",
+      "end": "05:50",
+      "seconds": 180,
+      "caption": "פעימה 6 · 05:47 עד 05:50"
+    },
+    {
+      "scene": "shower",
+      "start": "05:50",
+      "end": "05:55",
+      "seconds": 300,
+      "caption": "פעימה 7 · 05:50 עד 05:55"
+    },
+    {
+      "scene": "planning",
+      "start": "05:55",
+      "end": "05:58",
+      "seconds": 180,
+      "caption": "פעימה 8 · 05:55 עד 05:58"
+    },
+    {
+      "scene": "closing",
+      "start": "05:58",
+      "end": "06:00",
+      "seconds": 120,
+      "caption": "05:58 עד 06:00 · עדות"
+    }
+  ]
+}
