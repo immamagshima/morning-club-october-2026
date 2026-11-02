@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>מזכרות הבוקר | קמה בקול</title>
+<style>
+@font-face{font-family:Polin;src:url('assets/club-brand/polin-regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Polin;src:url('assets/club-brand/polin-bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:Barlev;src:url('assets/club-brand/barlev-medium.woff2') format('woff2');font-weight:500;font-display:swap}
+*{box-sizing:border-box}body{margin:0;background:#f4eee4;color:#3d3733;font:400 20px/1.55 Polin,sans-serif}main{max-width:1120px;margin:auto;padding:clamp(20px,4vw,50px)}h1{font-size:clamp(32px,5vw,52px);line-height:1.15;margin:10px 0}h2{font-size:30px;margin:0}.intro{max-width:720px}.status{min-height:40px}section{margin:34px 0 70px}header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}button{min-height:48px;border:0;border-radius:12px;background:#334f83;color:#fffaf1;font:700 19px Polin,sans-serif;padding:12px 24px;cursor:pointer}button:disabled{opacity:.45;cursor:wait}button:focus-visible{outline:3px solid #934362;outline-offset:4px}.canvas-wrap{width:100%;background:#fffaf1;border-radius:4px;box-shadow:0 12px 35px #3d373310;overflow:hidden}canvas{width:100%;height:auto;display:block}.empty{padding:26px;border-inline-start:3px solid #934362;background:#fffaf1}.error{color:#8d2948}footer{font-size:16px}small{font-size:16px}
+</style>
+</head>
+<body><main>
+<p>קמה בקול · מועדון אמא מגשימה</p><h1>מהבוקר שלנו, להמשך היום.</h1>
+<p class="intro">שתי תמונות ששומרות את המילים שנאספו הבוקר: הכוונות שלנו והתנועה שבין הכניסה ליציאה.</p>
+<p id="status" class="status" role="status" aria-live="polite">טוענת את שיתופי הבוקר ואת הפונטים…</p>
+<section aria-labelledby="intentionsTitle"><header><h2 id="intentionsTitle">כוונות הבוקר שלנו</h2><button id="downloadIntentions" disabled>להוריד את תמונת הכוונות</button></header><div id="intentionsEmpty" class="empty" hidden>עדיין אין כוונות בחדר הזה.</div><div class="canvas-wrap"><canvas id="intentionsCanvas" aria-label="תמונת כל כוונות הבוקר" hidden></canvas></div></section>
+<section aria-labelledby="movementsTitle"><header><h2 id="movementsTitle">איך נכנסנו. איך יצאנו.</h2><button id="downloadMovements" disabled>להוריד את תמונת התנועה</button></header><div id="movementsEmpty" class="empty" hidden>עדיין אין שיתופי כניסה ויציאה מלאים בחדר הזה.</div><div class="canvas-wrap"><canvas id="movementsCanvas" aria-label="תמונת כל שיתופי הכניסה והיציאה" hidden></canvas></div></section>
+<footer>כל הזכויות שמורות © <span id="year"></span>, קרן בן עמי, אמא מגשימה.</footer>
+</main>
+<script>
+(() => {
+'use strict';
+const params = new URLSearchParams(location.search);
+const room = params.get('room') || '';
+const status = document.getElementById('status');
+const now = new Date();
+const dateParts = new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Bangkok',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(now);
+const dateValues = Object.fromEntries(dateParts.map(p=>[p.type,p.value]));
+const dateId = `${dateValues.year}-${dateValues.month}-${dateValues.day}`;
+const year = dateValues.year;
+const dateLabel = new Intl.DateTimeFormat('he-IL',{timeZone:'Asia/Bangkok',day:'numeric',month:'long',year:'numeric'}).format(now);
+document.getElementById('year').textContent = year;
+const W = 1600, P = 110, GAP = 80, COL = (W-2*P-GAP)/2;
+const PAPER = '#fffaf1', INK = '#3d3733', BLUE = '#334f83', MAUVE = '#934362';
+function font(ctx,size,weight=400){ctx.font=`${weight} ${size}px Polin`;ctx.direction='rtl';ctx.textAlign='right';ctx.textBaseline='top';}
+function wrap(ctx,text,maxWidth){
+  // Preserve the supplied text verbatim. Lines are slices of the original string,
+  // including whitespace; wrapping never normalises, shortens or deduplicates it.
+  const value=String(text), lines=[];
+  for(const paragraph of value.split('\n')){
+    if(!paragraph.length){lines.push('');continue;}
+    let line='';
+    for(const token of paragraph.match(/\s+|\S+/gu)||[]){
+      if(ctx.measureText(line+token).width<=maxWidth){line+=token;continue;}
+      if(line){lines.push(line);line='';}
+      if(ctx.measureText(token).width<=maxWidth){line=token;continue;}
+      // Long tokens remain intact in content and are split only at grapheme boundaries.
+      const graphemes=typeof Intl.Segmenter==='function'?[...new Intl.Segmenter('he',{granularity:'grapheme'}).segment(token)].map(p=>p.segment):Array.from(token);
+      for(const glyph of graphemes){if(line&&ctx.measureText(line+glyph).width>maxWidth){lines.push(line);line='';}line+=glyph;}
+    }
+    if(line)lines.push(line);
+  }
+  return lines;
+}
+function measureCanvas(){return document.createElement('canvas').getContext('2d');}
+function base(canvas,height,title,countLabel){
+  canvas.width=W;canvas.height=Math.ceil(height);canvas.hidden=false;
+  const ctx=canvas.getContext('2d');ctx.fillStyle=PAPER;ctx.fillRect(0,0,W,canvas.height);
+  ctx.strokeStyle='#d9c9b64d';ctx.lineWidth=1;
+  // One quiet hand-drawn line; no boxes behind participants' words.
+  ctx.beginPath();ctx.moveTo(P,238);ctx.bezierCurveTo(430,233,930,244,W-P,237);ctx.stroke();
+  ctx.fillStyle=BLUE;font(ctx,29,400);ctx.fillText('קמה בקול · מועדון אמא מגשימה',W-P,62);
+  ctx.fillStyle=INK;font(ctx,68,700);ctx.fillText(title,W-P,119);
+  font(ctx,28);ctx.fillStyle='#756d64';ctx.fillText(dateLabel,W-P,204);
+  ctx.textAlign='left';ctx.fillText(countLabel,P,204);
+  ctx.textAlign='right';
+  ctx.strokeStyle='#d9c9b64d';ctx.beginPath();ctx.moveTo(P,canvas.height-110);ctx.bezierCurveTo(500,canvas.height-116,1060,canvas.height-104,W-P,canvas.height-111);ctx.stroke();
+  font(ctx,24);ctx.fillStyle='#756d64';ctx.fillText(`כל הזכויות שמורות © ${year}, קרן בן עמי, אמא מגשימה`,W-P,canvas.height-78);
+  return ctx;
+}
+function rowColumns(items,measure){
+ const rows=[];for(let i=0;i<items.length;i+=2){const pair=items.slice(i,i+2).map(measure);rows.push({items:pair,height:Math.max(...pair.map(item=>item.height))});}return rows;
+}
+function renderIntentions(words){
+ const canvas=document.getElementById('intentionsCanvas');
+ if(!words.length){document.getElementById('intentionsEmpty').hidden=false;return;}
+ const m=measureCanvas();font(m,42);
+ const rows=rowColumns(words,(value)=>{const lines=wrap(m,value,COL);return {lines,height:lines.length*68+38};});
+ const height=320+rows.reduce((sum,row)=>sum+row.height,0)+150;
+ const ctx=base(canvas,height,'כוונות הבוקר שלנו',`${words.length} כוונות`);
+ let y=308,index=0;
+ rows.forEach(row=>{row.items.forEach((item,column)=>{const x=column===0?W-P:W-P-COL-GAP;ctx.fillStyle=index%11===7?MAUVE:index%4===1?BLUE:INK;font(ctx,42);item.lines.forEach((line,j)=>ctx.fillText(line,x,y+j*68));index++;});y+=row.height;});
+ enableDownload('downloadIntentions',canvas,'intentions');
+}
+function renderMovements(movements){
+ const canvas=document.getElementById('movementsCanvas');
+ if(!movements.length){document.getElementById('movementsEmpty').hidden=false;return;}
+ const m=measureCanvas();
+ const rows=rowColumns(movements,(entry)=>{font(m,37);const before=wrap(m,entry.entryPhrase,COL);font(m,44,700);const after=wrap(m,entry.exitPhrase,COL);return {before,after,height:34+before.length*58+30+34+after.length*68+62};});
+ const height=320+rows.reduce((sum,row)=>sum+row.height,0)+150;
+ const ctx=base(canvas,height,'איך נכנסנו. איך יצאנו.',`${movements.length} שיתופי תנועה`);
+ let y=308;
+ rows.forEach(row=>{row.items.forEach((item,column)=>{const x=column===0?W-P:W-P-COL-GAP;let lineY=y;font(ctx,26);ctx.fillStyle='#756d64';ctx.fillText('נכנסתי עם',x,lineY);lineY+=34;font(ctx,37);ctx.fillStyle=BLUE;item.before.forEach((line,j)=>ctx.fillText(line,x,lineY+j*58));lineY+=item.before.length*58+30;font(ctx,26);ctx.fillStyle=MAUVE;ctx.fillText('אני יוצאת עם',x,lineY);lineY+=34;font(ctx,44,700);ctx.fillStyle=INK;item.after.forEach((line,j)=>ctx.fillText(line,x,lineY+j*68));});y+=row.height;});
+ enableDownload('downloadMovements',canvas,'movements');
+}
+function enableDownload(id,canvas,suffix){
+ const button=document.getElementById(id);button.disabled=false;
+ button.addEventListener('click',()=>{button.disabled=true;canvas.toBlob(blob=>{button.disabled=false;if(!blob){status.textContent='התמונה לא נשמרה. נסי שוב.';return;}const href=URL.createObjectURL(blob);const link=document.createElement('a');link.href=href;link.download=`kama-bakol-${dateId}-${suffix}.png`;link.click();setTimeout(()=>URL.revokeObjectURL(href),60000);},'image/png');});
+}
+async function fetchJson(path){const url=new URL(path,location.origin);url.searchParams.set('room',room);const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error('טעינת החדר לא הצליחה');return response.json();}
+async function init(){
+ if(!room){status.classList.add('error');status.textContent='חסר קישור לחדר. פתחי את המזכרות מתוך חדר הבוקר שלך.';return;}
+ try{
+  const [focus,summary]=await Promise.all([fetchJson('/api/focus-words'),fetchJson('/api/group-summary')]);
+  await Promise.all([document.fonts.load('400 42px Polin'),document.fonts.load('700 44px Polin'),document.fonts.load('500 30px Barlev')]);await document.fonts.ready;
+  if(!document.fonts.check('400 42px Polin')||!document.fonts.check('700 44px Polin'))throw new Error('הפונטים לא נטענו. נסי לרענן לפני ההורדה');
+  const words=Array.isArray(focus.words)?focus.words.map(entry=>typeof entry==='string'?entry:entry?.word).filter(value=>typeof value==='string'&&value.length>0):[];
+  const movements=Array.isArray(summary.movements)?summary.movements.filter(entry=>typeof entry?.entryPhrase==='string'&&typeof entry?.exitPhrase==='string'&&entry.entryPhrase.length>0&&entry.exitPhrase.length>0):[];
+  renderIntentions(words);renderMovements(movements);
+  status.textContent=`התמונות מוכנות: ${words.length} כוונות ו־${movements.length} שיתופי כניסה ויציאה. כל המילים נשמרו כפי שנשלחו.`;
+ }catch(error){status.classList.add('error');status.textContent=`לא הצלחנו להכין את המזכרות. ${error.message||'בדקי את החיבור ונסי לרענן.'}`;}
+}
+init();
+})();
+</script></body></html>

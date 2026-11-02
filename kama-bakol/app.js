@@ -17,6 +17,7 @@
   const isLocalPreview = ["127.0.0.1", "localhost"].includes(window.location.hostname);
   const STORAGE_KEY = `kerenMorningClubV5:${roomId}`;
   const CLOSING_DECK_KEY = `kerenMorningClubClosingDeckV3:${roomId}`;
+  document.querySelectorAll(".morning-keepsake-link").forEach(link => { const url = new URL("keepsakes.html", location.href); url.search = ""; url.searchParams.set("room", roomId); link.href = url.href; });
   const apiUrl = (path) => {
     const url = new URL(path, window.location.origin);
     url.searchParams.set("room", roomId);
@@ -274,7 +275,7 @@
     stopYoutube();
     if (soundStop) soundStop();
     soundStop = null;
-    if (closingSongAudio && !closingSongAudio.paused) fadeMedia(closingSongAudio);
+    if (closingSongAudio && !closingSongAudio.paused) { fadeMedia(closingSongAudio); document.getElementById("closingSongStatus").textContent = "השיר מושהה."; }
     document.querySelectorAll("[data-demo-sound]").forEach((button) => button.setAttribute("aria-pressed", "false"));
     const closingSongPlay = document.getElementById("closingSongPlay");
     if (closingSongPlay) {

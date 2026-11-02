@@ -213,3 +213,24 @@ html:fullscreen .minute-before[data-scene="drain"] .drain-scene .timer-field.has
 .minute-before #groupFocusPanel.is-expanded-field .field-fullscreen-exit{position:fixed;top:16px;left:16px;z-index:10020;box-shadow:0 2px 14px #fffaf1c0}
 
 .minute-before .focus-collective-scene .scene-inner{height:auto;min-height:100%;overflow:visible;padding-bottom:calc(var(--live-link-height,64px) + 48px)}
+
+/* Selected song only: one lively single sleeve, with the working player intact. */
+.minute-before .scene[data-scene-id="closing-song"] #songDeck.is-revealed{padding:0;border:0;background:transparent;box-shadow:none}
+.minute-before .scene[data-scene-id="closing-song"] #closingSongCard{isolation:isolate;display:grid;justify-items:stretch;gap:0;padding:32px 36px 30px;border:0;border-radius:28px 6px 24px 8px;background:#163fad;box-shadow:7px 10px 0 #ed08741c;color:#fffaf0;text-align:right;overflow:hidden;animation:single-sleeve-arrives .7s ease-out both}
+.minute-before .scene[data-scene-id="closing-song"] #closingSongCard::before{content:"";position:absolute;z-index:-1;width:240px;height:240px;left:-115px;top:-95px;background:#ed0874;border:20px solid #ffffff12;border-radius:47% 53% 57% 43%;transform:rotate(-20deg);box-shadow:0 0 0 18px #fffaf00c,0 0 0 44px #fffaf008}
+.minute-before #closingSongCard .song-quality{justify-self:start;padding:0;border:0;border-radius:0;background:transparent;color:#e1e7fa;font-size:14px;font-weight:400}
+.minute-before #closingSongCard .song-artist{margin:13px 0 0;color:#fffaf0;font-size:18px;font-weight:400;line-height:1.4}
+.minute-before #closingSongCard #closingSongName{position:relative;max-width:14ch;margin:9px 0 32px;color:#fffaf0;font-family:Polin,Arial,sans-serif;font-size:clamp(34px,5vw,60px);font-weight:900;line-height:1.06;text-align:right;overflow-wrap:anywhere;transform:rotate(-1deg);transform-origin:right center}
+.minute-before #closingSongCard .song-listening-line[hidden]{display:none}
+.minute-before #closingSongCard .song-player-row{width:100%;margin:0;padding:13px 16px;background:#fffaf0;color:#171614;border:0;border-radius:40px;gap:16px}
+.minute-before #closingSongCard .song-play-button{flex:none;width:60px;height:60px;min-width:60px;min-height:60px;padding:0;display:grid;place-items:center;border:0;border-radius:50%;background:#ed0874;color:#fffaf0;box-shadow:none;font-size:29px}
+.minute-before #closingSongCard .song-player-row>span{color:#3d3733;font:400 16px/1.5 Polin,Arial,sans-serif}
+.minute-before #closingSongCard .song-progress{height:3px;margin:17px 0 6px;background:#fffaf040}
+.minute-before #closingSongCard .song-progress span{background:#fffaf0}
+.minute-before #closingSongCard .song-take-link{justify-self:start;margin-top:12px;color:#fffaf0;font-size:17px;font-weight:400;text-underline-offset:4px}
+.minute-before #closingSongCard #closingYoutubeFrame{margin-top:22px;border-radius:14px}
+.minute-before .morning-keepsake-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;text-decoration:none;font:700 16px/1.4 Polin,Arial,sans-serif;padding:10px 16px}
+.minute-before .group-keepsake-link{grid-column:1/-1;justify-self:start;margin:8px 12px}
+@keyframes single-sleeve-arrives{from{opacity:0;transform:translateY(12px) rotate(-1deg)}to{opacity:1;transform:none}}
+@media(max-width:600px){.minute-before .scene[data-scene-id="closing-song"] #closingSongCard{padding:26px 20px 24px;border-radius:24px 5px 20px 6px}.minute-before #closingSongCard .song-player-row{padding:11px;border-radius:28px;gap:11px}.minute-before #closingSongCard .song-play-button{width:52px;height:52px;min-width:52px;min-height:52px}.minute-before #closingSongCard .song-player-row>span{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.minute-before .scene[data-scene-id="closing-song"] #closingSongCard{animation:none}}
