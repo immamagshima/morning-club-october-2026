@@ -1,4 +1,5 @@
-import { cp, mkdir } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { cp, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -6,6 +7,8 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = resolve(root, "dist");
 const files = [
   "index.html",
+  "sound-library.js",
+  "sound-library.css",
   "styles.css",
   "release.css",
   "minute-before.css",
@@ -24,3 +27,14 @@ const files = [
 await mkdir(dist, { recursive: true });
 for (const file of files) await cp(resolve(root, file), resolve(dist, file));
 await cp(resolve(root, "assets"), resolve(dist, "assets"), { recursive: true });
+
+const hashes = {};
+async function hashDirectory(directory, prefix = "") {
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const relative = prefix + entry.name;
+    if (entry.isDirectory()) await hashDirectory(resolve(directory, entry.name), relative + "/");
+    else if (relative !== "release-manifest.json") hashes[relative] = createHash("sha256").update(await readFile(resolve(directory, entry.name))).digest("hex");
+  }
+}
+await hashDirectory(dist);
+await writeFile(resolve(dist, "release-manifest.json"), JSON.stringify({release: "2026-11-02-sound-drawer", files: hashes}, null, 2));

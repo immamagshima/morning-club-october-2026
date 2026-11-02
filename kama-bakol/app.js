@@ -249,11 +249,13 @@
 
   const mediaFades = new WeakMap();
   function resumeMedia(audio) {
+    if(window.MorningSound?.has(audio))return window.MorningSound.play(audio);
     const pending = mediaFades.get(audio);
     if (pending) { clearInterval(pending.id); audio.volume = pending.volume; mediaFades.delete(audio); }
     return audio.play();
   }
   function fadeMedia(audio, rewind = false) {
+    if(window.MorningSound?.has(audio))return window.MorningSound.fade(audio,rewind);
     if (!audio || audio.paused || mediaFades.has(audio)) return;
     const volume = audio.volume;
     const started = performance.now();
@@ -433,7 +435,7 @@
       stop();
       remaining = duration;
       state.drainRemaining = duration;
-      soundtrack.currentTime = 0;
+      fadeMedia(soundtrack,true);
       field.classList.remove("has-started", "is-running");
       saveState();
       renderTimer();
@@ -682,14 +684,14 @@
   const gratitudeDuration = 360;
   gratitudeMusic=document.getElementById('gratitudeMusic');gratitudeMusic.volume=.22;
   const gratitudeMusicToggle=document.getElementById('gratitudeMusicToggle');
-  function updateGratitudeMusicButton(){const playing=!gratitudeMusic.paused;gratitudeMusicToggle.setAttribute('aria-pressed',String(playing));gratitudeMusicToggle.textContent=playing?'להפסיק את מוזיקת החליל':'להפעיל חליל בזמן הכתיבה';}
+  function updateGratitudeMusicButton(){const playing=!gratitudeMusic.paused;if(!playing)document.getElementById('gratitudeMusicStatus').textContent='';gratitudeMusicToggle.setAttribute('aria-pressed',String(playing));gratitudeMusicToggle.textContent=playing?'לעצור מוזיקה':'6 דקות מוזיקה';}
   async function playGratitudeMusic(){
-    gratitudeMusic.currentTime=gratitudeRemaining>0?gratitudeDuration-gratitudeRemaining:0;
-    try{await resumeMedia(gratitudeMusic);updateGratitudeMusicButton();document.getElementById('gratitudeMusicStatus').textContent='החליל מתנגן. בסיום הוא ייעלם בפייד־אאוט.';}catch(_){gratitudeMusicEnabled=false;document.getElementById('gratitudeMusicStatus').textContent='המוזיקה לא נפתחה. אפשר להמשיך בשקט או לנסות שוב.';}
+    gratitudeMusic.currentTime=0;
+    try{await resumeMedia(gratitudeMusic);if(gratitudeMusic.paused){gratitudeMusicEnabled=false;updateGratitudeMusicButton();document.getElementById('gratitudeMusicStatus').textContent='נבחר שקט. אפשר לבחור כלי בכל רגע.';return;}updateGratitudeMusicButton();document.getElementById('gratitudeMusicStatus').textContent='המוזיקה מתנגנת לשש דקות, עם פייד בסיום.';}catch(_){gratitudeMusicEnabled=false;document.getElementById('gratitudeMusicStatus').textContent='המוזיקה לא נפתחה. אפשר להמשיך בשקט או לנסות שוב.';}
   }
   gratitudeMusicToggle.addEventListener('click',()=>{if(!gratitudeMusic.paused){gratitudeMusicEnabled=false;fadeMedia(gratitudeMusic);}else{gratitudeMusicEnabled=true;playGratitudeMusic();}});
   gratitudeMusic.addEventListener('play',updateGratitudeMusicButton);gratitudeMusic.addEventListener('pause',updateGratitudeMusicButton);
-  gratitudeMusic.addEventListener('ended',()=>{gratitudeMusicEnabled=false;updateGratitudeMusicButton();document.getElementById('gratitudeMusicStatus').textContent='שש דקות החליל הושלמו.';});
+  gratitudeMusic.addEventListener('ended',()=>{gratitudeMusicEnabled=false;updateGratitudeMusicButton();document.getElementById('gratitudeMusicStatus').textContent='שש דקות המוזיקה הושלמו.';});
   let gratitudeRemaining = Math.min(gratitudeDuration, Math.max(0, Number(state.gratitudeRemaining ?? gratitudeDuration)));
   let gratitudeRunning = false;
   let gratitudeDeadline = 0;
@@ -739,6 +741,7 @@
   });
   document.getElementById("gratitudeTimerReset").addEventListener("click", () => {
     stopGratitudeTimer();
+    fadeMedia(gratitudeMusic,true);
     gratitudeRemaining = gratitudeDuration;
     state.gratitudeRemaining = gratitudeDuration;
     saveState();

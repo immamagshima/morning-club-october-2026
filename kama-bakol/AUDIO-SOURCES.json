@@ -1,0 +1,105 @@
+{
+  "approval": "All original takes approved by Keren in this chat. Loop editing and normalization requested.",
+  "copyright": "כל הזכויות שמורות © 2026, קרן בן עמי, אמא מגשימה",
+  "tracks": [
+    {
+      "name": "flute-a",
+      "sourceSeconds": 112.4135,
+      "loopSeconds": 120.0,
+      "lufs": -16.26,
+      "truePeak": -5.49,
+      "seamAmplitude": 1.3039131996350761e-09,
+      "sha256": "8b260c2d3cc7cfe269d2f681af5ff2a666424048c8e59495580954d48da50448",
+      "original": "https://suno.com/song/fea8abc9-a964-4047-9b2b-0a523998b002",
+      "asset": "assets/audio/loops/flute-a.mp3"
+    },
+    {
+      "name": "guitar-b",
+      "sourceSeconds": 157.8935,
+      "loopSeconds": 120.0,
+      "lufs": -16.24,
+      "truePeak": -2.23,
+      "seamAmplitude": 3.967834150131466e-08,
+      "sha256": "f166b1107c9f31da0d4ea9d474c04f6402a7907daf6ee9cad27875e732fab549",
+      "original": "https://suno.com/song/a5769ac1-e765-43c5-881c-079bfe6f1905",
+      "asset": "assets/audio/loops/guitar-b.mp3"
+    },
+    {
+      "name": "violin-a",
+      "sourceSeconds": 57.8135,
+      "loopSeconds": 120.0,
+      "lufs": -16.28,
+      "truePeak": -2.42,
+      "seamAmplitude": 5.463864649613015e-08,
+      "sha256": "a85c4dfd05a7e754b9e9cfc58631b7f9fb9bc7f4a86fd416cefac4b884e17b34",
+      "original": "https://suno.com/song/44344f7a-33b0-4ceb-acfc-5cad575b37b0",
+      "asset": "assets/audio/loops/violin-a.mp3"
+    },
+    {
+      "name": "piano-a",
+      "sourceSeconds": 179.0935,
+      "loopSeconds": 120.0,
+      "lufs": -16.26,
+      "truePeak": -3.72,
+      "seamAmplitude": 5.992087492856513e-08,
+      "sha256": "13e2ae7c7514c97aefd1a230b6e8a4c200858cc4812383a010d7de287fe50789",
+      "original": "https://suno.com/song/dd49da3e-e651-4332-9ec2-34ddf0ec3b3f",
+      "asset": "assets/audio/loops/piano-a.mp3"
+    },
+    {
+      "name": "violin-b",
+      "sourceSeconds": 78.3735,
+      "loopSeconds": 120.0,
+      "lufs": -16.26,
+      "truePeak": -3.15,
+      "seamAmplitude": 5.270017666703097e-07,
+      "sha256": "7cb5d3295639d7db4c1633dfac23583f87363d001860dbb985a5d52d86c39994",
+      "original": "https://suno.com/song/e0f620d5-16e0-4061-a65f-2a7af1145224",
+      "asset": "assets/audio/loops/violin-b.mp3"
+    },
+    {
+      "name": "piano-b",
+      "sourceSeconds": 93.2135,
+      "loopSeconds": 120.0,
+      "lufs": -16.26,
+      "truePeak": -2.33,
+      "seamAmplitude": 2.782688626190577e-07,
+      "sha256": "7a88b1cb8ce36a5e83ffcee7be07a4c49b9311785f29e3a1001a7cdc7714b6b1",
+      "original": "https://suno.com/song/c8089598-3772-4a30-893d-8157e6308207",
+      "asset": "assets/audio/loops/piano-b.mp3"
+    },
+    {
+      "name": "handpan-a",
+      "sourceSeconds": 73.2135,
+      "loopSeconds": 120.0,
+      "lufs": -16.27,
+      "truePeak": -2.8,
+      "seamAmplitude": 4.024597977797528e-08,
+      "sha256": "8bc24fc280dabd30566f1db6496edd6d4b3627f0084574b193bc63ad76275405",
+      "original": "https://suno.com/song/151954af-c44a-42d3-b46f-2b84ddbc5573",
+      "asset": "assets/audio/loops/handpan-a.mp3"
+    },
+    {
+      "name": "guitar-a",
+      "sourceSeconds": 82.4135,
+      "loopSeconds": 120.0,
+      "lufs": -16.24,
+      "truePeak": -2.22,
+      "seamAmplitude": 3.377846202745616e-08,
+      "sha256": "bc2b0e889f9b285ae84f57595bb85a036b55f64af37cf7d5dc6291e582eb5a0f",
+      "original": "https://suno.com/song/3ab26a2e-5bcb-4331-8673-7df8ac58080b",
+      "asset": "assets/audio/loops/guitar-a.mp3"
+    },
+    {
+      "name": "handpan-b",
+      "sourceSeconds": 179.4935,
+      "loopSeconds": 120.0,
+      "lufs": -16.27,
+      "truePeak": -2.18,
+      "seamAmplitude": 1.0602406597115532e-07,
+      "sha256": "89be965286fca7db3b6113f6ffb7973a7b7a6f5a5a400430db2548ab16d36e48",
+      "original": "https://suno.com/song/94206248-86b8-4ce0-8cc9-a98ae6ad092d",
+      "asset": "assets/audio/loops/handpan-b.mp3"
+    }
+  ]
+}
