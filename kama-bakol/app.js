@@ -224,7 +224,8 @@
     : activeSceneId === "closing"
       ? "לשיר סגירה לבחירה"
       : activeSceneId === "closing-song"
-        ? "לתזכורת השיתוף"
+        ? "לסלפי של הבוקר"
+        : activeSceneId === "selfie" ? "לתזכורת השיתוף"
         : "המשך";
     const onDeep = scenes[currentScene].dataset.theme === "deep";
     document.querySelector(".navigation-dock").classList.toggle("after-deep", onDeep);
@@ -270,7 +271,9 @@
     }, 30);
     mediaFades.set(audio, { id, volume });
   }
+  let demoSoundGeneration = 0;
   function stopSound() {
+    demoSoundGeneration++;
     if(gratitudeMusic && !gratitudeMusic.paused) fadeMedia(gratitudeMusic);
     stopYoutube();
     if (soundStop) soundStop();
@@ -320,6 +323,7 @@
   });
 
   function updateClock() {
+    document.querySelectorAll("[data-selfie-date]").forEach(node => { node.textContent = new Intl.DateTimeFormat("he-IL", {timeZone:"Asia/Bangkok",day:"numeric",month:"numeric",year:"2-digit"}).format(new Date()); });
     const now = new Date();
     document.getElementById("liveClock").textContent = new Intl.DateTimeFormat("he-IL", {
       hour: "2-digit",
@@ -524,6 +528,7 @@
     const cloud = wall.querySelector(".group-word-cloud");
     cloud.replaceChildren();
     const visibleWords = words;
+    window.KEREN_INTENTION_FLOW?.setWords(visibleWords);
     wall.classList.remove("is-demo");
     wall.classList.toggle("is-empty", !visibleWords.length);
     if (!visibleWords.length) {
@@ -548,6 +553,13 @@
     });
   }
 
+  const intentionPauseButton = document.getElementById("toggleIntentionMotion");
+  intentionPauseButton.addEventListener("click", () => {
+    const paused = intentionPauseButton.getAttribute("aria-pressed") !== "true";
+    intentionPauseButton.setAttribute("aria-pressed", String(paused));
+    intentionPauseButton.textContent = paused ? "להמשיך את תנועת הכוונות" : "לעצור את תנועת הכוונות";
+    window.KEREN_INTENTION_FLOW?.setPaused(paused);
+  });
   async function refreshGroupWords() {
     try {
       const response = await fetch(apiUrl("/api/focus-words"), { cache: "no-store" });
@@ -809,6 +821,7 @@
         scanButton.textContent = "להתחיל את המקלחת הפנימית";
       }
     }
+    if (activePanel?.closest(".protection-scene")) protectionField.classList.add("is-guide-paused");
     fadeMedia(activeGuideAudio);
     document.querySelectorAll("[data-guide-player]").forEach((panel) => {
       const button = panel.querySelector(".voice-guide-button");
@@ -841,6 +854,12 @@
           button.setAttribute("aria-pressed", "true");
           button.querySelector("span").textContent = "Ⅱ";
           status.textContent = "קרן מחזיקה עכשיו את המרחב";
+          if (panel.closest(".protection-scene")) {
+            protectionField.classList.remove("is-guide-paused");
+            state.protectionLayers = 2;
+            saveState();
+            renderProtection();
+          }
           if (panel.closest(".shower-scene")) {
             document.querySelector(".body-scan")?.classList.add("is-scanning");
             const scanButton = document.getElementById("scanToggle");
@@ -962,16 +981,25 @@
 
   async function playDemoSound(type, button) {
     stopSound();
+    const generation = demoSoundGeneration;
     if (button.dataset.audioSrc) {
       const audio = new Audio(button.dataset.audioSrc);
       audio.volume = .34;
+      if (type === "opening") {
+        const host = document.querySelector(".opening-choice-media");
+        host.querySelectorAll("audio").forEach(previous => { previous.removeAttribute("id"); if(previous.paused)previous.remove(); });
+        audio.id = "openingChoiceAudio";
+        host.appendChild(audio);
+        audio.addEventListener("pause", () => { if(audio.id !== "openingChoiceAudio")audio.remove(); });
+      }
       try {
         await resumeMedia(audio);
+        if (generation !== demoSoundGeneration) { fadeMedia(audio,true); return; }
         button.setAttribute("aria-pressed", "true");
         soundStop = () => {
           fadeMedia(audio, true);
         };
-        audio.addEventListener("ended", () => { if (soundStop) stopSound(); }, { once: true });
+        audio.addEventListener("ended", () => { if (generation === demoSoundGeneration && soundStop) stopSound(); }, { once: true });
         return;
       } catch (_) {
         return showToast("הצליל לא נפתח. אפשר להמשיך את הפתיחה בשקט.");
@@ -1351,7 +1379,7 @@
     state.completedModules = [1,2,3,4,5,6,7,8];
     saveState();
     updateRail();
-  setScene(scenes.length - 1);
+  setScene(scenes.findIndex(scene => scene.dataset.sceneId === "selfie"));
   showToast("הבוקר הושלם. התנופה ממשיכה איתך אל היום.");
   }
   document.getElementById("finishMorning").addEventListener("click", finishMorning);
@@ -1393,7 +1421,7 @@
     'arrival-add':90, 'arrival-release':90, 'arrival-preserve':90, drain:1200,
     'focus-intention':120, 'focus-collective':180, 'supplements-example':120, 'supplements-flow':240,
     'gratitude-technique':120, 'gratitude-practice':360, protection:180, shower:300, planning:180,
-    closing:120, 'closing-song':180, 'whatsapp-share':60 };
+    closing:120, 'closing-song':180, selfie:60, 'whatsapp-share':60 };
   const stageTimes = {};
   let stageTick = null, stageDeadline = 0;
   function stageId() { return scenes[currentScene].dataset.sceneId; }

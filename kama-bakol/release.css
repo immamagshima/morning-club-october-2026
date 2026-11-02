@@ -234,3 +234,144 @@ html:fullscreen .minute-before[data-scene="drain"] .drain-scene .timer-field.has
 @keyframes single-sleeve-arrives{from{opacity:0;transform:translateY(12px) rotate(-1deg)}to{opacity:1;transform:none}}
 @media(max-width:600px){.minute-before .scene[data-scene-id="closing-song"] #closingSongCard{padding:26px 20px 24px;border-radius:24px 5px 20px 6px}.minute-before #closingSongCard .song-player-row{padding:11px;border-radius:28px;gap:11px}.minute-before #closingSongCard .song-play-button{width:52px;height:52px;min-width:52px;min-height:52px}.minute-before #closingSongCard .song-player-row>span{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.minute-before .scene[data-scene-id="closing-song"] #closingSongCard{animation:none}}
+/* The entrance is a choice of colour, one complete minute per colour. */
+.minute-before .scene[data-scene-id="opening-song"] .audio-placeholder{display:block;width:min(650px,100%);padding:22px 26px;background:transparent;border:0;box-shadow:none;overflow:visible}
+.minute-before .opening-color-palette{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:16px 19px;max-width:600px;margin:auto;padding:12px 0}
+.minute-before .opening-color-choice{position:relative;display:grid;place-items:center;flex:none;width:72px;height:72px;min-width:52px;min-height:52px;padding:0;background:var(--choice-color);border:0;border-radius:43% 57% 50% 50% / 50% 43% 57% 50%;box-shadow:0 7px 0 #38272e12,inset 0 1px 0 #ffffff55;color:#fffaf0;cursor:pointer;transition:transform .25s,box-shadow .25s;isolation:isolate;font:700 27px/1 Polin,sans-serif}
+.minute-before .opening-color-choice:nth-child(2n){border-radius:55% 45% 42% 58% / 45% 55% 45% 55%;transform:rotate(5deg)}
+.minute-before .opening-color-choice:hover{transform:translateY(-4px) rotate(-3deg)}
+.minute-before .opening-color-choice:focus-visible{outline:3px solid #171614;outline-offset:6px}
+.minute-before .opening-color-choice[aria-pressed="true"]{outline:3px solid #171614;outline-offset:5px;box-shadow:0 0 0 9px #fffaf0,0 9px 22px #38272e22}
+.minute-before .opening-color-choice[aria-pressed="true"] span{font-size:0}
+.minute-before .opening-color-choice[aria-pressed="true"] span::after{content:"Ⅱ";font:700 25px/1 Polin,sans-serif}
+.minute-before .opening-color-choice:nth-child(3),.minute-before .opening-color-choice:nth-child(4),.minute-before .opening-color-choice:nth-child(6),.minute-before .opening-color-choice:nth-child(8),.minute-before .opening-color-choice:nth-child(9){color:#171614}
+.minute-before .opening-choice-media{display:none}
+.minute-before .scene[data-scene-id="arrival-energy"] .sleep-dawn-art{max-width:100%;transform:rotate(-1.2deg)}
+/* A preserved seed grows visibly, keeping the existing vessel and palette. */
+.minute-before .ritual-art-preserve .preserve-stem{stroke-dasharray:1;stroke-dashoffset:0;animation:morning-stem-grow 10s ease-in-out infinite}
+.minute-before .ritual-art-preserve .preserve-leaf{transform-box:fill-box;fill:#ed08740a;animation:morning-leaf-open 10s ease-in-out infinite}
+.minute-before .ritual-art-preserve .preserve-leaf-left{transform-origin:100% 100%}
+.minute-before .ritual-art-preserve .preserve-leaf-right{transform-origin:0% 100%;animation-name:morning-leaf-open-later}
+@keyframes morning-stem-grow{0%,5%{stroke-dashoffset:1;opacity:0}12%{opacity:1}36%,90%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes morning-leaf-open{0%,22%{opacity:0;transform:scale(.05) rotate(-25deg)}47%,88%{opacity:1;transform:scale(1) rotate(0)}100%{opacity:0;transform:scale(1) rotate(0)}}
+@keyframes morning-leaf-open-later{0%,34%{opacity:0;transform:scale(.05) rotate(25deg)}59%,88%{opacity:1;transform:scale(1) rotate(0)}100%{opacity:0;transform:scale(1) rotate(0)}}
+/* The first door releases a breath of light; the second receives it. Text stays still. */
+.minute-before #movementField{isolation:isolate;perspective:1000px}
+.minute-before #movementField .movement-wave{inset:0 7%;opacity:.9;overflow:visible}
+.minute-before #movementField .wave-path{stroke-dasharray:none;stroke-width:1.7;opacity:.4;animation:none}
+.minute-before #movementField .closing-light-ribbon{fill:none;stroke:url(#closingRibbonLight);stroke-width:26;stroke-dasharray:170 1000;stroke-linecap:round;filter:url(#closingRibbonSoft);opacity:0;animation:closing-light-crossing 10s ease-in-out infinite}
+.minute-before #movementField .closing-light-core{fill:none;stroke:#ffb792;stroke-width:3;stroke-dasharray:100 1000;stroke-linecap:round;opacity:0;animation:closing-light-crossing 10s ease-in-out infinite}
+.minute-before #movementField .movement-door{isolation:isolate}
+.minute-before #movementField .movement-door::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;background:radial-gradient(ellipse at 80% 70%,#ffb79280,transparent 70%);opacity:0;animation:closing-entry-breath 10s ease-in-out infinite}
+.minute-before #movementField .exit-door::before{background:radial-gradient(ellipse at 25% 65%,#fffaf0d0,transparent 72%);animation-name:closing-exit-breath}
+.minute-before #movementField .entry-door::after{transform-origin:right center;animation:closing-entry-frame 10s ease-in-out infinite}
+.minute-before #movementField .exit-door::after{transform-origin:left center;animation:closing-exit-frame 10s ease-in-out infinite}
+@keyframes closing-light-crossing{0%,15%{stroke-dashoffset:-1000;opacity:0}25%{opacity:.55}62%{stroke-dashoffset:100;opacity:.65}78%,100%{stroke-dashoffset:100;opacity:0}}
+@keyframes closing-entry-breath{0%,100%{opacity:.03}15%,28%{opacity:.4}52%,82%{opacity:.07}}
+@keyframes closing-exit-breath{0%,34%,100%{opacity:.02}58%,78%{opacity:.55}}
+@keyframes closing-entry-frame{0%,60%,100%{transform:none;opacity:.28}18%,30%{transform:perspective(500px) rotateY(-14deg) translateX(-4px);opacity:.58}}
+@keyframes closing-exit-frame{0%,34%,100%{transform:none;opacity:.28}59%,76%{transform:perspective(500px) rotateY(14deg) translateX(4px);opacity:.56}}
+.minute-before .scene-closing:has(#movementShareWall.is-motion-paused) #movementField *,.minute-before .scene-closing:has(#movementShareWall.is-reading-shares) #movementField *,.minute-before .scene-closing:has(#movementShareWall.is-motion-paused) #movementField .movement-door::before,.minute-before .scene-closing:has(#movementShareWall.is-reading-shares) #movementField .movement-door::before,.minute-before .scene-closing:has(#movementShareWall.is-motion-paused) #movementField .movement-door::after,.minute-before .scene-closing:has(#movementShareWall.is-reading-shares) #movementField .movement-door::after{animation-play-state:paused}
+/* A single bounded canvas for the living intentions, without a scrolling list. */
+.minute-before #groupFocusPanel.is-expanded-field:has(.has-intention-flow){height:100dvh;max-height:100dvh;overflow:hidden;grid-template-rows:minmax(0,1fr);padding:80px 24px 18px}
+.minute-before #groupFocusPanel.is-expanded-field:has(.has-intention-flow) #groupWordWall{height:100%;max-height:100%;min-height:0;overflow:hidden}
+.minute-before #groupFocusPanel.is-expanded-field:has(.has-intention-flow) .group-focus-copy{display:contents}
+.minute-before #groupFocusPanel.is-expanded-field:has(.has-intention-flow) .group-focus-copy>*:not(#toggleIntentionMotion){display:none}
+.minute-before #groupFocusPanel.is-expanded-field #toggleIntentionMotion{position:fixed;top:16px;right:16px;z-index:10020;min-height:44px;max-width:calc(100vw - 160px);font:700 16px/1.3 Polin,sans-serif}
+.minute-before .gratitude-technique-scene .gratitude-technique::before{content:none;display:none}
+.minute-before .gratitude-model-title{display:flex;justify-content:center;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 18px;color:#ed0874;font:900 34px/1.2 Polin,sans-serif}
+.minute-before .gratitude-model-title span{font:400 23px/1.4 Polin,sans-serif;color:#3d3733}
+.minute-before .protection-field.is-guide-paused *,.minute-before .protection-field.is-guide-paused::before,.minute-before .protection-field.is-guide-paused::after{animation-play-state:paused!important}
+/* A daily photo cue is deliberately part of the ending sequence. */
+.minute-before .selfie-inner{height:auto;min-height:100%;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:34px 28px 54px}
+.minute-before .selfie-inner h2{font:900 clamp(40px,5vw,70px)/1.05 Polin,sans-serif;margin:0;color:#171614}
+.minute-before .selfie-inner h2 em{color:#163fad;font-style:normal}
+.minute-before .selfie-stamp{font:700 22px/1.4 Polin,sans-serif;color:#163fad;margin:0}.minute-before .selfie-stamp span{display:inline-block;margin-inline-start:10px;direction:ltr}
+.minute-before .selfie-inner .lead{max-width:700px;font-size:21px;line-height:1.5;margin:0 0 8px}
+.minute-before .selfie-picture{position:relative;width:220px;height:145px;border:3px solid #163fad;border-radius:32px 8px 28px 8px;background:linear-gradient(145deg,#fffaf0,#ffd0b5);transform:rotate(-3deg);margin:18px 0}
+.minute-before .selfie-picture::before{content:"";position:absolute;width:70px;height:24px;top:-20px;right:30px;border:3px solid #163fad;border-bottom:0;border-radius:14px 14px 0 0;background:#fffaf0}
+.minute-before .selfie-lens{position:absolute;inset:24px auto auto 70px;width:77px;height:77px;border-radius:50%;border:12px solid #163fad;background:#ed0874;box-shadow:0 0 0 8px #fffaf0}
+.minute-before .selfie-picture i{position:absolute;top:22px;right:20px;width:12px;height:12px;border-radius:50%;background:#ed0874}
+.minute-before .selfie-picture b{position:absolute;top:17px;left:20px;width:27px;height:15px;border-radius:4px;background:#fffaf0}
+@media(max-width:600px){.minute-before .opening-color-palette{gap:14px;max-width:300px}.minute-before .opening-color-choice{width:64px;height:64px}.minute-before .scene[data-scene-id="opening-song"] .audio-placeholder{padding:14px 8px}.minute-before #groupFocusPanel.is-expanded-field:has(.has-intention-flow){padding:78px 8px 12px}.minute-before .selfie-inner{padding:26px 18px 40px}.minute-before .selfie-inner .lead{font-size:18px}.minute-before .selfie-stamp{font-size:18px}.minute-before .gratitude-model-title{font-size:29px}.minute-before .gratitude-model-title span{font-size:20px}}
+@media(prefers-reduced-motion:reduce){.minute-before #movementField *,.minute-before #movementField .movement-door::before,.minute-before #movementField .movement-door::after,.minute-before .ritual-art-preserve .preserve-stem,.minute-before .ritual-art-preserve .preserve-leaf{animation:none!important}.minute-before .ritual-art-preserve .preserve-stem{stroke-dashoffset:0;opacity:1}.minute-before .ritual-art-preserve .preserve-leaf{opacity:1;transform:none}.minute-before #movementField .closing-light-ribbon{opacity:.14;stroke-dashoffset:-400}.minute-before #movementField .closing-light-core{opacity:.2;stroke-dashoffset:-400}}
+/* Draft: three paper sleeves for five notebook choices in each part of the day.
+   No controls, inputs or stored private planning. Load after existing CSS. */
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;
+  width:min(1090px,100%);margin:18px auto 0;padding:0;border:0;background:none;box-shadow:none;
+}
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-plan-row{
+  --day-ink:#3d3733;--day-line:#ad735a55;--day-paper:#ffe0c7;--day-glow:#fff7df;
+  position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:104px 1fr;
+  min-width:0;min-height:330px;gap:4px;padding:22px 23px 20px;
+  overflow:hidden;border:0;border-inline-end:0;border-radius:3px 3px 22px 3px;
+  background:linear-gradient(160deg,var(--day-glow),var(--day-paper) 75%);
+  box-shadow:0 9px 0 -5px #6b49352b,0 14px 30px #6b493512;color:var(--day-ink);
+}
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery .noon-window{
+  --day-ink:#661b4c;--day-line:#9343624a;--day-paper:#f3b8d1;--day-glow:#fff3ec;
+}
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery .evening-window{
+  --day-ink:#fffaf1;--day-line:#fffaf15c;--day-paper:#24418b;--day-glow:#4d64a6;
+}
+.minute-before .scene[data-scene-id="planning"] .day-plan-row::before{
+  content:"";position:absolute;z-index:-1;inset:auto -15% -17% 30%;height:63%;
+  border-radius:57% 43% 40% 60%;background:#fffaf120;transform:rotate(-11deg);pointer-events:none;
+}
+.minute-before .scene[data-scene-id="planning"] .day-plan-row::after{
+  content:"";position:absolute;inset:0;z-index:4;pointer-events:none;
+  background:linear-gradient(90deg,#fffaf118 0 1px,transparent 1px);
+  clip-path:polygon(0 96%,7% 97%,12% 96.4%,19% 97.5%,24% 96%,31% 97%,37% 96.5%,43% 97.4%,50% 96%,59% 97.3%,66% 96.5%,74% 97.7%,83% 96.2%,91% 97.3%,100% 96.5%,100% 100%,0 100%);
+}
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-plan-row>strong{
+  position:relative;z-index:3;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;
+  gap:7px;padding:0;border:0;background:none;color:var(--day-ink);min-width:0;
+}
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-plan-row>strong>span{
+  font:700 clamp(34px,3.8vw,49px)/1.04 Polin,sans-serif;letter-spacing:-.035em;max-width:calc(100% - 65px);
+}
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-plan-row>strong>small{
+  font:400 16px/1.4 Polin,sans-serif;max-width:calc(100% - 45px);opacity:.88;
+}
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-window-art{
+  position:absolute;z-index:1;left:17px;top:16px;width:66px;height:92px;min-height:0;
+  border:1px solid currentColor;border-bottom:0;border-radius:48px 48px 0 0;color:var(--day-ink);opacity:.65;
+  background:radial-gradient(ellipse at 50% 12%,#fffaf14a,transparent 64%);overflow:hidden;transform:rotate(-5deg);
+}
+.minute-before .scene[data-scene-id="planning"] .day-window-art::before,
+.minute-before .scene[data-scene-id="planning"] .day-window-art::after,
+.minute-before .scene[data-scene-id="planning"] .day-window-art i{display:none}
+.minute-before .scene[data-scene-id="planning"] .day-window-art .window-sun,
+.minute-before .scene[data-scene-id="planning"] .day-window-art .window-moon{
+  display:block;position:absolute;left:50%;top:61%;width:45px;height:45px;
+  transform:translate(-50%,-50%);border-radius:50%;background:#ff651b;box-shadow:0 0 18px #fffaf166;
+}
+.minute-before .scene[data-scene-id="planning"] .noon-window .day-window-art .window-sun{background:#ed0874;top:44%;width:39px;height:39px;box-shadow:0 0 25px #fffaf1aa}
+.minute-before .scene[data-scene-id="planning"] .evening-window .day-window-art .window-moon{background:#fff4dc;box-shadow:12px -7px 0 #3a5498 inset;top:38%;width:38px;height:38px}
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-slots{
+  position:relative;z-index:3;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(5,minmax(27px,1fr));
+  gap:9px;padding:0;margin:0;min-height:178px;counter-reset:day-choice;
+}
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-plan-row:nth-child(n) .day-slots>span{
+  position:relative;display:block;counter-increment:day-choice;width:100%;height:auto;min-height:27px;min-width:0;
+  flex:none;padding:0 31px 0 0;border:0;border-bottom:1px solid var(--day-line);border-radius:0;
+  box-shadow:none;background:transparent;color:var(--day-ink);font:400 14px/1.4 Polin,sans-serif;
+}
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-slots>span::before{
+  content:counter(day-choice,decimal-leading-zero);position:absolute;right:0;top:2px;direction:ltr;
+  font-variant-numeric:tabular-nums;font-size:14px;line-height:1.4;opacity:.66;
+}
+@media(max-width:760px){
+  .minute-before .scene[data-scene-id="planning"] .day-window-gallery{grid-template-columns:1fr;gap:20px;max-width:440px}
+  .minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-plan-row{min-height:330px;padding:22px 25px 20px;grid-template-rows:104px 1fr}
+  .minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-plan-row>strong>span{font-size:45px}
+  .minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-slots{min-height:178px}
+}
+
+.minute-before .scene[data-scene-id="closing"] .closing-inner{height:auto;min-height:100%;overflow:visible;align-content:start;padding-bottom:calc(var(--navigation-clearance,100px) + var(--live-link-height,64px) + 52px)}
+.minute-before .scene[data-scene-id="closing"]{scroll-padding-block:24px calc(var(--navigation-clearance,100px) + var(--live-link-height,64px) + 28px)}
+.minute-before #finishWithoutSong,.minute-before #closingCopyRoomLink{scroll-margin-bottom:calc(var(--navigation-clearance,100px) + var(--live-link-height,64px) + 28px)}
+
+.minute-before .scene[data-scene-id="planning"] .planning-scene{height:auto;min-height:100%;overflow:visible;align-content:start;padding-bottom:60px}
+.minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-plan-row>strong>small{color:var(--day-ink);opacity:.8}

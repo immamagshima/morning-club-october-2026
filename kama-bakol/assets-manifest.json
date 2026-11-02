@@ -2,164 +2,254 @@
   "publicBase": "https://kama-bakol-morning-room.immamagshima.workers.dev/",
   "assets": [
     {
+      "path": "assets/NotoSansHebrew-VF.ttf",
+      "bytes": 67028,
+      "sha256": "d65be0c19695b2a2446773f7ea839413d34a06ee58b65c863a59ff3d13c05ff9"
+    },
+    {
       "path": "assets/arrival-add-art-v1.png",
-      "sha256": "db17c199dad070229497c526e09dff34f34c42656a99d603a301e9f24b9ca21a",
-      "bytes": 7033
+      "bytes": 7033,
+      "sha256": "db17c199dad070229497c526e09dff34f34c42656a99d603a301e9f24b9ca21a"
     },
     {
       "path": "assets/arrival-preserve-art-v1.png",
-      "sha256": "ddb9bc49dda17dfa58f9606a68dda9111a60fe5bedd0aaa68ec9a50e9f418814",
-      "bytes": 953103
-    },
-    {
-      "path": "assets/keren-imma-brand-signature-on-dark.png",
-      "sha256": "9922b36eccf35ed722be51672b0d4f0b337d9ad79385d8317c1e7261c65e1224",
-      "bytes": 26680
-    },
-    {
-      "path": "assets/arrival-ritual-triptych-v1.png",
-      "sha256": "88fc20aa641abf28d6a571765b8925ca61e7c030c9fae0901be3aba5eddb8793",
-      "bytes": 2886811
-    },
-    {
-      "path": "assets/NotoSansHebrew-VF.ttf",
-      "sha256": "d65be0c19695b2a2446773f7ea839413d34a06ee58b65c863a59ff3d13c05ff9",
-      "bytes": 67028
-    },
-    {
-      "path": "assets/minute-before-morning.jpg",
-      "sha256": "45ed1b45645594cd4a74ba9fd5cee416c1fff1a3218114c75fcedb439f89d07e",
-      "bytes": 207373
-    },
-    {
-      "path": "assets/kama-bakol-morning-collage-v2.png",
-      "sha256": "80aafa93fe5a083f267ebadeff7a4169330ed38063beb6d16c5bdb919b215773",
-      "bytes": 2730392
-    },
-    {
-      "path": "assets/solo-flute-loop.mp3",
-      "sha256": "cda6b1b6b6edb80a5cbdcdc6c371426191eea54e3be8e288fd5dc6961df40c23",
-      "bytes": 2507220
+      "bytes": 953103,
+      "sha256": "ddb9bc49dda17dfa58f9606a68dda9111a60fe5bedd0aaa68ec9a50e9f418814"
     },
     {
       "path": "assets/arrival-release-art-v1.png",
-      "sha256": "ddb9bc49dda17dfa58f9606a68dda9111a60fe5bedd0aaa68ec9a50e9f418814",
-      "bytes": 953103
+      "bytes": 953103,
+      "sha256": "ddb9bc49dda17dfa58f9606a68dda9111a60fe5bedd0aaa68ec9a50e9f418814"
     },
     {
-      "path": "assets/closing-songs/lagaat-baatid.mp3",
-      "sha256": "1c95c72891d48e64c2e1ab2e36306a6434589291d5f5ee1da600d5ad11d04f89",
-      "bytes": 5163929
+      "path": "assets/arrival-ritual-triptych-v1.png",
+      "bytes": 2886811,
+      "sha256": "88fc20aa641abf28d6a571765b8925ca61e7c030c9fae0901be3aba5eddb8793"
     },
     {
-      "path": "assets/closing-songs/lo-hakol.mp3",
-      "sha256": "4a45cda35ebeffacb4e02f39af61306f8f4aac996a329f4170b9d1b7032cecab",
-      "bytes": 3897494
+      "path": "assets/audio/01-\u05d4\u05d2\u05e0\u05d5\u05ea-DASHBOARD-MIX.mp3",
+      "bytes": 3812204,
+      "sha256": "744ea67043a80d6828ab1b164c7c32da175a8c7fb5d2acb8a84d52e7bba42e67"
     },
     {
-      "path": "assets/closing-songs/bati-lakahat-oti.mp3",
-      "sha256": "2c307c346dbc7ba198f6e3fdc2345dc302a9f362f0ca5dfbd06fbe9f7971b8c3",
-      "bytes": 4835184
-    },
-    {
-      "path": "assets/closing-songs/halon-patuach.mp3",
-      "sha256": "4f57c1f4c8dc33d0bb1235b1ee71705fcca97f526765f038f29315bb686c3ed7",
-      "bytes": 4316517
-    },
-    {
-      "path": "assets/closing-songs/al-taali-biladai.mp3",
-      "sha256": "b45af3dece5f022ed2fb78c9f508ff3416d951eeec1c70b00c1bd1c32857e2d1",
-      "bytes": 5874982
-    },
-    {
-      "path": "assets/closing-songs/lo-hetzi.mp3",
-      "sha256": "53c21f4a53638a87ebb5f6f475dd05cf949996edfe82168999bfe5f029bbb2ea",
-      "bytes": 4095123
-    },
-    {
-      "path": "assets/closing-songs/lo-halachti-leibud.mp3",
-      "sha256": "9e506fc50ad3d144987c15061e871602afd64dadab690253964260a6cd23281b",
-      "bytes": 3411104
-    },
-    {
-      "path": "assets/closing-songs/hanaha-bekol.mp3",
-      "sha256": "9557cb71128967fa3bdc4b75f2ccbf4df11f49c8cfeb702024d9845aaccf7f17",
-      "bytes": 4920991
-    },
-    {
-      "path": "assets/closing-songs/shniya-ani-baa.mp3",
-      "sha256": "5b776f08ddb9e07e0263fa24cbcdd58f79713963653eb04c89afe0f1fdc7b282",
-      "bytes": 3573735
-    },
-    {
-      "path": "assets/closing-songs/al-tarshimi-oti.mp3",
-      "sha256": "6d70d9f7e1227b70eab52e69bd5c510ff089b49916ef451c16d07905bdaca129",
-      "bytes": 2709464
-    },
-    {
-      "path": "assets/closing-songs/vaani-amarti-lo.mp3",
-      "sha256": "0e37f50297cbf0c82834d694e5dac52cd04c515af082856474ece42b92c96bb4",
-      "bytes": 3800337
-    },
-    {
-      "path": "assets/closing-songs/lihiyot-ani.mp3",
-      "sha256": "2d1c12f25865b16215e75a0a42ce8f78ede099bcf900e71f83ba2ca7a1dca9fa",
-      "bytes": 5499256
-    },
-    {
-      "path": "assets/club-brand/barlev-medium.woff2",
-      "sha256": "d218c662e755fb8eb0a2fbafd3929e0505907344288b69dcea37f59884b27803",
-      "bytes": 21320
-    },
-    {
-      "path": "assets/club-brand/polin-bold.woff2",
-      "sha256": "8e48e783c3a2f510b69dee2f7a6b90186100a023a7a1204c4097fb245d19ebef",
-      "bytes": 40276
-    },
-    {
-      "path": "assets/club-brand/brand-signature.png",
-      "sha256": "9922b36eccf35ed722be51672b0d4f0b337d9ad79385d8317c1e7261c65e1224",
-      "bytes": 26680
-    },
-    {
-      "path": "assets/club-brand/polin-regular.woff2",
-      "sha256": "213dffb5296456935aded258434b36d2e07991dc8f0e9915b10b2c5b317b43ce",
-      "bytes": 38300
-    },
-    {
-      "path": "assets/club-brand/polin-black.woff2",
-      "sha256": "9c8fa8627d7fc0b5a2b79ec60eb28c53c29bc9e346a25498ceba9db82dd90420",
-      "bytes": 40764
-    },
-    {
-      "path": "assets/audio/01-הגנות-DASHBOARD-MIX.mp3",
-      "sha256": "744ea67043a80d6828ab1b164c7c32da175a8c7fb5d2acb8a84d52e7bba42e67",
-      "bytes": 3812204
-    },
-    {
-      "path": "assets/audio/אני-כבר-יודעת-קרן-בן-עמי.mp3",
-      "sha256": "9c23c139e2b27a84a212d8ddfddba6628e015aaa698516572e879bcb32a082c3",
-      "bytes": 4885539
+      "path": "assets/audio/02-\u05de\u05e7\u05dc\u05d7\u05ea-\u05e4\u05e0\u05d9\u05de\u05d9\u05ea-DASHBOARD-MIX.mp3",
+      "bytes": 4989644,
+      "sha256": "29ef9fb5b45007453f56642da6ae9ba13cc067fd70261bf786a25f85e3c87de2"
     },
     {
       "path": "assets/audio/README.md",
-      "sha256": "c473acac02b41a88ba180f28a836974b852eb52e15df4d6d79eb06687895af79",
-      "bytes": 613
-    },
-    {
-      "path": "assets/audio/02-מקלחת-פנימית-DASHBOARD-MIX.mp3",
-      "sha256": "29ef9fb5b45007453f56642da6ae9ba13cc067fd70261bf786a25f85e3c87de2",
-      "bytes": 4989644
+      "bytes": 613,
+      "sha256": "c473acac02b41a88ba180f28a836974b852eb52e15df4d6d79eb06687895af79"
     },
     {
       "path": "assets/audio/gratitude-flute-6min.mp3",
-      "sha256": "72b57508f730f9f25e679e61686b9dd964e66329b4901f82536112a58125428f",
-      "bytes": 7200214
+      "bytes": 7200214,
+      "sha256": "72b57508f730f9f25e679e61686b9dd964e66329b4901f82536112a58125428f"
+    },
+    {
+      "path": "assets/audio/loops/flute-a.mp3",
+      "bytes": 2881275,
+      "sha256": "8b260c2d3cc7cfe269d2f681af5ff2a666424048c8e59495580954d48da50448"
+    },
+    {
+      "path": "assets/audio/loops/guitar-a.mp3",
+      "bytes": 2881276,
+      "sha256": "bc2b0e889f9b285ae84f57595bb85a036b55f64af37cf7d5dc6291e582eb5a0f"
+    },
+    {
+      "path": "assets/audio/loops/guitar-b.mp3",
+      "bytes": 2881276,
+      "sha256": "f166b1107c9f31da0d4ea9d474c04f6402a7907daf6ee9cad27875e732fab549"
+    },
+    {
+      "path": "assets/audio/loops/handpan-a.mp3",
+      "bytes": 2881277,
+      "sha256": "8bc24fc280dabd30566f1db6496edd6d4b3627f0084574b193bc63ad76275405"
+    },
+    {
+      "path": "assets/audio/loops/handpan-b.mp3",
+      "bytes": 2881277,
+      "sha256": "89be965286fca7db3b6113f6ffb7973a7b7a6f5a5a400430db2548ab16d36e48"
+    },
+    {
+      "path": "assets/audio/loops/piano-a.mp3",
+      "bytes": 2881275,
+      "sha256": "13e2ae7c7514c97aefd1a230b6e8a4c200858cc4812383a010d7de287fe50789"
+    },
+    {
+      "path": "assets/audio/loops/piano-b.mp3",
+      "bytes": 2881275,
+      "sha256": "7a88b1cb8ce36a5e83ffcee7be07a4c49b9311785f29e3a1001a7cdc7714b6b1"
+    },
+    {
+      "path": "assets/audio/loops/violin-a.mp3",
+      "bytes": 2881276,
+      "sha256": "a85c4dfd05a7e754b9e9cfc58631b7f9fb9bc7f4a86fd416cefac4b884e17b34"
+    },
+    {
+      "path": "assets/audio/loops/violin-b.mp3",
+      "bytes": 2881276,
+      "sha256": "7cb5d3295639d7db4c1633dfac23583f87363d001860dbb985a5d52d86c39994"
+    },
+    {
+      "path": "assets/audio/opening-colors/01.mp3",
+      "bytes": 1201233,
+      "sha256": "d32c47f14993bc5d4836d1cb2fd95161c4ef08116ec2482c97714517583a14b5"
+    },
+    {
+      "path": "assets/audio/opening-colors/02.mp3",
+      "bytes": 1201235,
+      "sha256": "89e2e24a1f5f9809fe897f5222f622609388e4e8b8df4fd4fc55883b450b517a"
+    },
+    {
+      "path": "assets/audio/opening-colors/03.mp3",
+      "bytes": 1201235,
+      "sha256": "69e924e013f41caa5513f380978dacb1bea06509139b558765b157d63f589152"
+    },
+    {
+      "path": "assets/audio/opening-colors/04.mp3",
+      "bytes": 1201234,
+      "sha256": "705dafc62bf9bc2596f6086e7327e9914968cbc2e80a7742f02ce1a253732dca"
+    },
+    {
+      "path": "assets/audio/opening-colors/05.mp3",
+      "bytes": 1201234,
+      "sha256": "c7f8826cbaaa01cdc38b3eb14e24d8ebddce8c947d5c82b6318038c00af6abf4"
+    },
+    {
+      "path": "assets/audio/opening-colors/06.mp3",
+      "bytes": 1201234,
+      "sha256": "65f8c1abecff209bd6da99e99b775570084589a0d93bfd3c9c39163130a5c30a"
+    },
+    {
+      "path": "assets/audio/opening-colors/07.mp3",
+      "bytes": 1201234,
+      "sha256": "74f75472750a37b08b87299edf63fbef919d8cecc0bee895830a278efa0a3493"
+    },
+    {
+      "path": "assets/audio/opening-colors/08.mp3",
+      "bytes": 1201233,
+      "sha256": "bd420b7d50a522edbc4cc174218968764f83efb6c7b4900c97084db70de54889"
+    },
+    {
+      "path": "assets/audio/opening-colors/09.mp3",
+      "bytes": 1201233,
+      "sha256": "7ac6937128e916491135ea302a33e2739d399a293c85f937872d953bd8848e2f"
     },
     {
       "path": "assets/audio/opening-flute-1min.mp3",
-      "sha256": "de8f547c68cdca31aad0aae0e4b79f3264599643c80dcb405453d61084ff9547",
-      "bytes": 1201455
+      "bytes": 1201455,
+      "sha256": "de8f547c68cdca31aad0aae0e4b79f3264599643c80dcb405453d61084ff9547"
+    },
+    {
+      "path": "assets/audio/\u05d0\u05e0\u05d9-\u05db\u05d1\u05e8-\u05d9\u05d5\u05d3\u05e2\u05ea-\u05e7\u05e8\u05df-\u05d1\u05df-\u05e2\u05de\u05d9.mp3",
+      "bytes": 4885539,
+      "sha256": "9c23c139e2b27a84a212d8ddfddba6628e015aaa698516572e879bcb32a082c3"
+    },
+    {
+      "path": "assets/closing-songs/al-taali-biladai.mp3",
+      "bytes": 5874982,
+      "sha256": "b45af3dece5f022ed2fb78c9f508ff3416d951eeec1c70b00c1bd1c32857e2d1"
+    },
+    {
+      "path": "assets/closing-songs/al-tarshimi-oti.mp3",
+      "bytes": 2709464,
+      "sha256": "6d70d9f7e1227b70eab52e69bd5c510ff089b49916ef451c16d07905bdaca129"
+    },
+    {
+      "path": "assets/closing-songs/bati-lakahat-oti.mp3",
+      "bytes": 4835184,
+      "sha256": "2c307c346dbc7ba198f6e3fdc2345dc302a9f362f0ca5dfbd06fbe9f7971b8c3"
+    },
+    {
+      "path": "assets/closing-songs/halon-patuach.mp3",
+      "bytes": 4316517,
+      "sha256": "4f57c1f4c8dc33d0bb1235b1ee71705fcca97f526765f038f29315bb686c3ed7"
+    },
+    {
+      "path": "assets/closing-songs/hanaha-bekol.mp3",
+      "bytes": 4920991,
+      "sha256": "9557cb71128967fa3bdc4b75f2ccbf4df11f49c8cfeb702024d9845aaccf7f17"
+    },
+    {
+      "path": "assets/closing-songs/lagaat-baatid.mp3",
+      "bytes": 5163929,
+      "sha256": "1c95c72891d48e64c2e1ab2e36306a6434589291d5f5ee1da600d5ad11d04f89"
+    },
+    {
+      "path": "assets/closing-songs/lihiyot-ani.mp3",
+      "bytes": 5499256,
+      "sha256": "2d1c12f25865b16215e75a0a42ce8f78ede099bcf900e71f83ba2ca7a1dca9fa"
+    },
+    {
+      "path": "assets/closing-songs/lo-hakol.mp3",
+      "bytes": 3897494,
+      "sha256": "4a45cda35ebeffacb4e02f39af61306f8f4aac996a329f4170b9d1b7032cecab"
+    },
+    {
+      "path": "assets/closing-songs/lo-halachti-leibud.mp3",
+      "bytes": 3411104,
+      "sha256": "9e506fc50ad3d144987c15061e871602afd64dadab690253964260a6cd23281b"
+    },
+    {
+      "path": "assets/closing-songs/lo-hetzi.mp3",
+      "bytes": 4095123,
+      "sha256": "53c21f4a53638a87ebb5f6f475dd05cf949996edfe82168999bfe5f029bbb2ea"
+    },
+    {
+      "path": "assets/closing-songs/shniya-ani-baa.mp3",
+      "bytes": 3573735,
+      "sha256": "5b776f08ddb9e07e0263fa24cbcdd58f79713963653eb04c89afe0f1fdc7b282"
+    },
+    {
+      "path": "assets/closing-songs/vaani-amarti-lo.mp3",
+      "bytes": 3800337,
+      "sha256": "0e37f50297cbf0c82834d694e5dac52cd04c515af082856474ece42b92c96bb4"
+    },
+    {
+      "path": "assets/club-brand/barlev-medium.woff2",
+      "bytes": 21320,
+      "sha256": "d218c662e755fb8eb0a2fbafd3929e0505907344288b69dcea37f59884b27803"
+    },
+    {
+      "path": "assets/club-brand/brand-signature.png",
+      "bytes": 26680,
+      "sha256": "9922b36eccf35ed722be51672b0d4f0b337d9ad79385d8317c1e7261c65e1224"
+    },
+    {
+      "path": "assets/club-brand/polin-black.woff2",
+      "bytes": 40764,
+      "sha256": "9c8fa8627d7fc0b5a2b79ec60eb28c53c29bc9e346a25498ceba9db82dd90420"
+    },
+    {
+      "path": "assets/club-brand/polin-bold.woff2",
+      "bytes": 40276,
+      "sha256": "8e48e783c3a2f510b69dee2f7a6b90186100a023a7a1204c4097fb245d19ebef"
+    },
+    {
+      "path": "assets/club-brand/polin-regular.woff2",
+      "bytes": 38300,
+      "sha256": "213dffb5296456935aded258434b36d2e07991dc8f0e9915b10b2c5b317b43ce"
+    },
+    {
+      "path": "assets/kama-bakol-morning-collage-v2.png",
+      "bytes": 2730392,
+      "sha256": "80aafa93fe5a083f267ebadeff7a4169330ed38063beb6d16c5bdb919b215773"
+    },
+    {
+      "path": "assets/keren-imma-brand-signature-on-dark.png",
+      "bytes": 26680,
+      "sha256": "9922b36eccf35ed722be51672b0d4f0b337d9ad79385d8317c1e7261c65e1224"
+    },
+    {
+      "path": "assets/minute-before-morning.jpg",
+      "bytes": 207373,
+      "sha256": "45ed1b45645594cd4a74ba9fd5cee416c1fff1a3218114c75fcedb439f89d07e"
+    },
+    {
+      "path": "assets/solo-flute-loop.mp3",
+      "bytes": 2507220,
+      "sha256": "cda6b1b6b6edb80a5cbdcdc6c371426191eea54e3be8e288fd5dc6961df40c23"
     }
   ]
 }

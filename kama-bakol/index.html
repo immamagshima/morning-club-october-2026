@@ -10,10 +10,11 @@
   <meta name="theme-color" content="#163fad">
   <meta name="description" content="קמה בקול, טקס הבוקר החי של מועדון מגשימה עם קרן בן עמי">
   <title>קמה בקול | טקס הבוקר של מועדון מגשימה</title>
-  <link rel="stylesheet" href="styles.css?v=20261102-keepsake-single2">
-  <link rel="stylesheet" href="minute-before.css?v=20261102-keepsake-single2">
-<link rel="stylesheet" href="release.css?v=20261102-keepsake-single2">
-<link rel="stylesheet" href="sound-library.css?v=20261102-keepsake-single2">
+  <link rel="stylesheet" href="styles.css?v=20261102-color-morning3">
+  <link rel="stylesheet" href="minute-before.css?v=20261102-color-morning3">
+<link rel="stylesheet" href="release.css?v=20261102-color-morning3">
+<link rel="stylesheet" href="intention-flow.css?v=20261102-color-morning3">
+<link rel="stylesheet" href="sound-library.css?v=20261102-color-morning3">
 </head>
 <body class="minute-before" data-scene="threshold">
   <a class="skip-link" href="#experience">דלגי לתוכן</a>
@@ -78,13 +79,16 @@
           
           <h2 id="openingSongTitle">לפני המילים,<br><em>נותנות לצליל להנחית אותנו אל הבוקר.</em></h2>
           <div class="audio-placeholder" role="group" aria-label="נגן צליל הכניסה">
-            <button class="round-button" type="button" data-demo-sound="opening" data-audio-src="assets/audio/opening-flute-1min.mp3" aria-pressed="false">
-              <span aria-hidden="true">♪</span>
-              <span class="sr-only">להשמיע או לעצור את צליל הכניסה</span>
-            </button>
-            <div>
-              <strong>נכנסות עם מוזיקה שמרגיעה אותנו אל מרחב של שקט והקשבה</strong>
-            </div>
+            <div class="opening-color-palette" role="group" aria-label="לבחור צבע לצליל הכניסה"><button type="button" class="opening-color-choice" data-demo-sound="opening" data-audio-src="assets/audio/opening-colors/01.mp3" aria-label="לנגן דקה בצבע קובלט" aria-pressed="false" style="--choice-color:#173faf"><span aria-hidden="true">♪</span></button>
+<button type="button" class="opening-color-choice" data-demo-sound="opening" data-audio-src="assets/audio/opening-colors/02.mp3" aria-label="לנגן דקה בצבע ורוד" aria-pressed="false" style="--choice-color:#d4317b"><span aria-hidden="true">♪</span></button>
+<button type="button" class="opening-color-choice" data-demo-sound="opening" data-audio-src="assets/audio/opening-colors/03.mp3" aria-label="לנגן דקה בצבע אפרסק" aria-pressed="false" style="--choice-color:#e8a27f"><span aria-hidden="true">♪</span></button>
+<button type="button" class="opening-color-choice" data-demo-sound="opening" data-audio-src="assets/audio/opening-colors/04.mp3" aria-label="לנגן דקה בצבע סגול" aria-pressed="false" style="--choice-color:#a28ac3"><span aria-hidden="true">♪</span></button>
+<button type="button" class="opening-color-choice" data-demo-sound="opening" data-audio-src="assets/audio/opening-colors/05.mp3" aria-label="לנגן דקה בצבע אלמוג" aria-pressed="false" style="--choice-color:#d77357"><span aria-hidden="true">♪</span></button>
+<button type="button" class="opening-color-choice" data-demo-sound="opening" data-audio-src="assets/audio/opening-colors/06.mp3" aria-label="לנגן דקה בצבע מרווה" aria-pressed="false" style="--choice-color:#9eb595"><span aria-hidden="true">♪</span></button>
+<button type="button" class="opening-color-choice" data-demo-sound="opening" data-audio-src="assets/audio/opening-colors/07.mp3" aria-label="לנגן דקה בצבע טורקיז" aria-pressed="false" style="--choice-color:#438e91"><span aria-hidden="true">♪</span></button>
+<button type="button" class="opening-color-choice" data-demo-sound="opening" data-audio-src="assets/audio/opening-colors/08.mp3" aria-label="לנגן דקה בצבע זהב" aria-pressed="false" style="--choice-color:#dfb859"><span aria-hidden="true">♪</span></button>
+<button type="button" class="opening-color-choice" data-demo-sound="opening" data-audio-src="assets/audio/opening-colors/09.mp3" aria-label="לנגן דקה בצבע תכלת" aria-pressed="false" style="--choice-color:#87a7c5"><span aria-hidden="true">♪</span></button></div>
+            <div class="opening-choice-media" aria-hidden="true"></div>
           </div>
         </div>
       </section>
@@ -214,7 +218,7 @@
               <path class="preserve-vessel" d="M155 74 Q214 49 275 74 L289 245 Q216 285 142 245 Z"/>
               <path class="preserve-rim" d="M151 79 Q214 52 279 79 Q216 105 151 79Z"/>
               <circle class="preserve-ember" cx="216" cy="191" r="74"/>
-              <path class="preserve-sprout" d="M216 213 C211 182 215 154 218 129 M218 155 C191 153 180 133 186 116 C207 115 220 132 218 155Z M218 142 C242 140 255 121 250 105 C230 105 216 121 218 142Z"/>
+              <g class="preserve-sprout"><path class="preserve-stem" pathLength="1" d="M216 213 C211 182 215 154 218 129"/><path class="preserve-leaf preserve-leaf-left" d="M218 155 C191 153 180 133 186 116 C207 115 220 132 218 155Z"/><path class="preserve-leaf preserve-leaf-right" d="M218 142 C242 140 255 121 250 105 C230 105 216 121 218 142Z"/></g>
               <path class="preserve-highlight" d="M171 105 C157 146 157 205 171 235"/>
             </svg>
           </div>
@@ -289,6 +293,7 @@
               <h3>המילה שנשארת מצטרפת לשדה, והיא נשארת אנונימית.</h3>
               <p>הקישור נפתח בדיוק לשלב הזה ומזמין כל משתתפת לשלוח את הזיקוק שבחרה, ורק מה שהיא בוחרת לשתף יופיע בתוך היצירה המשותפת.</p>
               <a class="secondary-button morning-keepsake-link" href="keepsakes.html" target="_blank" rel="noopener">מזכרת הבוקר</a>
+                  <button id="toggleIntentionMotion" type="button" class="secondary-button" aria-pressed="false">לעצור את תנועת הכוונות</button>
                   <button type="button" class="secondary-button" data-field-fullscreen="groupFocusPanel">להגדיל את שדה הכוונות</button>
               <button id="toggleParticipantLink" class="secondary-button" type="button" aria-expanded="false" aria-controls="participantLinkBox">קישור למשתתפות</button>
               <div id="participantLinkBox" class="participant-link-box" hidden>
@@ -352,14 +357,15 @@
         <div class="scene-inner gratitude-scene">
           <p class="eyebrow">פעימה 5 · 05:39 עד 05:41 · שתי דקות להסבר ולמעבר לכתיבה</p>
           <h2 id="gratitudeTechniqueTitle">תודה שלא רק מסכמת,<br><em>אלא מצמיחה.</em></h2>
-          <p class="lead">כשאנחנו מדייקות על מה אנחנו מודות, למי, ולמה הדבר הזה משמעותי לנו, התודה מפסיקה להיות רשימה ומתחילה לחבר את הלב למה שכבר חי, כדי שנוכל לזהות ולהצמיח ממנו עוד.</p>
-          <section class="gratitude-technique" aria-label="שלושת חלקי ההודיה המצמיחה">
+          <p class="lead">כשאנחנו מדייקות למי אנחנו מודות, על מה, ולמה הדבר הזה משמעותי לנו, התודה מפסיקה להיות רשימה ומתחילה לחבר את הלב למה שכבר חי, כדי שנוכל לזהות ולהצמיח ממנו עוד.</p>
+          <section class="gratitude-technique" aria-label="מודל ממ״ל להודיה מצמיחה: מי, מה ולמה">
+            <h3 class="gratitude-model-title">מודל ממ״ל <span>מי · מה · למה</span></h3>
             <div class="gratitude-parts">
-              <div><span>1</span><strong>על מה?</strong><small>כל דבר שעולה לי לתודעה עכשיו ושאני רוצה להודות עליו, בלי סינון ובלי לחפש סיבה טובה.</small></div>
-              <div><span>2</span><strong>למי?</strong><small>מי או מה אפשרו לדבר הזה להגיע אליי, אדם, זמן, הזדמנות או חלק בתוכי.</small></div>
+              <div><span>1</span><strong>למי?</strong><small>מי או מה אפשרו לדבר הזה להגיע אליי, אדם, זמן, הזדמנות או חלק בתוכי.</small></div>
+              <div><span>2</span><strong>על מה?</strong><small>כל דבר שעולה לי לתודעה עכשיו ושאני רוצה להודות עליו, בלי סינון ובלי לחפש סיבה טובה.</small></div>
               <div><span>3</span><strong>למה?</strong><small>למה זה משמעותי לי, מה הוא מעורר בי ומה אני רוצה להמשיך להצמיח ממנו.</small></div>
             </div>
-            <div class="gratitude-seed-result"><span aria-hidden="true">✦</span><strong>על מה, למי ולמה, שלושת החלקים שהופכים תודה לזרע של הפרי הבא.</strong></div>
+            <div class="gratitude-seed-result"><span aria-hidden="true">✦</span><strong>מי, מה ולמה, שלושת החלקים שהופכים תודה לזרע של הפרי הבא.</strong></div>
           </section>
         </div>
       </section>
@@ -368,7 +374,7 @@
         <div class="scene-inner gratitude-scene">
           <p class="eyebrow">פעימה 5 · 05:41 עד 05:47 · שש דקות כתיבה</p>
           <h2 id="gratitudePracticeTitle">עכשיו כותבות<br><em>הודיות.</em></h2>
-          <p class="lead">כתבו ברצף במחברת, ובכל הודיה עברו דרך על מה, למי ולמה, בלי יעד להספיק ובלי לספור כמה יצאו, כשהפירות שעל המסך רק מחזיקים לכן את הזמן ומזכירים ליד להמשיך לנוע.</p>
+          <p class="lead">כתבו ברצף במחברת, ובכל הודיה עברו דרך ממ״ל: למי, על מה ולמה, בלי יעד להספיק ובלי לספור כמה יצאו, כשהפירות שעל המסך רק מחזיקים לכן את הזמן ומזכירים ליד להמשיך לנוע.</p>
           <div class="gratitude-harvest timed-harvest">
             <div class="gratitude-time-head">
               <div><small>זמן כתיבה</small><strong id="gratitudeTimerReadout" dir="ltr">06:00</strong></div>
@@ -397,10 +403,10 @@
           <h2 id="showerTitle">מקלחת פנימית.</h2>
           <p class="lead">אנחנו עוברות לאט מהראש עד כפות הרגליים, מרפות בכל תחנה את מה שהגוף לא צריך לסחוב איתו הלאה, ונותנות לאור לשטוף אותנו מבפנים עד שיש לנו יותר מקום לנשום.</p>
 
-          <div class="body-scan inner-shower-art soft-light-shower" role="img" aria-label="סילואטה אנושית רכה מנייר, ושטיפות אור חמות יורדות מהראש עד כפות הרגליים">
+          <div class="body-scan inner-shower-art soft-light-shower" role="img" aria-label="סילואטה נשית רכה מנייר, ושטיפות אור חמות יורדות מהראש עד כפות הרגליים">
 <svg class="shower-paper-silhouette" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 540" role="img" aria-labelledby="shower-paper-title shower-paper-desc">
   <title id="shower-paper-title">מקלחת אור פנימית</title>
-  <desc id="shower-paper-desc">צללית אנושית רכה מנייר, ושלוש יריעות אור רחבות הנעות מהראש אל כפות הרגליים.</desc>
+  <desc id="shower-paper-desc">צללית נשית רכה מנייר, ושלוש יריעות אור רחבות הנעות מהראש אל כפות הרגליים.</desc>
   <defs>
     <linearGradient id="shower-paper-body" x1="0" y1="0" x2=".8" y2="1">
       <stop offset="0" stop-color="#fffaf0"/>
@@ -427,7 +433,7 @@
       <stop offset=".46" stop-color="#ffd99a" stop-opacity=".46"/>
       <stop offset="1" stop-color="#ffb785" stop-opacity="0"/>
     </radialGradient>
-    <path id="shower-paper-person" d="M210 62 C191 62 180 76 180 94 C180 109 186 120 195 126 L195 139 C181 143 165 146 158 159 C151 171 149 190 145 210 L128 280 C125 291 127 300 133 302 C140 304 145 297 148 287 L168 226 L170 283 C170 303 176 319 178 335 L179 438 L174 470 C173 478 178 482 185 482 L197 482 C202 482 204 477 204 470 L208 350 Q210 341 213 350 L219 470 C219 477 222 481 228 481 L240 481 C247 480 251 476 248 468 L241 438 L240 335 C242 319 249 303 249 283 L251 227 L272 287 C276 297 281 304 288 301 C294 298 294 290 290 280 L273 210 C269 190 268 172 260 159 C252 146 237 143 225 139 L225 126 C235 120 241 108 240 94 C240 76 229 62 210 62 Z"/>
+    <path id="shower-paper-person" d="M210 62 C193 62 183 76 183 94 C183 109 189 121 199 127 L199 139 C186 143 171 146 165 157 C158 169 157 188 153 207 L135 279 C132 290 135 298 141 299 C148 300 151 291 154 281 L174 220 C176 235 180 250 185 264 C187 274 183 285 178 298 C172 314 172 329 178 345 C181 357 184 370 185 385 L185 439 L180 469 C179 477 183 482 191 482 L199 482 C206 482 208 476 208 468 L207 354 Q210 344 214 354 L218 468 C218 477 221 482 228 482 L236 482 C244 482 248 477 245 469 L238 439 L237 385 C237 370 241 356 245 345 C251 329 250 313 244 298 C239 285 234 274 236 264 C241 249 245 235 247 220 L267 281 C270 291 274 300 281 299 C287 298 290 290 287 279 L269 207 C265 188 264 169 257 157 C251 146 236 143 223 139 L223 127 C233 121 239 109 239 94 C239 76 227 62 210 62 Z"/>
     <clipPath id="shower-paper-person-clip"><use href="#shower-paper-person"/></clipPath>
     <filter id="shower-paper-soft-shadow" x="-30%" y="-20%" width="160%" height="150%"><feDropShadow dx="3" dy="7" stdDeviation="8" flood-color="#9a5541" flood-opacity=".12"/></filter>
   </defs>
@@ -581,14 +587,14 @@
           <h2 id="closingTitle">איך נכנסנו.<br><em>איך אנחנו יוצאות.</em></h2>
           <p class="lead">אנחנו פותחות שתי דלתות ורואות את התנועה שנוצרה בין מה שנכנס איתנו אל החדר לבין מה שיוצא איתנו עכשיו אל העולם.</p>
 
-          <div id="movementField" class="movement-field" aria-label="משפטי הכניסה והיציאה של המשתתפות נעים יחד כגל">
+          <div id="movementField" class="movement-field" aria-label="דלת הכניסה מעבירה נשימה של אור אל דלת היציאה">
             <article class="movement-door entry-door">
               <small>הדלת אל החדר</small>
               <strong>נכנסתי...</strong>
               <span>עם מה שהיה בי כשהבוקר התחיל</span>
             </article>
             <div class="movement-wave" aria-hidden="true">
-              <svg viewBox="0 0 640 160" preserveAspectRatio="none">
+              <svg viewBox="0 0 640 160" preserveAspectRatio="none"><defs><linearGradient id="closingRibbonLight"><stop stop-color="#ffb792" stop-opacity="0"/><stop offset=".45" stop-color="#ff9e79"/><stop offset=".8" stop-color="#ed0874"/><stop offset="1" stop-color="#ed0874" stop-opacity="0"/></linearGradient><filter id="closingRibbonSoft"><feGaussianBlur stdDeviation="3"/></filter></defs><path class="closing-light-ribbon" pathLength="1000" d="M0 84 C96 8 176 146 272 70 C368 -6 458 148 640 54"/><path class="closing-light-core" pathLength="1000" d="M0 84 C96 8 176 146 272 70 C368 -6 458 148 640 54"/>
                 <path class="wave-path wave-path-one" d="M0 84 C96 8 176 146 272 70 C368 -6 458 148 640 54"></path>
                 <path class="wave-path wave-path-two" d="M0 112 C120 44 190 130 302 82 C420 30 510 114 640 42"></path>
               </svg>
@@ -668,6 +674,17 @@
         </div>
       </section>
 
+      <section class="scene selfie-scene" data-scene-id="selfie" data-theme="paper" aria-labelledby="selfieTitle">
+        <div class="scene-inner centered selfie-inner">
+          <p class="eyebrow">עוד רגע אחד, לפני שיוצאות אל היום</p>
+          <h2 id="selfieTitle">רגע,<br><em>סלפי של הבוקר.</em></h2>
+          <div class="selfie-picture" aria-hidden="true"><span class="selfie-lens"></span><i></i><b></b></div>
+          <p class="selfie-stamp">מועדון אמא מגשימה <span data-selfie-date></span></p>
+          <p class="lead">נאספות לתמונה אחת של הבוקר שלנו ביחד. מי שרוצה, מוזמנת לפתוח מצלמה ולחייך.</p>
+          <button type="button" class="primary-button" data-next>צילמנו, ממשיכות אל היום</button>
+        </div>
+      </section>
+
       <section class="scene whatsapp-share-scene" data-scene-id="whatsapp-share" aria-labelledby="whatsappShareTitle">
         <div class="whatsapp-share-atmosphere" aria-hidden="true">
           <span class="share-orbit share-orbit-one"></span>
@@ -714,10 +731,11 @@
 
   <div id="completionToast" class="toast" role="status" aria-live="polite">הבוקר הושלם. קחי אותו איתך אל היום.</div>
   <script src="supplements-data.js"></script>
-  <script src="closing-songs-data.js?v=20261102-keepsake-single2"></script>
-  <script src="youtube-library-data.js?v=20261102-keepsake-single2"></script>
-  <script src="movement-wave.js?v=20261102-keepsake-single2"></script>
-  <script src="sound-library.js?v=20261102-keepsake-single2"></script>
-  <script src="app.js?v=20261102-keepsake-single2"></script>
+  <script src="closing-songs-data.js?v=20261102-color-morning3"></script>
+  <script src="youtube-library-data.js?v=20261102-color-morning3"></script>
+  <script src="movement-wave.js?v=20261102-color-morning3"></script>
+  <script src="sound-library.js?v=20261102-color-morning3"></script>
+  <script src="intention-flow.js?v=20261102-color-morning3"></script>
+  <script src="app.js?v=20261102-color-morning3"></script>
 </body>
 </html>

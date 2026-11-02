@@ -2,7 +2,7 @@ const ALLOWED_SCENES = new Set([
   "threshold", "opening-song", "arrival", "arrival-sleep", "arrival-energy",
   "arrival-add", "arrival-release", "arrival-preserve", "drain", "focus", "focus-intention", "focus-collective",
   "supplements", "supplements-example", "supplements-flow",
-  "gratitude", "gratitude-technique", "gratitude-practice", "protection", "shower", "planning", "closing", "closing-song", "whatsapp-share"
+  "gratitude", "gratitude-technique", "gratitude-practice", "protection", "shower", "planning", "closing", "closing-song", "selfie", "whatsapp-share"
 ]);
 
 const json = (payload, status = 200) => new Response(JSON.stringify(payload), {
