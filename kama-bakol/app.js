@@ -453,18 +453,20 @@
       saveState();
       renderTimer();
     });
+    field.addEventListener("kama:drain-color", () => {
+      if (scenes[currentScene]?.dataset.sceneId !== "drain") return;
+      state.drainSoundEnabled = true;
+      if (running) { playSoundtrack(); renderTimer(); }
+      else { if(remaining<=0){remaining=duration;state.drainRemaining=duration;} toggle.click(); }
+    });
     renderTimer();
   });
 
   const PARTICIPANT_WORDS_KEY = `kerenMorningClubFocusWordsV1:${roomId}`;
-  const participantLink = document.getElementById("participantLink");
-  const participantLinkBox = document.getElementById("participantLinkBox");
-  const toggleParticipantLink = document.getElementById("toggleParticipantLink");
   const participantUrl = new URL("participant.html", window.location.href);
   participantUrl.search = "";
   participantUrl.searchParams.set("room", roomId);
   participantUrl.hash = "";
-  participantLink.value = participantUrl.href;
   const liveParticipantLinkBar = document.getElementById("liveParticipantLinkBar");
   const liveParticipantLinkText = document.getElementById("liveParticipantLinkText");
   if (liveParticipantLinkText) liveParticipantLinkText.value = participantUrl.href;
@@ -483,32 +485,14 @@
         ? "קישור הסטייג׳ינג הועתק. עדיין לא לשלוח לקבוצה."
         : "קישור החדר הועתק. זה הקישור היחיד לכל הבוקר.");
     } catch (_) {
-      participantLinkBox.hidden = false;
-      toggleParticipantLink.setAttribute("aria-expanded", "true");
-      participantLink.select();
+      liveParticipantLinkBar.hidden = false;
+      liveParticipantLinkText.select();
       showToast("הקישור פתוח ומסומן להעתקה.");
     }
   }
 
   document.getElementById("closingCopyRoomLink")?.addEventListener("click", copyParticipantRoomLink);
   document.getElementById("copyLiveParticipantLink")?.addEventListener("click", copyParticipantRoomLink);
-
-  toggleParticipantLink.addEventListener("click", () => {
-    const open = participantLinkBox.hidden;
-    participantLinkBox.hidden = !open;
-    toggleParticipantLink.setAttribute("aria-expanded", String(open));
-    toggleParticipantLink.textContent = open ? "להסתיר את הקישור" : "קישור למשתתפות";
-    if (open) participantLink.select();
-  });
-  document.getElementById("copyParticipantLink").addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(participantLink.value);
-      showToast("הקישור למשתתפות הועתק.");
-    } catch (_) {
-      participantLink.select();
-      showToast("הקישור מסומן. העתיקי אותו ידנית.");
-    }
-  });
 
   function readLocalGroupWords() {
     try {
@@ -566,12 +550,8 @@
       if (!response.ok) throw new Error("No live endpoint");
       const payload = await response.json();
       renderGroupWords(Array.isArray(payload.words) ? payload.words : []);
-      document.getElementById("participantLinkNote").textContent = ["127.0.0.1", "localhost"].includes(window.location.hostname)
-        ? "סטייג׳ינג מקומי בלבד. לפני שליחה לטלפונים צריך לפרסם חדר מאובטח."
-        : "החיבור החי פעיל. כל מילה נשלחת בלי שם, נשמרת זמנית בלבד ונמחקת מן החדר לאחר יממה.";
     } catch (_) {
       renderGroupWords(readLocalGroupWords());
-      document.getElementById("participantLinkNote").textContent = "מצב סטייג׳ינג: עובד בין טאבים במכשיר הזה. לשיתוף מטלפונים הפעילי את שרת החדר.";
     }
   }
   window.addEventListener("storage", (event) => {
@@ -764,6 +744,12 @@
     state.gratitudeRemaining = gratitudeDuration;
     saveState();
     renderGratitudeTimer();
+  });
+  document.querySelector('.timed-harvest').addEventListener('kama:gratitude-color',()=>{
+    if(scenes[currentScene]?.dataset.sceneId!=='gratitude-practice')return;
+    gratitudeMusicEnabled=true;
+    if(gratitudeRunning)playGratitudeMusic();
+    else {if(gratitudeRemaining<=0){gratitudeRemaining=gratitudeDuration;state.gratitudeRemaining=gratitudeDuration;}document.getElementById('gratitudeTimerToggle').click();}
   });
   renderGratitudeTimer();
 

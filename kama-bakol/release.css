@@ -375,3 +375,174 @@ html:fullscreen .minute-before[data-scene="drain"] .drain-scene .timer-field.has
 
 .minute-before .scene[data-scene-id="planning"] .planning-scene{height:auto;min-height:100%;overflow:visible;align-content:start;padding-bottom:60px}
 .minute-before .scene[data-scene-id="planning"] .day-window-gallery .day-plan-row>strong>small{color:var(--day-ink);opacity:.8}
+
+/* Wake is unmistakably morning, with the approved night artwork left intact. */
+.minute-before .waking-dawn-art{filter:none;background:radial-gradient(ellipse at 65% 70%,#fff2bf 0,transparent 55%),linear-gradient(170deg,#f7d8cd 0%,#ffddba 48%,#f4b39b 100%);box-shadow:0 30px 64px #b8704924,inset 0 0 0 12px #fffaf026}
+.minute-before .waking-dawn-art .sleep-dawn-sun{width:26%;right:35%;bottom:31%;z-index:2;background:radial-gradient(circle at 35% 30%,#fff4c9,#ffca76 62%,#f9ad5d);box-shadow:0 0 0 14px #fff0b52b,0 0 65px #ffcf87aa;animation:waking-sun-lift 10s ease-in-out infinite alternate}
+.minute-before .waking-dawn-art .sleep-dawn-glow{right:-8%;bottom:-25%;width:115%;background:radial-gradient(circle,#fff3bfcc 0 20%,#ffd1a66b 42%,transparent 70%);animation:waking-light-breath 10s ease-in-out infinite alternate}
+.minute-before .waking-dawn-art .sleep-dawn-veil-one{top:61%;background:linear-gradient(90deg,#eea0a199,#f6baa7dd,#ffe6bfcc)}
+.minute-before .waking-dawn-art .sleep-dawn-veil-two{top:75%;background:linear-gradient(90deg,#e692ac77,#f6bea1dd,#ffebd1dd)}
+.minute-before .waking-dawn-art .sleep-dawn-veil-three{top:86%;background:linear-gradient(90deg,#e9a3b477,#f4c1a5cc,#fff0d5)}
+.minute-before .waking-dawn-art .sleep-dawn-lines path:last-child{display:none}
+.minute-before .waking-dawn-art .sleep-dawn-lines{stroke:#fffaf0aa}
+@keyframes waking-sun-lift{from{transform:translateY(12%)}to{transform:translateY(-35%)}}
+@keyframes waking-light-breath{from{opacity:.65;transform:scale(.94)}to{opacity:1;transform:scale(1.04)}}
+@media(prefers-reduced-motion:reduce){.minute-before .waking-dawn-art *{animation:none!important}.minute-before .waking-dawn-art .sleep-dawn-sun{transform:translateY(-20%)}}
+
+.minute-before .drain-sound-choices{position:relative;z-index:12;display:flex;justify-content:center;flex-wrap:wrap;margin:14px auto 0;width:100%}
+.minute-before .drain-color-choices{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;padding:10px 14px;margin:0;max-width:100%}
+.minute-before .drain-color-choices .opening-color-choice{width:48px;height:48px;min-width:48px;min-height:48px;box-shadow:0 3px 0 #160b1640;border:1px solid #fff8}
+.minute-before .drain-sound-choices .sound-choice-note:empty{display:none}
+@media(max-width:600px){.minute-before .drain-color-choices{gap:12px;padding:12px 6px}.minute-before .drain-color-choices .opening-color-choice{width:44px;height:44px;min-width:44px;min-height:44px}}
+/* A visible release: weight rests, knot opens, lighter paper rises, hand stays. */
+.minute-before .ritual-art-release .release-paper-hand{fill:url(#release-paper-palm);stroke:#a76f57;stroke-width:1.8;stroke-linejoin:round}
+.minute-before .ritual-art-release .release-paper-hand-detail{fill:none;stroke:#ba8269;stroke-width:1.5;stroke-linecap:round;opacity:.55}
+.minute-before .ritual-art-release .release-paper-ground{fill:none;stroke:#bda38a;stroke-width:2;stroke-linecap:round;opacity:.2}
+.minute-before .ritual-art-release .release-paper-weight-shadow{fill:#6a4340;opacity:.2;animation:release-paper-shadow 13s ease-in-out infinite}
+.minute-before .ritual-art-release .release-paper-weight{stroke-linejoin:round;stroke-width:1.3}
+.minute-before .ritual-art-release .release-paper-weight-light{fill:url(#release-paper-light);stroke:#bb8f65}
+.minute-before .ritual-art-release .release-paper-weight-dark{fill:#4c4260;stroke:#42374f;animation:release-paper-lightens 13s ease-in-out infinite}
+.minute-before .ritual-art-release .release-paper-crease{fill:none;stroke:#f8ecda;stroke-width:1.5;stroke-linecap:round;opacity:.27;animation:release-paper-crease 13s ease-in-out infinite}
+.minute-before .ritual-art-release .release-paper-knot{fill:none;stroke:#fff0da;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;transform-box:fill-box;transform-origin:center;animation:release-paper-knot-opens 13s ease-in-out infinite}
+.minute-before .ritual-art-release .release-paper-lift{transform-origin:194px 220px;animation:release-paper-lifts 13s cubic-bezier(.3,0,.25,1) infinite}
+.minute-before .ritual-art-release .release-paper-freed{fill:none;stroke:#ed0874;stroke-width:4.5;stroke-linecap:round;opacity:0;stroke-dasharray:200;stroke-dashoffset:200;animation:release-paper-unfurls 13s ease-in-out infinite}
+.minute-before .ritual-art-release .release-paper-freed.second{stroke:#ff651b;stroke-width:3;stroke-dasharray:135;stroke-dashoffset:135;animation-name:release-paper-unfurls-second}
+.minute-before .ritual-art-release .release-paper-open-space{fill:none;stroke:#e1aa73;stroke-width:1.3;opacity:0;stroke-linecap:round;animation:release-paper-empty-hand 13s ease-in-out infinite}
+.minute-before .ritual-art-release .release-paper-space{animation:release-paper-space-opens 13s ease-in-out infinite}
+@keyframes release-paper-lifts{0%,9%{opacity:0;transform:translate(0,0) rotate(-3deg) scale(1)}15%,29%{opacity:1;transform:translate(0,0) rotate(-3deg) scale(1)}43%{opacity:1;transform:translate(17px,-18px) rotate(2deg) scale(.98)}68%{opacity:.85;transform:translate(71px,-101px) rotate(11deg) scale(.76)}83%,100%{opacity:0;transform:translate(120px,-171px) rotate(21deg) scale(.55)}}
+@keyframes release-paper-lightens{0%,29%{opacity:1}40%{opacity:.45}54%,100%{opacity:0}}
+@keyframes release-paper-shadow{0%,9%{opacity:0;transform:scaleX(1)}15%,30%{opacity:.22;transform:scaleX(1)}49%{opacity:.07;transform:scaleX(.65)}64%,100%{opacity:0;transform:scaleX(.4)}}
+@keyframes release-paper-knot-opens{0%,29%{opacity:1;transform:scale(1) rotate(0)}39%{opacity:.8;transform:scale(1.45) rotate(-9deg)}49%,100%{opacity:0;transform:scale(1.8) rotate(-18deg)}}
+@keyframes release-paper-crease{0%,29%{opacity:.27}46%,100%{opacity:0}}
+@keyframes release-paper-unfurls{0%,28%{opacity:0;stroke-dashoffset:200}40%{opacity:.75}58%,73%{opacity:.85;stroke-dashoffset:0}88%,100%{opacity:0;stroke-dashoffset:-40}}
+@keyframes release-paper-unfurls-second{0%,32%{opacity:0;stroke-dashoffset:135}44%{opacity:.7}60%,73%{opacity:.75;stroke-dashoffset:0}88%,100%{opacity:0;stroke-dashoffset:-30}}
+@keyframes release-paper-empty-hand{0%,47%{opacity:0}64%,87%{opacity:.45}100%{opacity:0}}
+@keyframes release-paper-space-opens{0%,29%{opacity:.45}53%,83%{opacity:1}100%{opacity:.45}}
+.scene:not(.is-active) .ritual-art-release [class^="release-paper-"]{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){
+  .minute-before .ritual-art-release [class^="release-paper-"]{animation:none!important}
+  .minute-before .ritual-art-release .release-paper-lift{transform:translate(75px,-112px) rotate(9deg) scale(.72);opacity:.7}
+  .minute-before .ritual-art-release .release-paper-weight-dark,.minute-before .ritual-art-release .release-paper-knot,.minute-before .ritual-art-release .release-paper-crease,.minute-before .ritual-art-release .release-paper-weight-shadow{opacity:0}
+  .minute-before .ritual-art-release .release-paper-freed{opacity:.75;stroke-dashoffset:0}
+  .minute-before .ritual-art-release .release-paper-open-space{opacity:.4}
+}
+
+.minute-before .intention-note-examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;max-width:850px;width:100%;margin:24px 0 8px}
+.minute-before .intention-note-examples p{position:relative;margin:0;padding:20px 20px 25px;min-height:110px;background:#ffe6b9;box-shadow:2px 5px 0 #392a2314,0 10px 20px #392a230c;transform:rotate(-2deg);font:400 clamp(20px,2.1vw,27px)/1.25 Barlev,Polin,sans-serif;color:#38252d;border-radius:2px 2px 18px 2px}
+.minute-before .intention-note-examples p:nth-child(2){background:#f7d5d8;transform:rotate(1.5deg)}
+.minute-before .intention-note-examples p:nth-child(3){background:#e2e7f6;transform:rotate(-1deg)}
+.minute-before .intention-note-examples small{display:block;font:700 14px/1.2 Polin,sans-serif;opacity:.65;margin-bottom:9px}
+.minute-before .focus-intention-scene .focus-choice-line{margin-top:22px}
+.minute-before .focus-intention-scene .focus-choice-scene{height:auto;min-height:100%;padding-bottom:calc(var(--dock-clearance,90px) + 96px);overflow:visible}
+@media(max-width:600px){.minute-before .intention-note-examples{grid-template-columns:1fr;gap:16px;max-width:330px}.minute-before .intention-note-examples p{min-height:0;padding:15px 20px 20px;font-size:25px}}
+
+.minute-before .drain-scene .timer-field.has-started .drain-sound-choices{grid-area:auto;position:absolute;top:18px;left:16px;right:150px;width:auto;z-index:12;justify-content:flex-end}
+@media(max-width:700px){.minute-before .drain-scene .timer-field.has-started .drain-sound-choices{top:65px;left:8px;right:8px;width:auto;justify-content:center}}
+
+.minute-before .gratitude-color-choices{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;width:100%;padding:12px 8px}
+.minute-before .gratitude-color-choices .opening-color-choice{width:48px;height:48px;min-width:48px;min-height:48px;border:1px solid #38252d33;box-shadow:0 3px 0 #38252d22}
+.minute-before .gratitude-music-controls{width:100%;justify-content:center}
+@media(min-width:701px){.minute-before .focus-intention-scene h2{font-size:clamp(58px,5.4vw,86px)}.minute-before .focus-intention-scene .lead{font-size:clamp(20px,1.65vw,26px);line-height:1.35}.minute-before .intention-note-examples{margin-top:18px}}
+@media(max-width:600px){.minute-before .gratitude-color-choices{gap:12px}.minute-before .gratitude-color-choices .opening-color-choice{width:44px;height:44px;min-width:44px;min-height:44px}}
+
+/* Scoped draft: warm paper doors. Door panels move; all real labels stay still. */
+.minute-before #movementField{isolation:isolate;perspective:900px}
+.minute-before #movementField .movement-door{
+  --door-panel:#d7a684;--door-edge:#a06a4e;--door-ink:#432c25;
+  position:relative;isolation:isolate;overflow:hidden;color:var(--door-ink);
+  border:1px solid #ae806355;background:radial-gradient(ellipse at 50% 25%,#fffdf0,#fff0cc 66%,#f5d7aa);
+  box-shadow:0 7px 0 -4px #9e6a4733,0 14px 26px #9e6a4714;
+}
+.minute-before #movementField .entry-door{
+  border-radius:96px 12px 9px 14px;
+  --door-panel:#d7a684;--door-edge:#99664d;--door-ink:#432c25;
+}
+.minute-before #movementField .exit-door{
+  border-radius:12px 96px 14px 9px;
+  --door-panel:#f6cb88;--door-edge:#ba8b4a;--door-ink:#493526;
+}
+.minute-before #movementField .movement-door::before{
+  content:"";position:absolute;z-index:0;inset:5px;pointer-events:none;border-radius:inherit;
+  opacity:1;border:1px solid var(--door-edge);
+  background:
+    radial-gradient(circle at 15% 58%,#fff7df 0 2px,#a9764c80 2.5px 4px,transparent 5px),
+    repeating-linear-gradient(179deg,transparent 0 27px,#fffaf111 28px 29px),
+    linear-gradient(116deg,#fffaf119,transparent 44%,#8c5a3510),var(--door-panel);
+  box-shadow:inset 2px 0 #fffaf166,inset -4px 0 #895e3f18,0 0 0 5px #fff1d54d;
+  backface-visibility:hidden;transform-style:preserve-3d;
+  transform-origin:right 50%;animation:warm-entry-door-opens 12s cubic-bezier(.38,0,.25,1) infinite;
+}
+.minute-before #movementField .exit-door::before{
+  transform-origin:left 50%;animation-name:warm-exit-door-opens;
+  background:
+    radial-gradient(circle at 85% 58%,#fffaf1 0 2px,#b57d3980 2.5px 4px,transparent 5px),
+    repeating-linear-gradient(181deg,transparent 0 28px,#fffaf111 29px 30px),
+    linear-gradient(245deg,#fffaf13b,transparent 46%,#c27a2d0a),var(--door-panel);
+}
+.minute-before #movementField .movement-door::after{
+  content:"";position:absolute;z-index:1;inset:13px;pointer-events:none;border:1px solid var(--door-edge);border-radius:inherit;
+  opacity:.28;background:none;transform:none;animation:none;
+}
+.minute-before #movementField .movement-door>small,
+.minute-before #movementField .movement-door>strong,
+.minute-before #movementField .movement-door>span{
+  position:relative;z-index:3;transform:none;color:var(--door-ink);text-shadow:0 1px 8px #fff1dbb0;
+}
+.minute-before #movementField .movement-door>small{opacity:.9;font-weight:700}
+.minute-before #movementField .movement-door>span{opacity:.92}
+.minute-before #movementField::before{
+  content:"";position:absolute;z-index:0;inset:37% 5% -14%;pointer-events:none;
+  background:radial-gradient(ellipse at 82% 30%,#fff1aa80,transparent 39%),radial-gradient(ellipse at 22% 46%,#ffb78355,transparent 48%);
+  clip-path:polygon(13% 0,88% 0,100% 91%,61% 79%,40% 100%,0 82%);
+  filter:blur(7px);opacity:0;animation:warm-door-floor-light 12s ease-in-out infinite;
+}
+.minute-before #movementField .movement-wave{z-index:1;opacity:.9}
+.minute-before #movementField .wave-path{stroke:#c68e6670;stroke-width:1.1;stroke-dasharray:none;opacity:.2;animation:none}
+.minute-before #movementField .closing-light-ribbon{
+  stroke-width:34;stroke-linecap:round;stroke-dasharray:210 1000;filter:url(#closingRibbonSoft);
+  animation:warm-door-ribbon-crosses 12s cubic-bezier(.35,0,.25,1) infinite;
+}
+.minute-before #movementField .closing-light-core{stroke:#ffcd84;stroke-width:4;stroke-dasharray:145 1000;animation:warm-door-ribbon-crosses 12s cubic-bezier(.35,0,.25,1) infinite}
+@keyframes warm-entry-door-opens{
+  0%,8%,78%,100%{transform:perspective(650px) rotateY(0deg);box-shadow:inset -4px 0 #895e3f18}
+  23%,43%{transform:perspective(650px) rotateY(-48deg);box-shadow:10px 0 15px #825b3726}
+  62%{transform:perspective(650px) rotateY(-7deg)}
+}
+@keyframes warm-exit-door-opens{
+  0%,32%,92%,100%{transform:perspective(650px) rotateY(0deg);box-shadow:inset 4px 0 #895e3f18}
+  51%,72%{transform:perspective(650px) rotateY(48deg);box-shadow:-10px 0 15px #825b3720}
+  84%{transform:perspective(650px) rotateY(9deg)}
+}
+@keyframes warm-door-ribbon-crosses{
+  0%,18%{stroke-dashoffset:-1000;opacity:0}
+  30%{stroke-dashoffset:-750;opacity:.48}
+  53%{stroke-dashoffset:-250;opacity:.65}
+  69%{stroke-dashoffset:170;opacity:.42}
+  82%,100%{stroke-dashoffset:170;opacity:0}
+}
+@keyframes warm-door-floor-light{0%,10%,100%{opacity:.1;transform:scaleX(.85)}26%,49%{opacity:.67;transform:scaleX(1)}64%,79%{opacity:.45;transform:scaleX(1.08)}}
+.minute-before .scene-closing:not(.is-active) #movementField::before,
+.minute-before .scene-closing:not(.is-active) #movementField .movement-door::before,
+.minute-before .scene-closing:not(.is-active) #movementField .closing-light-ribbon,
+.minute-before .scene-closing:not(.is-active) #movementField .closing-light-core,
+.minute-before .scene-closing:has(#movementShareWall.is-motion-paused) #movementField::before,
+.minute-before .scene-closing:has(#movementShareWall.is-motion-paused) #movementField .movement-door::before,
+.minute-before .scene-closing:has(#movementShareWall.is-motion-paused) #movementField .closing-light-ribbon,
+.minute-before .scene-closing:has(#movementShareWall.is-motion-paused) #movementField .closing-light-core,
+.minute-before .scene-closing:has(#movementShareWall.is-reading-shares) #movementField::before,
+.minute-before .scene-closing:has(#movementShareWall.is-reading-shares) #movementField .movement-door::before,
+.minute-before .scene-closing:has(#movementShareWall.is-reading-shares) #movementField .closing-light-ribbon,
+.minute-before .scene-closing:has(#movementShareWall.is-reading-shares) #movementField .closing-light-core{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){
+  .minute-before #movementField::before,.minute-before #movementField .movement-door::before,.minute-before #movementField .closing-light-ribbon,.minute-before #movementField .closing-light-core{animation:none!important}
+  .minute-before #movementField .entry-door::before{transform:perspective(650px) rotateY(-25deg)}
+  .minute-before #movementField .exit-door::before{transform:perspective(650px) rotateY(25deg)}
+  .minute-before #movementField::before{opacity:.35}
+  .minute-before #movementField .closing-light-ribbon{opacity:.17;stroke-dashoffset:-400}
+  .minute-before #movementField .closing-light-core{opacity:.22;stroke-dashoffset:-400}
+}
+
+@media(max-width:700px){.minute-before .arrival-question-scene .single-instruction-scene{grid-template-columns:minmax(0,1fr)}.minute-before .arrival-question-scene .single-instruction-scene>*{min-width:0;max-width:100%}}
+
+@media(min-width:761px){.minute-before #movementField{grid-template-columns:minmax(0,1fr) minmax(70px,.55fr) minmax(0,1fr)}.minute-before #movementField .entry-door{grid-column:1;grid-row:1}.minute-before #movementField .exit-door{grid-column:3;grid-row:1}}
+@media(max-width:760px){.minute-before #movementField .movement-door{grid-column:1;grid-row:auto}}

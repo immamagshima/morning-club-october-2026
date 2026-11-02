@@ -24,7 +24,7 @@
   function render(){
     daySelect.value=String(editedDay);
     dialog.querySelectorAll('[data-track]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.track===selected(editedChannel,editedDay))));
-    channels.forEach((c,context)=>{c.button.textContent=`♫ ${title(selected(context))} · בחירת מוזיקה`;c.button.setAttribute('aria-label',`בחירת כלי ${context==='drain'?'לניקוז תודעתי':'להודיות'}, ${title(selected(context))}`);});
+    channels.forEach((c,context)=>{c.colors?.querySelectorAll('[data-sound-color]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.soundColor===selected(context)&&!c.audio.paused)));c.button.textContent=`♫ ${title(selected(context))} · בחירת מוזיקה`;c.button.setAttribute('aria-label',`בחירת כלי ${context==='drain'?'לניקוז תודעתי':'להודיות'}, ${title(selected(context))}`);});
   }
   function open(context){checkDay();editedChannel=context;editedDay=day;status.textContent='';dialog.querySelector('h2').textContent=context==='drain'?'פסקול הבוקר':'פסקול להודיות';render();dialog.showModal();}
   function checkDay(){if(dateKey===localDate())return;dateKey=localDate();day=new Date().getDay();channels.forEach((c,ctx)=>{if(c.audio.paused)configure(ctx);});render();}
@@ -60,8 +60,8 @@
     if(request!==c.request){if(!c.want)audio.pause();return;}
     c.note.textContent='';
     clearInterval(c.limit);
-    if(c.context==='drain'){
-      const parts=document.querySelector('.timer-readout').textContent.trim().split(':').map(Number);
+    if(c.context==='drain'||c.context==='gratitude'){
+      const parts=document.querySelector(c.context==='drain'?'.timer-readout':'#gratitudeTimerReadout').textContent.trim().split(':').map(Number);
       limitSeconds=parts[0]*60+parts[1];
     }
     c.deadline=Date.now()+limitSeconds*1000;
@@ -81,6 +81,22 @@
   const drainHost=document.createElement('div');drainHost.className='sound-choice-row drain-sound-choices';document.querySelector('.timer-field').append(drainHost);
   attach('drain',document.getElementById('drainSoundtrack'),drainHost);
   attach('gratitude',document.getElementById('gratitudeMusic'),document.querySelector('.gratitude-music-controls'));
+  const colorTracks=['flute-a','handpan-a','handpan-b','guitar-a','guitar-b','violin-a','violin-b','piano-a','piano-b'];
+  function attachColors(context,host){
+    const colors=document.createElement('div');colors.className=`opening-color-choices ${context}-color-choices`;
+    colors.setAttribute('role','group');const length=context==='drain'?'עשרים':'שש';colors.setAttribute('aria-label',`בחירת צבע למוזיקה ותחילת ${length} דקות`);
+    document.querySelectorAll('.opening-color-palette .opening-color-choice').forEach((original,i)=>{
+      const b=original.cloneNode(true);b.removeAttribute('data-demo-sound');b.removeAttribute('data-audio-src');b.dataset.soundColor=colorTracks[i];b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',original.getAttribute('aria-label').replace('לנגן דקה',`להתחיל ${length} דקות ${context==='drain'?'ניקוז':'הודיות'}`));b.onclick=async()=>{
+        const c=channels.get(context);if(selected(context)===colorTracks[i]&&!c.audio.paused){document.querySelector(context==='drain'?'.timer-toggle':'#gratitudeTimerToggle').click();render();return;}const stamp=++revision;checkDay();prefs[context] ||= {};prefs[context][day]=colorTracks[i];save();
+        await fade(c.audio,true);if(stamp!==revision || !document.querySelector(`.scene.is-active[data-scene-id="${context==='drain'?'drain':'gratitude-practice'}"]`))return;
+        configure(context);document.querySelector(context==='drain'?'.timer-field':'.timed-harvest').dispatchEvent(new CustomEvent(`kama:${context}-color`));render();
+      };colors.append(b);
+    });
+    host.prepend(colors);const c=channels.get(context);c.colors=colors;c.button.hidden=true;c.audio.addEventListener('play',render);c.audio.addEventListener('pause',render);
+  }
+  attachColors('drain',drainHost);
+  attachColors('gratitude',document.querySelector('.gratitude-music-controls'));
+  document.getElementById('gratitudeMusicToggle').hidden=true;
   render();setInterval(()=>{checkDay();const c=channels.get('gratitude');const b=document.getElementById('gratitudeMusicToggle');if(!c.audio.paused&&c.limit){const left=Math.max(0,Math.ceil((c.deadline-Date.now())/1000));b.textContent=`לעצור מוזיקה · ${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`;}},1000);
   window.addEventListener('storage',e=>{if(e.key!==key)return;try{prefs=JSON.parse(e.newValue)||{};channels.forEach((c,ctx)=>{if(c.audio.paused)configure(ctx);});render();}catch(_){}});
   window.MorningSound={has:audio=>Array.from(channels.values()).some(c=>c.audio===audio),play,fade};
