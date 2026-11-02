@@ -1,27 +1,28 @@
-/* Bounded intention passage. Existing cloud remains the exact static transcript. */
+/* A Hebrew ink current. Phrases use the entire field, never a narrow card column. */
 #groupWordWall.has-intention-flow{overflow:hidden;min-height:0;background:#fffaf1}
 #groupWordWall .intention-flow-stage{display:none}
-#groupWordWall.has-intention-flow .intention-flow-stage{position:relative;isolation:isolate;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));height:clamp(360px,49dvh,520px);width:100%;padding:28px;gap:10px 30px;overflow:hidden;background:radial-gradient(ellipse at 12% 20%,#f2d5cf5e,transparent 48%),radial-gradient(ellipse at 89% 82%,#dce5f033,transparent 44%),#fffaf1}
-#groupWordWall.has-intention-flow .intention-flow-stage[data-slots="3"]{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:minmax(0,1fr)}
-#groupWordWall.has-intention-flow .intention-flow-stage[data-slots="2"]{grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr))}
+#groupWordWall.has-intention-flow .intention-flow-stage{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(var(--flow-lanes,1),minmax(0,1fr));height:clamp(380px,50dvh,560px);width:100%;padding:26px 22px;gap:24px;overflow:hidden;background:radial-gradient(ellipse at 14% 28%,#f6cfbb45,transparent 55%),radial-gradient(ellipse at 85% 76%,#ecd2dc3b,transparent 48%),#fffaf1}
 #groupWordWall.has-intention-flow .group-word-cloud{position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:normal!important;border:0!important}
-#groupWordWall.has-intention-flow .word-field-lines{opacity:.09;pointer-events:none}
-#groupWordWall .intention-flow-cell{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;padding:14px;text-align:center;overflow:hidden}
-#groupWordWall .intention-flow-text{display:block;width:100%;max-width:100%;font-family:Polin,sans-serif;font-size:clamp(27px,3.1vw,46px);font-weight:400;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere;direction:rtl;unicode-bidi:plaintext;opacity:1;transform:translate(0,0);will-change:transform,opacity;text-shadow:0 1px #fffaf1}
-#groupWordWall .intention-flow-text.size-1{font-size:clamp(29px,3.5vw,52px);font-weight:700}
-#groupWordWall .intention-flow-text.size-2{font-size:clamp(26px,2.9vw,43px)}
-#groupWordWall .intention-flow-text.handwritten{font-family:Barlev,Polin,sans-serif;font-weight:500;font-size:clamp(32px,3.8vw,54px)}
-#groupWordWall .intention-flow-text.tone-ink{color:#3d3733}
-#groupWordWall .intention-flow-text.tone-cobalt{color:#334f83}
-#groupWordWall .intention-flow-text.tone-mauve{color:#934362}
-#groupWordWall .intention-flow-text.is-long-overflow{overflow-y:auto;scrollbar-width:thin;overscroll-behavior:contain}
-#groupWordWall .intention-flow-wash{position:absolute;z-index:0;inset:0;opacity:.5;pointer-events:none;background:linear-gradient(174deg,transparent 0 38%,#e7cbc318 39% 49%,transparent 51%),repeating-linear-gradient(0deg,transparent 0 67px,#c1ac8b0c 67px 68px);border-radius:45% 55% 40% 60%}
+#groupWordWall.has-intention-flow .word-field-lines{opacity:.07;pointer-events:none}
+#groupWordWall .intention-flow-cell{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;padding:18px 14px;text-align:center;overflow:hidden}
+#groupWordWall .intention-flow-cell::after{content:'';position:absolute;inset:auto 8% 12%;height:20px;border-bottom:1px solid #bf816233;border-radius:50%;transform:rotate(-3deg);opacity:.4;pointer-events:none;animation:intention-paper-breath 8s ease-in-out infinite alternate}
+#groupWordWall .intention-flow-cell:nth-of-type(3)::after{transform:rotate(3deg);border-color:#a65e7a2b;animation-delay:-4s}
+#groupWordWall .intention-flow-text{display:block;position:relative;z-index:2;width:100%;max-width:100%;margin:0;font-family:Polin,sans-serif;font-size:clamp(28px,3.1vw,43px);font-weight:400;line-height:1.65;white-space:pre-wrap;direction:rtl;unicode-bidi:isolate;color:#413039;opacity:1;transform:none;will-change:transform,opacity}
+#groupWordWall .intention-wave-word{display:inline-block;direction:rtl;unicode-bidi:isolate;white-space:nowrap;vertical-align:baseline;transform-origin:center;animation:intention-word-swell 5.8s cubic-bezier(.45,0,.55,1) infinite;animation-delay:var(--word-phase,0s);will-change:transform}
+#groupWordWall .intention-wave-word.is-unbroken{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+@supports ((background-clip:text) or (-webkit-background-clip:text)){
+ #groupWordWall .intention-wave-word{background-image:linear-gradient(100deg,#413039 0%,#413039 24%,#244fa0 43%,#a82d60 59%,#654b4a 73%,#413039 100%);background-size:280% 100%;background-position:0% 50%;background-clip:text;-webkit-background-clip:text;color:transparent;animation:intention-word-swell 5.8s cubic-bezier(.45,0,.55,1) infinite,intention-ink-current 9s linear infinite;animation-delay:var(--word-phase,0s),var(--ink-phase,0s)}
+}
+#groupWordWall .intention-flow-wash{position:absolute;z-index:0;inset:-12%;opacity:.5;pointer-events:none;background:radial-gradient(ellipse at 20% 46%,#e9ac9324,transparent 40%),radial-gradient(ellipse at 77% 66%,#d69ebc1e,transparent 42%);animation:intention-paper-breath 11s ease-in-out infinite alternate}
+@keyframes intention-word-swell{0%,100%{transform:translateY(3px) rotate(.35deg)}25%{transform:translateY(-6px) rotate(-.6deg)}50%{transform:translateY(-2px) rotate(-.2deg)}75%{transform:translateY(5px) rotate(.55deg)}}
+@keyframes intention-ink-current{from{background-position:100% 50%}to{background-position:0% 50%}}
+@keyframes intention-paper-breath{from{opacity:.3;translate:-5px 0}to{opacity:.7;translate:7px -3px}}
+#groupWordWall.intention-flow-paused .intention-wave-word,#groupWordWall.intention-flow-paused .intention-flow-wash,#groupWordWall.intention-flow-paused .intention-flow-cell::after{animation-play-state:paused}
 #groupFocusPanel.is-expanded-field #groupWordWall{height:calc(100dvh - 110px);max-height:calc(100dvh - 110px);min-height:0;overflow:hidden}
-#groupFocusPanel.is-expanded-field #groupWordWall .intention-flow-stage{height:100%;max-height:100%;padding:clamp(22px,4vw,64px)}
-#groupFocusPanel.is-expanded-field #groupWordWall .intention-flow-text{font-size:clamp(32px,4.3vw,68px)}
-#groupFocusPanel.is-expanded-field #groupWordWall .intention-flow-text.size-1{font-size:clamp(34px,4.8vw,76px)}
+#groupFocusPanel.is-expanded-field #groupWordWall .intention-flow-stage{height:100%;max-height:100%;padding:clamp(20px,4vw,64px)}
+#groupFocusPanel.is-expanded-field #groupWordWall .intention-flow-text{font-size:clamp(34px,4.2vw,64px)}
 #groupWordWall.intention-flow-reduced .intention-flow-stage{display:none!important}
 #groupWordWall.intention-flow-reduced .group-word-cloud{position:relative!important;clip:auto!important;width:100%!important;height:auto!important;max-height:calc(100dvh - 120px);margin:0!important;padding:28px!important;overflow:auto!important;display:flex!important;gap:22px 32px!important;white-space:normal!important}
 #groupWordWall.intention-flow-reduced .group-word{animation:none!important;transform:none!important;white-space:pre-wrap!important;font-size:24px!important;line-height:1.5!important}
-@media(max-width:619px){#groupWordWall.has-intention-flow .intention-flow-stage{padding:14px 18px;gap:12px;height:clamp(360px,55dvh,500px)}#groupWordWall .intention-flow-text,#groupWordWall .intention-flow-text.size-1,#groupWordWall .intention-flow-text.size-2{font-size:clamp(25px,6.7vw,34px)}#groupFocusPanel.is-expanded-field #groupWordWall .intention-flow-text{font-size:clamp(28px,7vw,42px)}}
+@media(max-width:619px){#groupWordWall.has-intention-flow .intention-flow-stage{padding:18px 8px;gap:14px;height:clamp(380px,55dvh,520px)}#groupWordWall .intention-flow-cell{padding:18px 12px}#groupWordWall .intention-flow-text{font-size:clamp(24px,6.7vw,34px);line-height:1.65}#groupFocusPanel.is-expanded-field #groupWordWall .intention-flow-text{font-size:clamp(28px,7vw,42px)}}
 @media print{#groupWordWall.has-intention-flow .intention-flow-stage{display:none!important}#groupWordWall.has-intention-flow .group-word-cloud{position:relative!important;clip:auto!important;width:100%!important;height:auto!important;max-height:none!important;padding:20px!important;margin:0!important;overflow:visible!important;display:flex!important;gap:20px!important}#groupWordWall .group-word{animation:none!important;transform:none!important;white-space:normal!important}}
