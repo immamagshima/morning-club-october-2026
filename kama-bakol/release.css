@@ -183,3 +183,33 @@ html:fullscreen .minute-before[data-scene="drain"] .drain-scene .timer-field.has
 .minute-before #movementShareWall.is-reading-shares .movement-flow-content{padding-top:8px}
 .minute-before #movementShareWall.is-reading-shares .movement-share{animation:none!important;transform:none!important}
 .minute-before #movementShareWall .movement-field-toolbar [hidden]{display:none}
+
+/* The collective intentions: open handwriting and quiet paper, with room for each voice. */
+.minute-before .focus-collective-scene .group-focus-panel{grid-template-columns:minmax(210px,.28fr) minmax(0,1fr);overflow:visible;align-items:start}
+.minute-before #groupWordWall{display:block;min-height:460px;overflow:visible;border:0;border-radius:0;box-shadow:none;color:#3d3733;background:radial-gradient(ellipse at 8% 12%,#efd3c044,transparent 45%),radial-gradient(ellipse at 91% 86%,#c8cfdf44,transparent 43%),#fffaf1}
+.minute-before #groupWordWall .word-field-lines{opacity:.17;inset:0;width:100%;height:100%;pointer-events:none}
+.minute-before #groupWordWall .word-field-lines path{stroke:#a68c80;stroke-width:.65;stroke-dasharray:none;animation:none}
+.minute-before #groupWordWall .group-word-cloud{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:center;align-items:center;justify-items:center;gap:38px 40px;min-height:460px;padding:50px 38px 56px;box-sizing:border-box}
+.minute-before #groupWordWall .group-word{display:block;max-width:27ch;min-width:0;min-height:0;margin:0;padding:5px 0;border:0;border-radius:0;box-shadow:none;background:transparent;font-family:Polin,Arial,sans-serif;font-size:24px;font-weight:400;line-height:1.6;letter-spacing:0;text-align:center;white-space:normal;overflow-wrap:anywhere;color:#3d3733;text-shadow:none;transform:none;animation:intention-soft-arrival 900ms ease-out both;animation-delay:calc(min(var(--word-index),8)*65ms)}
+.minute-before #groupWordWall .group-word.phrase-medium{font-size:26px;font-weight:400}
+.minute-before #groupWordWall .group-word.phrase-short{font-family:Barlev,Polin,Arial,sans-serif;font-size:36px;font-weight:500;line-height:1.35}
+.minute-before #groupWordWall .group-word.phrase-spacious{grid-column:1/-1;max-width:40ch;font-size:24px}
+.minute-before #groupWordWall .group-word.word-cobalt{color:#334f83}
+.minute-before #groupWordWall .group-word.word-fuchsia{color:#934362}
+.minute-before #groupWordWall .group-word::after{content:none}
+.minute-before #groupWordWall .group-word:nth-child(4n+2){padding-top:17px}
+.minute-before #groupWordWall.is-empty{background:radial-gradient(ellipse at 30% 40%,#f1dfcc55,transparent 65%),#fffaf1;min-height:400px}
+.minute-before #groupWordWall.is-empty .group-word-cloud{min-height:400px}
+.minute-before #groupFocusPanel.is-expanded-field{background:#fffaf1;padding-inline:clamp(20px,5vw,88px);padding-bottom:52px}
+.minute-before #groupFocusPanel.is-expanded-field .group-focus-copy{display:none}
+.minute-before #groupFocusPanel.is-expanded-field #groupWordWall{min-height:calc(100dvh - 150px);width:100%;border:0}
+.minute-before #groupFocusPanel.is-expanded-field .group-word-cloud{grid-template-columns:repeat(3,minmax(0,1fr));gap:52px 58px;min-height:calc(100dvh - 150px);padding:40px 26px 64px}
+.minute-before #groupFocusPanel.is-expanded-field .group-word.phrase-spacious{grid-column:span 2}
+@keyframes intention-soft-arrival{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.minute-before .focus-collective-scene .group-focus-panel{grid-template-columns:1fr}.minute-before #groupWordWall .group-word-cloud{padding:38px 28px;gap:32px}.minute-before #groupFocusPanel.is-expanded-field .group-word-cloud{grid-template-columns:repeat(2,minmax(0,1fr));gap:38px 34px}}
+@media(max-width:600px){.minute-before #groupWordWall .group-word-cloud,.minute-before #groupFocusPanel.is-expanded-field .group-word-cloud{grid-template-columns:1fr;gap:30px;padding:32px 20px;min-height:380px}.minute-before #groupWordWall .group-word,.minute-before #groupWordWall .group-word.phrase-medium,.minute-before #groupWordWall .group-word.phrase-spacious{font-size:22px;line-height:1.65;max-width:29ch;grid-column:auto}.minute-before #groupWordWall .group-word.phrase-short{font-size:32px;line-height:1.4}.minute-before #groupWordWall .group-word:nth-child(4n+2){padding-top:5px}.minute-before #groupFocusPanel.is-expanded-field{padding-inline:10px}}
+@media(prefers-reduced-motion:reduce){.minute-before #groupWordWall .group-word{animation:none}}
+
+.minute-before #groupFocusPanel.is-expanded-field .field-fullscreen-exit{position:fixed;top:16px;left:16px;z-index:10020;box-shadow:0 2px 14px #fffaf1c0}
+
+.minute-before .focus-collective-scene .scene-inner{height:auto;min-height:100%;overflow:visible;padding-bottom:calc(var(--live-link-height,64px) + 48px)}

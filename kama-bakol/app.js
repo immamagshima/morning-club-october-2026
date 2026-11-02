@@ -514,17 +514,21 @@
     }
   }
 
+  let lastGroupWordSignature = null;
   function renderGroupWords(words) {
+    const signature = JSON.stringify(words);
+    if (signature === lastGroupWordSignature) return;
+    lastGroupWordSignature = signature;
     const wall = document.getElementById("groupWordWall");
     const cloud = wall.querySelector(".group-word-cloud");
     cloud.replaceChildren();
-    const visibleWords = words.slice(-30);
+    const visibleWords = words;
     wall.classList.remove("is-demo");
     wall.classList.toggle("is-empty", !visibleWords.length);
     if (!visibleWords.length) {
       return;
     }
-    const colorFamilies = ["ink", "ink", "cobalt", "ink", "fuchsia", "cobalt", "ink", "orange"];
+    const colorFamilies = ["ink", "cobalt", "ink", "ink", "ink", "cobalt", "ink", "fuchsia", "ink", "ink", "cobalt", "ink"];
     visibleWords.forEach((entry, index) => {
       const word = document.createElement("span");
       word.className = "group-word";
@@ -532,6 +536,7 @@
       const lengthClass = value.length > 13 ? "phrase-long" : value.length > 7 ? "phrase-medium" : "phrase-short";
       word.classList.add(lengthClass, `word-${colorFamilies[index % colorFamilies.length]}`);
       word.textContent = value;
+      if (value.length > 52) word.classList.add("phrase-spacious");
       word.style.setProperty("--word-index", String(index));
       word.style.setProperty("--word-tilt", `${[-2.4, 1.5, -0.8, 2.2, -1.3, 0.7][index % 6]}deg`);
       word.style.setProperty("--word-tilt-back", `${[1.1, -0.8, 0.5, -1.2, 0.8, -0.4][index % 6]}deg`);
