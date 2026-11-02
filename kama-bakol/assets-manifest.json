@@ -27,12 +27,12 @@
       "sha256": "88fc20aa641abf28d6a571765b8925ca61e7c030c9fae0901be3aba5eddb8793"
     },
     {
-      "path": "assets/audio/01-\u05d4\u05d2\u05e0\u05d5\u05ea-DASHBOARD-MIX.mp3",
+      "path": "assets/audio/01-הגנות-DASHBOARD-MIX.mp3",
       "bytes": 3812204,
       "sha256": "744ea67043a80d6828ab1b164c7c32da175a8c7fb5d2acb8a84d52e7bba42e67"
     },
     {
-      "path": "assets/audio/02-\u05de\u05e7\u05dc\u05d7\u05ea-\u05e4\u05e0\u05d9\u05de\u05d9\u05ea-DASHBOARD-MIX.mp3",
+      "path": "assets/audio/02-מקלחת-פנימית-DASHBOARD-MIX.mp3",
       "bytes": 4989644,
       "sha256": "29ef9fb5b45007453f56642da6ae9ba13cc067fd70261bf786a25f85e3c87de2"
     },
@@ -142,7 +142,7 @@
       "sha256": "de8f547c68cdca31aad0aae0e4b79f3264599643c80dcb405453d61084ff9547"
     },
     {
-      "path": "assets/audio/\u05d0\u05e0\u05d9-\u05db\u05d1\u05e8-\u05d9\u05d5\u05d3\u05e2\u05ea-\u05e7\u05e8\u05df-\u05d1\u05df-\u05e2\u05de\u05d9.mp3",
+      "path": "assets/audio/אני-כבר-יודעת-קרן-בן-עמי.mp3",
       "bytes": 4885539,
       "sha256": "9c23c139e2b27a84a212d8ddfddba6628e015aaa698516572e879bcb32a082c3"
     },
@@ -253,8 +253,8 @@
     },
     {
       "path": "assets/guides/consciousness-supplements.pdf",
-      "bytes": 102288,
-      "sha256": "6c869bc15dec811ed9d99036e366631fdadb662de2d983526ed299a9f48dcc47"
+      "bytes": 102285,
+      "sha256": "46f99f03c42da6271589a6874a953cd3fd82eb5b4863d99fa87e80bd5e68b3a1"
     },
     {
       "path": "assets/audio/protection-timed-3min.mp3",
