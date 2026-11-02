@@ -921,6 +921,23 @@
     event.currentTarget.textContent = paused ? "להמשיך את תנועת המילים" : "לעצור את תנועת המילים";
   });
 
+  const movementTranscript = document.getElementById("movementTranscript");
+  const transcriptToggle = document.getElementById("toggleMovementTranscript");
+  function syncMovementReadingView() {
+    const open = movementTranscript.open;
+    const wall = document.getElementById("movementShareWall");
+    wall.classList.toggle("is-reading-shares", open);
+    transcriptToggle.setAttribute("aria-expanded", String(open));
+    transcriptToggle.textContent = open ? "לחזור לגל השיתופים" : "כל השיתופים בלי תנועה";
+    document.getElementById("toggleMovementMotion").hidden = open;
+    window.KEREN_MOVEMENT_WAVE?.setPaused(open || wall.classList.contains("is-motion-paused"));
+  }
+  transcriptToggle.addEventListener("click", () => {
+    movementTranscript.open = !movementTranscript.open;
+    syncMovementReadingView();
+  });
+  movementTranscript.addEventListener("toggle", syncMovementReadingView);
+
   function renderGroupSummary(summary) {
     renderMovementField(summary.movements);
   }

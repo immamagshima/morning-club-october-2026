@@ -24,7 +24,7 @@
   function render(){
     daySelect.value=String(editedDay);
     dialog.querySelectorAll('[data-track]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.track===selected(editedChannel,editedDay))));
-    channels.forEach((c,context)=>{c.button.textContent=`♫ ${title(selected(context))} · החלפה`;c.button.setAttribute('aria-label',`בחירת כלי ${context==='drain'?'לניקוז תודעתי':'להודיות'}, ${title(selected(context))}`);});
+    channels.forEach((c,context)=>{c.button.textContent=`♫ ${title(selected(context))} · בחירת מוזיקה`;c.button.setAttribute('aria-label',`בחירת כלי ${context==='drain'?'לניקוז תודעתי':'להודיות'}, ${title(selected(context))}`);});
   }
   function open(context){checkDay();editedChannel=context;editedDay=day;status.textContent='';dialog.querySelector('h2').textContent=context==='drain'?'פסקול הבוקר':'פסקול להודיות';render();dialog.showModal();}
   function checkDay(){if(dateKey===localDate())return;dateKey=localDate();day=new Date().getDay();channels.forEach((c,ctx)=>{if(c.audio.paused)configure(ctx);});render();}
@@ -42,7 +42,7 @@
   const fades=new WeakMap();
   function fade(audio,rewind=false){
     const c=Array.from(channels.values()).find(c=>c.audio===audio);
-    if(c){c.request++;c.want=false;clearTimeout(c.limit);c.limit=null;}
+    if(c){c.request++;c.want=false;clearInterval(c.limit);c.limit=null;}
     const pending=fades.get(audio);if(pending){pending.rewind ||= rewind;return pending.promise;}
     if(audio.paused){if(rewind)audio.currentTime=0;return Promise.resolve();}
     const volume=audio.volume,start=performance.now();let resolve;
@@ -59,16 +59,26 @@
     audio.volume=.22;try{await audio.play();}catch(error){if(request!==c.request)return;throw error;}
     if(request!==c.request){if(!c.want)audio.pause();return;}
     c.note.textContent='';
-    if(c.context==='gratitude'){clearTimeout(c.limit);c.deadline=Date.now()+limitSeconds*1000;c.limit=setTimeout(()=>{fade(audio);c.note.textContent='שש דקות המוזיקה הושלמו.';},Math.max(0,limitSeconds*1000));}
+    clearInterval(c.limit);
+    if(c.context==='drain'){
+      const parts=document.querySelector('.timer-readout').textContent.trim().split(':').map(Number);
+      limitSeconds=parts[0]*60+parts[1];
+    }
+    c.deadline=Date.now()+limitSeconds*1000;
+    c.limit=setInterval(()=>{
+      const left=Math.max(0,(c.deadline-Date.now())/1000);
+      audio.volume=.22*Math.min(1,left/8);
+      if(left<=0){clearInterval(c.limit);c.limit=null;audio.pause();audio.volume=.22;}
+    },40);
   }
   function attach(context,audio,host){
     const button=document.createElement('button');button.type='button';button.className='sound-choice-button';button.setAttribute('aria-haspopup','dialog');button.setAttribute('aria-controls','soundDrawer');button.onclick=()=>open(context);
     const note=document.createElement('span');note.className='sound-choice-note';note.setAttribute('role','status');
     host.append(button,note);channels.set(context,{context,audio,button,note,request:0,limit:null,deadline:0});
     audio.addEventListener('error',()=>{note.textContent='הקובץ לא נטען. אפשר לבחור כלי אחר או להמשיך בשקט.';});
-    audio.addEventListener('pause',()=>{if(!audio.paused)return;const c=channels.get(context);clearTimeout(c.limit);c.limit=null;});configure(context);
+    audio.addEventListener('pause',()=>{if(!audio.paused)return;const c=channels.get(context);clearInterval(c.limit);c.limit=null;});configure(context);
   }
-  const drainHost=document.createElement('div');drainHost.className='sound-choice-row';document.querySelector('.timer-field').after(drainHost);
+  const drainHost=document.createElement('div');drainHost.className='sound-choice-row drain-sound-choices';document.querySelector('.timer-field').append(drainHost);
   attach('drain',document.getElementById('drainSoundtrack'),drainHost);
   attach('gratitude',document.getElementById('gratitudeMusic'),document.querySelector('.gratitude-music-controls'));
   render();setInterval(()=>{checkDay();const c=channels.get('gratitude');const b=document.getElementById('gratitudeMusicToggle');if(!c.audio.paused&&c.limit){const left=Math.max(0,Math.ceil((c.deadline-Date.now())/1000));b.textContent=`לעצור מוזיקה · ${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`;}},1000);

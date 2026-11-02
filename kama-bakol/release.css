@@ -176,3 +176,10 @@ html:fullscreen .minute-before[data-scene="drain"] .drain-scene .timer-field.has
 
 .minute-before #movementShareWall.is-motion-paused .movement-wave-traveller{transform:none!important;opacity:1!important}
 .minute-before #movementShareWall.is-motion-paused .wave-exit{transform:none!important;opacity:1!important}
+
+.minute-before #movementShareWall .movement-transcript>summary{display:none}
+.minute-before #movementShareWall.is-reading-shares .movement-wave-stage{display:none}
+.minute-before #movementShareWall.is-reading-shares .movement-transcript{border:0;padding:0}
+.minute-before #movementShareWall.is-reading-shares .movement-flow-content{padding-top:8px}
+.minute-before #movementShareWall.is-reading-shares .movement-share{animation:none!important;transform:none!important}
+.minute-before #movementShareWall .movement-field-toolbar [hidden]{display:none}
