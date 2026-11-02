@@ -13,8 +13,10 @@
   const participantId = localStorage.getItem(PARTICIPANT_KEY) || (crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`);
   localStorage.setItem(PARTICIPANT_KEY, participantId);
   const status = document.getElementById("participantStatus");
+  const inspiration=window.KAMA_SUPPLEMENT_STUDIO?.create(document.getElementById('participantInspiration'));
   const steps = {
     waiting: document.getElementById("participantWaiting"),
+    supplements: document.getElementById("participantSupplements"),
     notebook: document.getElementById("participantNotebook"),
     focus: document.getElementById("participantFocus"),
     closing: document.getElementById("participantExit")
@@ -28,6 +30,7 @@
     if (roomResetHandled) return;
     roomResetHandled = true;
     personal = { focusWord: "", entryPhrase: "", exitPhrase: "" };
+    inspiration?.reset();
     localStorage.removeItem(`${PARTICIPANT_KEY}:state`);
     localStorage.removeItem(WORDS_KEY);
     const entry = document.getElementById("participantEntryPhrase");
@@ -58,7 +61,7 @@
       "arrival-preserve": ["מה עבד,", "ואני משמרת?", "כתבי במחברת עד שקרן תפתח את הפעימה הבאה."],
       "focus-intention": ["מה הכוונה שלי", "להיום?", "כתבי מילה אחת או משפט קצר שיזכירו לך לאן את רוצה לכוון היום את תשומת הלב."]
     };
-    const active = ["focus", "focus-intention", "focus-collective"].includes(sceneId) ? "focus"
+    const active = sceneId === "supplements-flow" ? "supplements" : ["focus", "focus-intention", "focus-collective"].includes(sceneId) ? "focus"
       : sceneId === "closing" ? "closing"
         : "waiting";
     if (active !== visibleStep) {
@@ -70,6 +73,7 @@
       document.getElementById("participantNotebookTitle").innerHTML = `${firstLine}<br><em>${emphasis}</em>`;
       document.getElementById("participantNotebookLead").textContent = lead;
     }
+    if(active==='supplements')inspiration?.prefill(personal.focusWord);
     Object.entries(steps).forEach(([key, element]) => { element.hidden = key !== active; });
   }
 
@@ -117,13 +121,16 @@
     if (!word) return;
     const button = wordForm.querySelector("button");
     button.disabled = true;
+    status.dataset.kind="pending";
     status.textContent = "שולחת...";
 
     try {
       await sendParticipantState({ focusWord: word });
+      status.dataset.kind="success";
       status.textContent = `המילה „${word}” נכנסה לחדר, ותופיע עכשיו בתוך שדה הכוונות שכולן בונות יחד.`;
     } catch (_) {
       saveLocalWord(word);
+      status.dataset.kind="error";
       status.textContent = `המילה „${word}” נשמרה רק אצלך ולא עלתה לחדר. נסי שוב.`;
     }
 
@@ -142,8 +149,10 @@
       const personalShift = document.getElementById("personalShift");
       personalShift.hidden = false;
       personalShift.textContent = `נכנסתי עם ${enteredWith}. אני יוצאת עם ${leavingWith}.`;
+      status.dataset.kind="success";
       status.textContent = "שני המשפטים שלך נכנסו בעילום שם אל גל התנועה של החדר.";
     } catch (_) {
+      status.dataset.kind="error";
       status.textContent = "המשפטים לא נשלחו. השאירי את הקישור פתוח ונסי שוב בעוד רגע.";
     }
   });

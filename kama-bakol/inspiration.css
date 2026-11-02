@@ -1,0 +1,35 @@
+.inspiration-studio{direction:rtl;color:#25221e;text-align:right;max-width:100%;font-family:Polin,Arial,sans-serif}
+.inspiration-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:end;margin:22px 0}
+.inspiration-form label{font-weight:700;font-size:18px;display:grid;gap:8px;min-width:0}
+.inspiration-form input,.inspiration-theme-label select{font:400 19px/1.4 Polin,Arial,sans-serif;min-height:50px;border:1px solid #4b403b77;border-radius:6px;background:#fff;color:#25221e;padding:10px 14px;width:100%;box-sizing:border-box}
+.inspiration-form button{min-height:50px;white-space:nowrap}
+.inspiration-theme-label{display:flex;gap:14px;align-items:center;font-size:18px;margin:14px 0;flex-wrap:wrap}
+.inspiration-theme-label select{width:auto;max-width:100%;flex:1 1 220px}
+.inspiration-status{font-size:17px;line-height:1.5;color:#44417b;min-height:1em}
+.inspiration-results h2{font:700 clamp(28px,4vw,42px)/1.15 Polin,Arial,sans-serif;margin:32px 0 12px;color:#171614;outline:none}
+.inspiration-description{font-size:19px;line-height:1.55;margin:0 0 20px}
+.inspiration-list{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:12px}
+.inspiration-list li{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:12px;align-items:center;padding:16px 18px;border:1px solid #c5b9a35c;background:#fffdf8;border-radius:3px 14px 3px 3px}
+.inspiration-number{font-size:16px;color:#b2426b;font-weight:700}
+.inspiration-list p{font:400 clamp(21px,2.5vw,26px)/1.5 Polin,Arial,sans-serif;margin:0;overflow-wrap:break-word}
+.inspiration-copy{font:700 16px/1.2 Polin,Arial,sans-serif;border:1px solid #bcb09c;background:#f5edde;color:#332b27;border-radius:7px;min-height:44px;padding:10px 13px;cursor:pointer}
+.inspiration-copy:focus-visible,.inspiration-form input:focus-visible,.inspiration-theme-label select:focus-visible{outline:3px solid #173faf;outline-offset:3px}
+.inspiration-privacy{font-size:16px;line-height:1.55;color:#625a51;margin:20px 0}
+.inspiration-download{display:inline-block;margin-top:12px;font-size:18px}
+.inspiration-page{background:#f4efdf;color:#171614;margin:0;direction:rtl;font-family:Polin,Arial,sans-serif;border-top:5px solid #ff651b}
+.inspiration-shell{width:min(940px,calc(100% - 36px));margin:30px auto 60px;background:#fffaf1;padding:clamp(22px,5vw,60px);box-sizing:border-box;box-shadow:3px 6px 0 #1716141a}
+.inspiration-brand{font-size:18px;font-weight:700;color:#173faf;margin-bottom:35px}
+.inspiration-page h1{font:900 clamp(42px,7vw,76px)/1.05 Polin,sans-serif;letter-spacing:-1px;margin:10px 0 20px}
+.inspiration-page .lead{font:400 clamp(20px,2.8vw,26px)/1.5 Polin,sans-serif;max-width:760px}
+.inspiration-page footer{border-top:1px solid #c6bdb1;margin-top:40px;padding-top:22px;font-size:14px}
+.inspiration-signature{display:block;width:260px;max-width:100%;margin:26px 0 12px}
+.participant-step.inspiration-participant h1{font-size:clamp(40px,9vw,65px)}
+.participant-step.inspiration-participant{width:100%;min-width:0}
+.participant-step.inspiration-participant .lead{font-size:21px;line-height:1.5}
+@media(max-width:600px){.inspiration-form{grid-template-columns:minmax(0,1fr)}.inspiration-form button{width:100%;white-space:normal}.inspiration-list li{grid-template-columns:24px minmax(0,1fr);padding:16px 12px;gap:8px}.inspiration-copy{grid-column:2;justify-self:start}.inspiration-list p{font-size:22px}.inspiration-theme-label{display:block}.inspiration-theme-label select{display:block;margin-top:8px;width:100%}.inspiration-shell{width:calc(100% - 20px);padding:24px 18px}}
+
+.inspiration-page footer{display:block;min-width:0;max-width:100%;overflow-wrap:break-word}.inspiration-page footer>p{min-width:0;max-width:100%}
+
+.participant-page #participantStatus{color:#173faf}
+.participant-page #participantStatus[data-kind="error"]{color:#873f35}
+.participant-page #personalShift{background:#f3cbdb;color:#32242b;border:1px solid #b48397;box-shadow:2px 3px 0 #b4839726}

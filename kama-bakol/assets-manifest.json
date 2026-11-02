@@ -250,6 +250,16 @@
       "path": "assets/solo-flute-loop.mp3",
       "bytes": 2507220,
       "sha256": "cda6b1b6b6edb80a5cbdcdc6c371426191eea54e3be8e288fd5dc6961df40c23"
+    },
+    {
+      "path": "assets/guides/consciousness-supplements.pdf",
+      "bytes": 102288,
+      "sha256": "6c869bc15dec811ed9d99036e366631fdadb662de2d983526ed299a9f48dcc47"
+    },
+    {
+      "path": "assets/audio/protection-timed-3min.mp3",
+      "bytes": 4321196,
+      "sha256": "29843a84fcf9809e4c6bc123eeed6efe873c74583b107216a40aefa1723d3b51"
     }
   ]
 }

@@ -546,3 +546,123 @@ html:fullscreen .minute-before[data-scene="drain"] .drain-scene .timer-field.has
 
 @media(min-width:761px){.minute-before #movementField{grid-template-columns:minmax(0,1fr) minmax(70px,.55fr) minmax(0,1fr)}.minute-before #movementField .entry-door{grid-column:1;grid-row:1}.minute-before #movementField .exit-door{grid-column:3;grid-row:1}}
 @media(max-width:760px){.minute-before #movementField .movement-door{grid-column:1;grid-row:auto}}
+
+/* INTEGRATION: append after current gratitude styles. Only the model changes. */
+.minute-before .all-gratitude-model{position:relative;width:min(1080px,100%);margin:12px auto 0;padding:12px 16px 8px;border:0;background:none;box-shadow:none;color:#3d3733;overflow:visible}
+.minute-before .all-gratitude-model .all-model-title{font:700 clamp(26px,2.8vw,38px)/1.2 Polin,sans-serif;text-align:center;margin:0 0 8px;color:#163fad}
+.minute-before .all-gratitude-model .all-model-title span{display:block;font:400 17px/1.4 Polin,sans-serif;color:#766559;margin-top:5px}
+.minute-before .all-model-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;direction:rtl;position:relative}
+.minute-before .all-model-step{position:relative;min-width:0;text-align:center;border:0;background:none;padding:0 8px;box-shadow:none}
+.minute-before .all-model-art{display:block;width:min(100%,260px);height:155px;margin:0 auto;overflow:visible}
+.minute-before .all-model-art .all-paper-wash{fill:#ffb786;opacity:.12}
+.minute-before .all-step-roots .all-paper-wash{fill:#ed0874;opacity:.065}
+.minute-before .all-step-seed .all-paper-wash{fill:#dfc58c;opacity:.17}
+.minute-before .all-model-art .all-ground-line{fill:none;stroke:#a78f6c;stroke-width:1.4;opacity:.26;stroke-linecap:round}
+.minute-before .all-model-art .all-fruit-body,.minute-before .all-model-art .all-received-fruit{fill:#ff9459;stroke:#bf633a;stroke-width:1.4}
+.minute-before .all-model-art .all-fruit-highlight{fill:none;stroke:#fff4d2;stroke-width:7;stroke-linecap:round;opacity:.6}
+.minute-before .all-model-art .all-branch{fill:none;stroke:#8e6545;stroke-width:3;stroke-linecap:round}
+.minute-before .all-model-art .all-leaf,.minute-before .all-model-art .all-seed-leaf{fill:#8d9567;stroke:#74805b;stroke-width:1}
+.minute-before .all-model-art .all-leaf.second,.minute-before .all-model-art .all-seed-leaf.second{fill:#b3b580}
+.minute-before .all-model-art .all-root-path{fill:none;stroke:#b48e69;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:300;stroke-dashoffset:0}
+.minute-before .all-model-art .all-fine-thread{fill:none;stroke:#c28d67;stroke-width:1.3;opacity:.45}
+.minute-before .all-model-art .all-open-fruit{fill:#ffe0ac;stroke:#d89f6a;stroke-width:1.3}
+.minute-before .all-model-art .all-open-fruit.second{fill:#ffc18b}
+.minute-before .all-model-art .all-seed{fill:#93513e;stroke:#743e31;stroke-width:1.2}
+.minute-before .all-model-art .all-seed-stem{fill:none;stroke:#829065;stroke-width:3;stroke-linecap:round}
+.minute-before .all-question{display:flex;align-items:baseline;justify-content:center;gap:9px;margin:0 0 4px;font:700 29px/1.2 Polin,sans-serif;color:#163fad}
+.minute-before .all-question>span{font:700 20px/1 Polin,sans-serif;color:#a26763;opacity:.7}
+.minute-before .all-model-step>p{font:400 18px/1.45 Polin,sans-serif;max-width:285px;margin:5px auto;color:#3d3733}
+.minute-before .all-model-step>small{display:block;font:400 15px/1.4 Polin,sans-serif;max-width:280px;margin:7px auto 0;color:#766559}
+.minute-before .all-cycle-return{height:35px;margin:0 auto;width:92%;overflow:visible}
+.minute-before .all-cycle-return svg{width:100%;height:100%;overflow:visible}
+.minute-before .all-return-thread{fill:none;stroke:#c4a889;stroke-width:1.2;opacity:.35}
+.minute-before .all-return-light{fill:none;stroke:#ed8972;stroke-width:3;stroke-linecap:round;stroke-dasharray:110 1000;animation:all-seed-returns 12s ease-in-out infinite;opacity:.7}
+.minute-before .all-gratitude-model .all-memory-line{font:700 18px/1.4 Polin,sans-serif;color:#765849;text-align:center;margin:2px auto 0}
+.minute-before .all-step-fruit .all-fruit-body{transform-box:fill-box;transform-origin:50% 8%;animation:all-fruit-received 12s ease-in-out infinite}
+.minute-before .all-step-roots .all-root-path{animation:all-roots-seen 12s ease-in-out infinite}
+.minute-before .all-step-seed .all-seed-stem{animation:all-seed-grows 12s ease-in-out infinite;stroke-dasharray:1;stroke-dashoffset:0}
+.minute-before .all-step-seed .all-seed-leaf{transform-box:fill-box;transform-origin:70% 100%;animation:all-leaf-opens 12s ease-in-out infinite}
+@keyframes all-fruit-received{0%,100%{transform:rotate(0)}10%,19%{transform:rotate(-4deg)}24%{transform:rotate(2deg)}32%,90%{transform:rotate(0)}}
+@keyframes all-roots-seen{0%,22%{opacity:.35;stroke-dashoffset:80}40%,82%{opacity:.9;stroke-dashoffset:0}100%{opacity:.35;stroke-dashoffset:80}}
+@keyframes all-seed-grows{0%,40%{stroke-dashoffset:.6;opacity:.45}61%,92%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:.6;opacity:.45}}
+@keyframes all-leaf-opens{0%,43%{transform:scale(.68);opacity:.55}65%,92%{transform:scale(1);opacity:1}100%{transform:scale(.68);opacity:.55}}
+@keyframes all-seed-returns{0%,63%{stroke-dashoffset:0;opacity:0}72%{opacity:.65}95%{stroke-dashoffset:-1000;opacity:.65}100%{stroke-dashoffset:-1000;opacity:0}}
+.scene:not(.is-active) .all-gratitude-model *{animation-play-state:paused!important}
+@media(max-width:700px){.minute-before .all-model-steps{grid-template-columns:1fr;gap:22px}.minute-before .all-model-art{height:145px}.minute-before .all-model-step>p{max-width:350px}.minute-before .all-cycle-return{display:none}.minute-before .all-gratitude-model{padding-inline:0}.minute-before .all-memory-line{max-width:310px}}
+@media(prefers-reduced-motion:reduce){.minute-before .all-gratitude-model *{animation:none!important}.minute-before .all-root-path,.minute-before .all-seed-stem{stroke-dashoffset:0!important;opacity:.9}.minute-before .all-seed-leaf{transform:none!important;opacity:1}.minute-before .all-return-light{opacity:.2;stroke-dasharray:none}}
+
+/* INTEGRATION: append after current shower styles. Existing .is-scanning owns play/pause. */
+.minute-before .inner-shower-art .shower-spiral-thread{fill:none;stroke:#b9826a;stroke-width:1.1;opacity:.15;stroke-linecap:round;stroke-linejoin:round}
+.minute-before .inner-shower-art .shower-spiral-flow{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:200 1100;stroke-dashoffset:220;animation:shower-spiral-descends 16s linear infinite;animation-play-state:paused}
+.minute-before .inner-shower-art .shower-spiral-halo{stroke:url(#shower-spiral-warm);stroke-width:23;filter:url(#shower-spiral-soft);opacity:.68}
+.minute-before .inner-shower-art .shower-spiral-light{stroke:#fff9d7;stroke-width:5;opacity:.96}
+.minute-before .inner-shower-art .shower-spiral-afterglow{stroke:url(#shower-spiral-warm);stroke-width:9;opacity:.5;stroke-dasharray:270 1100;animation-delay:-5.3s}
+.minute-before .inner-shower-art.is-scanning .shower-spiral-flow{animation-play-state:running}
+.scene:not(.is-active) .inner-shower-art .shower-spiral-flow{animation-play-state:paused!important}
+@keyframes shower-spiral-descends{0%{stroke-dashoffset:220;opacity:0}6%{opacity:.85}88%{opacity:.85}100%{stroke-dashoffset:-1100;opacity:0}}
+@media(prefers-reduced-motion:reduce){.minute-before .inner-shower-art .shower-spiral-flow{animation:none!important;stroke-dasharray:none;stroke-dashoffset:0;opacity:.24}.minute-before .inner-shower-art .shower-spiral-light{opacity:.56}}
+
+.minute-before .shower-fullscreen-controls{display:none}
+.minute-before #showerMeditationArt.is-expanded-field{position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;padding:70px 14px 90px;box-sizing:border-box;overflow:hidden;border:0;border-radius:0;transform:none;box-shadow:none;background:radial-gradient(ellipse at 50% 25%,#fff1cb80,transparent 50%),#fbf2e6}
+.minute-before #showerMeditationArt.is-expanded-field::before,.minute-before #showerMeditationArt.is-expanded-field::after{display:none}
+.minute-before #showerMeditationArt.is-expanded-field>.shower-paper-silhouette{position:relative;inset:auto;width:auto;height:min(79dvh,880px);max-width:94vw;max-height:calc(100dvh - 170px);flex:none}
+.minute-before #showerMeditationArt.is-expanded-field .shower-fullscreen-controls{position:absolute;bottom:18px;left:12px;right:12px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;z-index:40}
+.minute-before .shower-art-expand{grid-column:1;justify-self:start;min-height:44px;margin:8px 0}
+.minute-before .all-gratitude-model .all-model-title span{font-size:17px}
+.minute-before .gratitude-technique-scene .scene-inner{height:auto;min-height:100%;overflow:visible;padding-bottom:calc(var(--navigation-clearance,90px) + 30px)}
+@media(max-width:700px){.minute-before .shower-art-expand{grid-column:1;width:100%}.minute-before #showerMeditationArt.is-expanded-field .shower-fullscreen-controls button{font-size:15px;padding:10px;min-height:44px}}
+
+/* Scoped art only. Actual user controls and fullscreen belong to the parent page. */
+.protection-field{--bubble-progress:0;--merkaba-progress:0}
+.protection-field.has-one{--bubble-progress:1}
+.protection-field.has-two{--bubble-progress:1;--merkaba-progress:1}
+.protection-field .protection-person-art{display:block;width:100%;height:100%;max-height:100%;overflow:visible;fill:none;stroke:none}
+.protection-field .protection-person-silhouette{fill:url(#protection-person-paper);stroke:#b16c56;stroke-opacity:.29;stroke-width:1.6;stroke-linejoin:round}
+.protection-field .protection-person-paper-highlight{fill:none;stroke:#fffdf3;stroke-width:3;stroke-linecap:round;opacity:.66}
+.protection-field .protection-person-ground{fill:none;stroke:#b16c56;stroke-opacity:.14;stroke-width:3;stroke-linecap:round}
+.protection-field .protection-person-heart-light{fill:url(#protection-person-heart);stroke:none;opacity:.75;transform-origin:210px 200px}
+.protection-field .protection-person-bubble{opacity:clamp(0,var(--bubble-progress),1);transform:scale(calc(.94 + var(--bubble-progress)*.06));transform-origin:210px 270px;transition:opacity 8s ease,transform 8s ease}
+.protection-field .protection-person-bubble-fill{fill:url(#protection-person-bubble-fill);stroke:none}
+.protection-field .protection-person-bubble-halo{fill:none;stroke:#f8d29c;stroke-width:13;opacity:.21;filter:url(#protection-person-warm-soft)}
+.protection-field .protection-person-bubble-edge{fill:none;stroke:url(#protection-person-bubble-edge);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--bubble-progress));transition:stroke-dashoffset 8s cubic-bezier(.35,0,.3,1)}
+.protection-field .protection-person-merkaba{opacity:clamp(0,var(--merkaba-progress),1);transform:scale(calc(.91 + var(--merkaba-progress)*.09));transform-origin:210px 270px;transition:opacity 1.8s ease,transform 8s cubic-bezier(.35,0,.3,1)}
+.protection-field .protection-person-triangle-wash{stroke:none;fill:url(#protection-person-upper);opacity:.045}
+.protection-field .protection-person-triangle-wash.lower{fill:url(#protection-person-lower);opacity:.055}
+.protection-field .protection-person-triangle-edge{fill:none;stroke:url(#protection-person-upper);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--merkaba-progress));transition:stroke-dashoffset 10s cubic-bezier(.35,0,.3,1)}
+.protection-field .protection-person-triangle-edge.lower{stroke:url(#protection-person-lower);stroke-width:1.8;transition-duration:12s}
+/* Continuous audio playhead mode must not trail behind frequent progress updates. */
+.protection-field[data-protection-playhead="true"] .protection-person-bubble,
+.protection-field[data-protection-playhead="true"] .protection-person-bubble-edge,
+.protection-field[data-protection-playhead="true"] .protection-person-merkaba,
+.protection-field[data-protection-playhead="true"] .protection-person-triangle-edge{transition:none}
+@media(prefers-reduced-motion:reduce){
+ .protection-field .protection-person-bubble,.protection-field .protection-person-bubble-edge,.protection-field .protection-person-merkaba,.protection-field .protection-person-triangle-edge{transition:none;transform:none}
+}
+
+.minute-before .protection-scene .protection-person-field{width:min(355px,100%);height:auto;aspect-ratio:420/540;max-width:100%;min-height:0;border-radius:46%;background:radial-gradient(ellipse,#ffe7c44d,transparent 70%);box-shadow:none}
+.minute-before .protection-person-field::before,.minute-before .protection-person-field::after{display:none}
+.minute-before .protection-person-field .protection-person-heart-light{opacity:calc(.2 + var(--heart-progress,.7)*.65)}
+.minute-before .protection-fullscreen-controls{display:none}
+.minute-before #protectionMeditationArt.is-expanded-field{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;padding:70px 14px 90px;box-sizing:border-box;overflow:hidden;border:0;border-radius:0;transform:none;background:radial-gradient(ellipse at 50% 46%,#ffedcfbb,transparent 55%),#fbf2e6}
+.minute-before #protectionMeditationArt.is-expanded-field>.protection-person-art{position:relative;inset:auto;width:auto;height:min(79dvh,880px);max-width:94vw;max-height:calc(100dvh - 170px);flex:none}
+.minute-before #protectionMeditationArt.is-expanded-field .protection-fullscreen-controls{display:flex;position:absolute;bottom:18px;left:12px;right:12px;justify-content:center;z-index:40}
+.minute-before .protection-art-expand{min-height:44px;grid-column:2;justify-self:center;margin:8px auto}
+@media(max-width:760px){.minute-before .protection-art-expand{grid-column:1;width:100%}}
+
+/* The entry turns inward; the light has time to travel to the outward door. */
+.minute-before #movementField .entry-door::before{animation-name:warm-entry-door-inward}
+.minute-before #movementField .movement-door::before,.minute-before #movementField::before,.minute-before #movementField .closing-light-ribbon,.minute-before #movementField .closing-light-core{animation-duration:18s}
+@keyframes warm-entry-door-inward{0%,8%,86%,100%{transform:perspective(650px) rotateY(0deg)}23%,48%{transform:perspective(650px) rotateY(48deg)}72%{transform:perspective(650px) rotateY(7deg)}}
+@keyframes warm-door-ribbon-crosses{0%,14%{stroke-dashoffset:-1000;opacity:0}24%{stroke-dashoffset:-900;opacity:.5}51%{stroke-dashoffset:-420;opacity:.7}76%{stroke-dashoffset:170;opacity:.55}92%,100%{stroke-dashoffset:170;opacity:0}}
+@media(prefers-reduced-motion:reduce){.minute-before #movementField .entry-door::before{transform:perspective(650px) rotateY(25deg)}}
+
+.minute-before .protection-scene{height:auto;min-height:100%;overflow:visible;align-content:center;padding-bottom:calc(var(--navigation-clearance,90px) + 30px)}
+.minute-before .protection-person-field>.protection-person-art{height:auto;aspect-ratio:420/540}
+@media(min-width:761px){.minute-before .protection-scene{grid-template-columns:minmax(290px,.83fr) minmax(420px,1.17fr);grid-template-areas:"field eyebrow" "field title" "field lead" "field choice" "field button" "expand note";column-gap:42px;row-gap:12px}.minute-before .protection-scene>h2{font-size:clamp(40px,4vw,56px);line-height:1.04}.minute-before .protection-scene>.lead{font-size:clamp(18px,1.5vw,22px);line-height:1.4}.minute-before .protection-scene>.protection-person-field{width:min(355px,42vh);justify-self:center}.minute-before .protection-art-expand{grid-area:expand}}
+
+.minute-before .selfie-scene .scene-inner{height:auto;min-height:100%;overflow:visible;padding-bottom:calc(var(--navigation-clearance,90px) + 30px)}
+.minute-before .selfie-capture-status{font:400 17px/1.4 Polin,sans-serif;color:#625a51;max-width:650px;margin:12px auto}
+.minute-before .selfie-capture-preview{margin:22px auto;width:min(800px,100%);max-width:100%}
+.minute-before .selfie-capture-preview img{display:block;width:100%;max-width:100%;height:auto;border-radius:8px;box-shadow:0 6px 25px #38272e22}
+.minute-before .selfie-capture-preview figcaption{margin:16px auto 24px}
+.minute-before #captureGroupSelfie{min-height:48px;margin:10px auto 0}

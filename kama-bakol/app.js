@@ -641,8 +641,8 @@
     }
     const strongMatches = query ? selected.filter((item) => supplementScore(item, query) > 0).length : supplementLibrary.length;
     supplementContextLabel.textContent = query
-      ? `זרם לפי „${query}” · ${strongMatches} תוספים קרובים מתוך ${supplementLibrary.length} במאגר. כלי המנחה בלבד.`
-      : `${supplementLibrary.length} תוספי התודעה של קרן נעים עכשיו כהשראה. המשתתפות כותבות במחברת ואינן מפעילות את המסך.`;
+      ? `זרם לפי „${query}” · ${strongMatches} תוספים קרובים מתוך ${supplementLibrary.length} במאגר. בקישור המשתתפות פתוחה גם השראה אישית.`
+      : `${supplementLibrary.length} תוספי התודעה של קרן נעים עכשיו כהשראה. מי שרוצה יכולה לפתוח בקישור המשתתפות השראה אישית ולכתוב במחברת.`;
   }
 
   document.getElementById("supplementIntentForm").addEventListener("submit", (event) => {
@@ -755,7 +755,33 @@
 
   const protectionField = document.querySelector(".protection-field");
   const protectionHold = document.getElementById("protectionHold");
+  const protectionGuideTrack=document.querySelector('.protection-scene [data-guide-player] audio');
+  let protectionPlayheadFrame=0;
+  const protectionCueProgress=(time,start,end)=>Math.min(1,Math.max(0,(time-start)/(end-start)));
+  function syncProtectionPlayhead(){
+    if(protectionField.dataset.protectionPlayhead!=='true')return;
+    const t=protectionGuideTrack.currentTime;
+    const bubble=t<71.4?protectionCueProgress(t,48,71.4)*.36:.36+protectionCueProgress(t,71.4,106.3)*.64;
+    const merkaba=protectionCueProgress(t,109,125);
+    protectionField.style.setProperty('--bubble-progress',bubble.toFixed(4));
+    protectionField.style.setProperty('--merkaba-progress',merkaba.toFixed(4));
+    protectionField.style.setProperty('--heart-progress',protectionCueProgress(t,34.7,48).toFixed(4));
+    const layers=merkaba>0?2:bubble>=.999?1:0;
+    if(state.protectionLayers!==layers){state.protectionLayers=layers;saveState();renderProtection();}
+    protectionHold.disabled=!protectionGuideTrack.paused&&!protectionGuideTrack.ended;
+    document.getElementById('protectionStatus').textContent=t<34.7?'נוחתות בגוף ומפנות מקום לאור':t<71.4?'נקודת האור מתרחבת בתוך הגוף':t<109?'בועת האור נבנית סביב הגוף':t<125?'מרכבת האור נפרסת סביב הבועה':'שתי שכבות האור נוכחות';
+  }
+  function beginProtectionPlayhead(){
+    protectionField.dataset.protectionPlayhead='true';
+    cancelAnimationFrame(protectionPlayheadFrame);
+    const tick=()=>{syncProtectionPlayhead();if(!protectionGuideTrack.paused&&!protectionGuideTrack.ended)protectionPlayheadFrame=requestAnimationFrame(tick);};tick();
+  }
+  protectionGuideTrack.addEventListener('play',beginProtectionPlayhead);
+  ['timeupdate','seeking','seeked','loadedmetadata'].forEach(type=>protectionGuideTrack.addEventListener(type,syncProtectionPlayhead));
+  ['pause','ended'].forEach(type=>protectionGuideTrack.addEventListener(type,()=>{cancelAnimationFrame(protectionPlayheadFrame);syncProtectionPlayhead();protectionHold.disabled=false;}));
   function advanceProtection() {
+    protectionField.removeAttribute('data-protection-playhead');
+    ['--bubble-progress','--merkaba-progress','--heart-progress'].forEach(key=>protectionField.style.removeProperty(key));
     if (state.protectionLayers >= 2) state.protectionLayers = 0;
     else state.protectionLayers += 1;
     saveState();
@@ -842,9 +868,7 @@
           status.textContent = "קרן מחזיקה עכשיו את המרחב";
           if (panel.closest(".protection-scene")) {
             protectionField.classList.remove("is-guide-paused");
-            state.protectionLayers = 2;
-            saveState();
-            renderProtection();
+            beginProtectionPlayhead();
           }
           if (panel.closest(".shower-scene")) {
             document.querySelector(".body-scan")?.classList.add("is-scanning");
@@ -1388,10 +1412,31 @@
       target.querySelector('.field-fullscreen-exit')?.focus();
     });
   });
-  document.querySelectorAll('#groupFocusPanel,#movementShareWall').forEach((panel) => {
+  document.querySelectorAll('#groupFocusPanel,#movementShareWall,#showerMeditationArt,#protectionMeditationArt').forEach((panel) => {
     const exit = document.createElement('button'); exit.type='button';exit.className='field-fullscreen-exit';exit.textContent='לחזור לחדר';
     exit.addEventListener('click',closeExpandedFields);panel.appendChild(exit);
   });
+  const showerFullscreenVoice=document.getElementById('showerFullscreenVoice');
+  const showerFullscreenMotion=document.getElementById('showerFullscreenMotion');
+  const showerGuideButton=document.querySelector('.shower-scene .voice-guide-button');
+  const showerGuideMedia=document.querySelector('.shower-scene [data-guide-player] audio');
+  function syncShowerFullscreen(){
+    showerFullscreenVoice.disabled=showerGuideButton.disabled;
+    showerFullscreenVoice.textContent=showerGuideMedia.paused?'להפעיל את ההנחיה':'להשהות את ההנחיה';
+    showerFullscreenMotion.textContent=document.getElementById('showerMeditationArt').classList.contains('is-scanning')?'לעצור את תנועת האור':'להמשיך את תנועת האור';
+  }
+  showerFullscreenVoice.addEventListener('click',()=>{showerGuideButton.click();syncShowerFullscreen();});
+  showerFullscreenMotion.addEventListener('click',()=>{document.getElementById('scanToggle').click();syncShowerFullscreen();});
+  showerGuideMedia.addEventListener('play',syncShowerFullscreen);showerGuideMedia.addEventListener('pause',syncShowerFullscreen);
+  new MutationObserver(syncShowerFullscreen).observe(showerGuideButton,{attributes:true,attributeFilter:['disabled','aria-pressed']});
+  new MutationObserver(syncShowerFullscreen).observe(document.getElementById('showerMeditationArt'),{attributes:true,attributeFilter:['class']});
+  syncShowerFullscreen();
+  const protectionFullscreenVoice=document.getElementById('protectionFullscreenVoice');
+  const protectionGuideButton=document.querySelector('.protection-scene .voice-guide-button');
+  function syncProtectionFullscreen(){protectionFullscreenVoice.disabled=protectionGuideButton.disabled;protectionFullscreenVoice.textContent=protectionGuideTrack.paused?'להפעיל את ההנחיה':'להשהות את ההנחיה';}
+  protectionFullscreenVoice.addEventListener('click',()=>{protectionGuideButton.click();syncProtectionFullscreen();});
+  ['play','pause'].forEach(type=>protectionGuideTrack.addEventListener(type,syncProtectionFullscreen));
+  new MutationObserver(syncProtectionFullscreen).observe(protectionGuideButton,{attributes:true,attributeFilter:['disabled','aria-pressed']});syncProtectionFullscreen();
   document.addEventListener('keydown',event=>{if(event.key==='Escape'){closeExpandedFields();document.body.classList.remove('presentation-fallback');if(!document.fullscreenElement){fullscreenToggle.setAttribute('aria-pressed','false');fullscreenToggle.setAttribute('aria-label','מסך מלא');fullscreenToggle.lastElementChild.textContent='מסך מלא';}}});
   function updateDockClearance() {
     const dock=document.querySelector('.navigation-dock');
