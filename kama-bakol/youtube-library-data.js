@@ -1,7 +1,7 @@
 window.KEREN_YOUTUBE_LIBRARY = {
   "playlistId": "PLeSXjAqYXF5w",
   "playlistUrl": "https://www.youtube.com/playlist?list=PLeSXjAqYXF5w",
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-04",
   "playlistEntries": 74,
   "uniqueVideos": 73,
   "songs": [
@@ -12,7 +12,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "אַל תַּעֲלִי בִּלְעָדַי",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=zbnz5cFJav0&list=PLeSXjAqYXF5w&index=1"
+      "listenUrl": "https://www.youtube.com/watch?v=zbnz5cFJav0"
     },
     {
       "id": "youtube--kAo5tzFrD4-2",
@@ -21,7 +21,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "BA LI (בא לי)",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=-kAo5tzFrD4&list=PLeSXjAqYXF5w&index=2"
+      "listenUrl": "https://www.youtube.com/watch?v=-kAo5tzFrD4"
     },
     {
       "id": "youtube-EPG880GTU1U-3",
@@ -30,7 +30,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "אֵין רֶגַע כָּזֶה",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=EPG880GTU1U&list=PLeSXjAqYXF5w&index=3"
+      "listenUrl": "https://www.youtube.com/watch?v=EPG880GTU1U"
     },
     {
       "id": "youtube-ZNy2sEGhqC8-4",
@@ -39,7 +39,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "מפה לא מחבקים",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=ZNy2sEGhqC8&list=PLeSXjAqYXF5w&index=4"
+      "listenUrl": "https://www.youtube.com/watch?v=ZNy2sEGhqC8"
     },
     {
       "id": "youtube-0QHMWPqBGKs-5",
@@ -48,7 +48,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "בת כמה אני עכשיו? כולן.",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=0QHMWPqBGKs&list=PLeSXjAqYXF5w&index=5"
+      "listenUrl": "https://www.youtube.com/watch?v=0QHMWPqBGKs"
     },
     {
       "id": "youtube-aT1yNXYAfL4-6",
@@ -57,7 +57,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "מי את? כן.",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=aT1yNXYAfL4&list=PLeSXjAqYXF5w&index=6"
+      "listenUrl": "https://www.youtube.com/watch?v=aT1yNXYAfL4"
     },
     {
       "id": "youtube-cMdUl3gQNWY-7",
@@ -66,7 +66,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "שנת הסכמה",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=cMdUl3gQNWY&list=PLeSXjAqYXF5w&index=7"
+      "listenUrl": "https://www.youtube.com/watch?v=cMdUl3gQNWY"
     },
     {
       "id": "youtube-ejQEGtAf7mE-8",
@@ -75,7 +75,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "עוֹשָׂה בּוֹ חוֹר",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=ejQEGtAf7mE&list=PLeSXjAqYXF5w&index=8"
+      "listenUrl": "https://www.youtube.com/watch?v=ejQEGtAf7mE"
     },
     {
       "id": "youtube-IXJVcIkDP0U-9",
@@ -84,7 +84,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "VERIFY YOU ARE HUMAN",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=IXJVcIkDP0U&list=PLeSXjAqYXF5w&index=9"
+      "listenUrl": "https://www.youtube.com/watch?v=IXJVcIkDP0U"
     },
     {
       "id": "youtube-l7BVSVNA7Rw-10",
@@ -93,7 +93,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "LOVE IS NOT AN ORDER",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=l7BVSVNA7Rw&list=PLeSXjAqYXF5w&index=10"
+      "listenUrl": "https://www.youtube.com/watch?v=l7BVSVNA7Rw"
     },
     {
       "id": "youtube-FD0ker0QQFw-11",
@@ -102,7 +102,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "אֲנִי בֵּין הַשֵּׁמוֹת",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=FD0ker0QQFw&list=PLeSXjAqYXF5w&index=11"
+      "listenUrl": "https://www.youtube.com/watch?v=FD0ker0QQFw"
     },
     {
       "id": "youtube-9UN0bREKtpc-12",
@@ -111,7 +111,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "מה שווה כל הסיבוב הזה?",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=9UN0bREKtpc&list=PLeSXjAqYXF5w&index=12"
+      "listenUrl": "https://www.youtube.com/watch?v=9UN0bREKtpc"
     },
     {
       "id": "youtube-ZpjgQ6OCGCA-13",
@@ -120,7 +120,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "באתי לקחת אותי",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=ZpjgQ6OCGCA&list=PLeSXjAqYXF5w&index=13"
+      "listenUrl": "https://www.youtube.com/watch?v=ZpjgQ6OCGCA"
     },
     {
       "id": "youtube-2b_nDiv8SEw-14",
@@ -129,7 +129,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "ALL OF THEM",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=2b_nDiv8SEw&list=PLeSXjAqYXF5w&index=14"
+      "listenUrl": "https://www.youtube.com/watch?v=2b_nDiv8SEw"
     },
     {
       "id": "youtube-bOUQCLjhd2o-15",
@@ -138,7 +138,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "MY HIPS SAID MOVE",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=bOUQCLjhd2o&list=PLeSXjAqYXF5w&index=15"
+      "listenUrl": "https://www.youtube.com/watch?v=bOUQCLjhd2o"
     },
     {
       "id": "youtube-SAPmAg0Qzx0-16",
@@ -147,7 +147,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "CRY IN 4/4",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=SAPmAg0Qzx0&list=PLeSXjAqYXF5w&index=16"
+      "listenUrl": "https://www.youtube.com/watch?v=SAPmAg0Qzx0"
     },
     {
       "id": "youtube-sPB6_bVHSFc-17",
@@ -156,7 +156,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "להיות אני",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=sPB6_bVHSFc&list=PLeSXjAqYXF5w&index=17"
+      "listenUrl": "https://www.youtube.com/watch?v=sPB6_bVHSFc"
     },
     {
       "id": "youtube-I_MZIa2VUgc-18",
@@ -165,7 +165,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "שנייה אני באה",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=I_MZIa2VUgc&list=PLeSXjAqYXF5w&index=18"
+      "listenUrl": "https://www.youtube.com/watch?v=I_MZIa2VUgc"
     },
     {
       "id": "youtube-ss4YF5deu3g-19",
@@ -174,7 +174,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "לא הכול. ואני חיה.",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=ss4YF5deu3g&list=PLeSXjAqYXF5w&index=19"
+      "listenUrl": "https://www.youtube.com/watch?v=ss4YF5deu3g"
     },
     {
       "id": "youtube-cU-XxzlLG9o-20",
@@ -183,7 +183,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "לא קפצת, ואת אוקיינוס",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=cU-XxzlLG9o&list=PLeSXjAqYXF5w&index=20"
+      "listenUrl": "https://www.youtube.com/watch?v=cU-XxzlLG9o"
     },
     {
       "id": "youtube-5IKh-nt4es8-21",
@@ -192,7 +192,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "קומי אני בחוץ",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=5IKh-nt4es8&list=PLeSXjAqYXF5w&index=21"
+      "listenUrl": "https://www.youtube.com/watch?v=5IKh-nt4es8"
     },
     {
       "id": "youtube-qrOcG5qSqKM-22",
@@ -201,7 +201,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "DON'T WAKE THE HOUSE",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=qrOcG5qSqKM&list=PLeSXjAqYXF5w&index=22"
+      "listenUrl": "https://www.youtube.com/watch?v=qrOcG5qSqKM"
     },
     {
       "id": "youtube-LYu4TDFkwFk-23",
@@ -210,7 +210,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "לא הלכתי לאיבוד",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=LYu4TDFkwFk&list=PLeSXjAqYXF5w&index=23"
+      "listenUrl": "https://www.youtube.com/watch?v=LYu4TDFkwFk"
     },
     {
       "id": "youtube-4WB5ETFq4DA-24",
@@ -219,7 +219,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "לא חצי",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=4WB5ETFq4DA&list=PLeSXjAqYXF5w&index=24"
+      "listenUrl": "https://www.youtube.com/watch?v=4WB5ETFq4DA"
     },
     {
       "id": "youtube-WAPMUHWGK6Q-25",
@@ -228,7 +228,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "EVERYBODY LOVES A BURNING HOUSE",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=WAPMUHWGK6Q&list=PLeSXjAqYXF5w&index=25"
+      "listenUrl": "https://www.youtube.com/watch?v=WAPMUHWGK6Q"
     },
     {
       "id": "youtube-cJndRlUYkKE-26",
@@ -237,7 +237,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "GIVE IT ALL",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=cJndRlUYkKE&list=PLeSXjAqYXF5w&index=26"
+      "listenUrl": "https://www.youtube.com/watch?v=cJndRlUYkKE"
     },
     {
       "id": "youtube-jafnOdf5b2A-27",
@@ -246,7 +246,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "I WON'T DISAPPEAR",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=jafnOdf5b2A&list=PLeSXjAqYXF5w&index=27"
+      "listenUrl": "https://www.youtube.com/watch?v=jafnOdf5b2A"
     },
     {
       "id": "youtube-C4j1YfGokYA-28",
@@ -255,7 +255,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "REDEMPTION ONCE",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=C4j1YfGokYA&list=PLeSXjAqYXF5w&index=28"
+      "listenUrl": "https://www.youtube.com/watch?v=C4j1YfGokYA"
     },
     {
       "id": "youtube-wTYrqlDx6fY-29",
@@ -264,7 +264,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "לא גרה שם",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=wTYrqlDx6fY&list=PLeSXjAqYXF5w&index=29"
+      "listenUrl": "https://www.youtube.com/watch?v=wTYrqlDx6fY"
     },
     {
       "id": "youtube-TIep_22_t8I-30",
@@ -273,7 +273,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "HOPE HAS A PULSE",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=TIep_22_t8I&list=PLeSXjAqYXF5w&index=30"
+      "listenUrl": "https://www.youtube.com/watch?v=TIep_22_t8I"
     },
     {
       "id": "youtube-7GqNDGnjAt4-31",
@@ -282,7 +282,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "THE POISON KEPT ME SAFE",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=7GqNDGnjAt4&list=PLeSXjAqYXF5w&index=31"
+      "listenUrl": "https://www.youtube.com/watch?v=7GqNDGnjAt4"
     },
     {
       "id": "youtube-xsMi0K2y6d4-32",
@@ -291,7 +291,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "שיר ערש לדור מזוין",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=xsMi0K2y6d4&list=PLeSXjAqYXF5w&index=32"
+      "listenUrl": "https://www.youtube.com/watch?v=xsMi0K2y6d4"
     },
     {
       "id": "youtube-Ti3OZ3wZIpo-33",
@@ -300,7 +300,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "اِرْجِعِي | COME BACK",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=Ti3OZ3wZIpo&list=PLeSXjAqYXF5w&index=33"
+      "listenUrl": "https://www.youtube.com/watch?v=Ti3OZ3wZIpo"
     },
     {
       "id": "youtube-EzRD55Oc3e4-34",
@@ -309,7 +309,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "לא לחסוך עליי",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=EzRD55Oc3e4&list=PLeSXjAqYXF5w&index=34"
+      "listenUrl": "https://www.youtube.com/watch?v=EzRD55Oc3e4"
     },
     {
       "id": "youtube-W7-At8NYU8c-35",
@@ -318,7 +318,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "לא ירקתי דם",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=W7-At8NYU8c&list=PLeSXjAqYXF5w&index=35"
+      "listenUrl": "https://www.youtube.com/watch?v=W7-At8NYU8c"
     },
     {
       "id": "youtube-X0_UOJbb-3Q-36",
@@ -327,7 +327,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "אל תרשימי אותי",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=X0_UOJbb-3Q&list=PLeSXjAqYXF5w&index=36"
+      "listenUrl": "https://www.youtube.com/watch?v=X0_UOJbb-3Q"
     },
     {
       "id": "youtube-7Bs4-IfpG1E-37",
@@ -336,7 +336,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "WHO SAID THAT?",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=7Bs4-IfpG1E&list=PLeSXjAqYXF5w&index=37"
+      "listenUrl": "https://www.youtube.com/watch?v=7Bs4-IfpG1E"
     },
     {
       "id": "youtube-hkVn0MMHJUw-38",
@@ -345,7 +345,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "ואני אמרתי לו",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=hkVn0MMHJUw&list=PLeSXjAqYXF5w&index=38"
+      "listenUrl": "https://www.youtube.com/watch?v=hkVn0MMHJUw"
     },
     {
       "id": "youtube-6qFyr4QTHc0-39",
@@ -354,7 +354,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "CARE ABOUT THE CHANGE",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=6qFyr4QTHc0&list=PLeSXjAqYXF5w&index=39"
+      "listenUrl": "https://www.youtube.com/watch?v=6qFyr4QTHc0"
     },
     {
       "id": "youtube-w74hmQwAlvA-40",
@@ -363,7 +363,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "הנחה בקול",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=w74hmQwAlvA&list=PLeSXjAqYXF5w&index=40"
+      "listenUrl": "https://www.youtube.com/watch?v=w74hmQwAlvA"
     },
     {
       "id": "youtube-rccr_18jPBA-41",
@@ -372,7 +372,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "THIS IS MY CEASEFIRE",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=rccr_18jPBA&list=PLeSXjAqYXF5w&index=41"
+      "listenUrl": "https://www.youtube.com/watch?v=rccr_18jPBA"
     },
     {
       "id": "youtube-_gnl4z_ix7k-42",
@@ -381,7 +381,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "פחד עם איפור יפה",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=_gnl4z_ix7k&list=PLeSXjAqYXF5w&index=42"
+      "listenUrl": "https://www.youtube.com/watch?v=_gnl4z_ix7k"
     },
     {
       "id": "youtube-WaoW2qWWbfo-43",
@@ -390,7 +390,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "לגעת בעתיד",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=WaoW2qWWbfo&list=PLeSXjAqYXF5w&index=43"
+      "listenUrl": "https://www.youtube.com/watch?v=WaoW2qWWbfo"
     },
     {
       "id": "youtube-Yh2CAfc3UyA-44",
@@ -399,7 +399,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "עַל הוֹלְד",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=Yh2CAfc3UyA&list=PLeSXjAqYXF5w&index=44"
+      "listenUrl": "https://www.youtube.com/watch?v=Yh2CAfc3UyA"
     },
     {
       "id": "youtube-HvTuTaYInXs-45",
@@ -408,7 +408,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "בוקר טוב 2027",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=HvTuTaYInXs&list=PLeSXjAqYXF5w&index=45"
+      "listenUrl": "https://www.youtube.com/watch?v=HvTuTaYInXs"
     },
     {
       "id": "youtube-HvTuTaYInXs-46",
@@ -417,7 +417,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "בוקר טוב 2027",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=HvTuTaYInXs&list=PLeSXjAqYXF5w&index=46"
+      "listenUrl": "https://www.youtube.com/watch?v=HvTuTaYInXs"
     },
     {
       "id": "youtube-AZvFYRW2BZw-47",
@@ -426,7 +426,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "I'M NOT TOO MUCH",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=AZvFYRW2BZw&list=PLeSXjAqYXF5w&index=47"
+      "listenUrl": "https://www.youtube.com/watch?v=AZvFYRW2BZw"
     },
     {
       "id": "youtube-V5LbqDIlNR4-48",
@@ -435,7 +435,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "החלון פתוח",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=V5LbqDIlNR4&list=PLeSXjAqYXF5w&index=48"
+      "listenUrl": "https://www.youtube.com/watch?v=V5LbqDIlNR4"
     },
     {
       "id": "youtube-uTbUVLbztyE-49",
@@ -444,7 +444,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "אל תיכנסי כמו שבאת",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=uTbUVLbztyE&list=PLeSXjAqYXF5w&index=49"
+      "listenUrl": "https://www.youtube.com/watch?v=uTbUVLbztyE"
     },
     {
       "id": "youtube-4_xvg9PVy_s-50",
@@ -453,7 +453,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "למות ולהיוולד מחדש 2026",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=4_xvg9PVy_s&list=PLeSXjAqYXF5w&index=50"
+      "listenUrl": "https://www.youtube.com/watch?v=4_xvg9PVy_s"
     },
     {
       "id": "youtube-s5x4LLyxh5w-51",
@@ -462,7 +462,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "גם זה נחשב",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=s5x4LLyxh5w&list=PLeSXjAqYXF5w&index=51"
+      "listenUrl": "https://www.youtube.com/watch?v=s5x4LLyxh5w"
     },
     {
       "id": "youtube-MvnUq3gAUDE-52",
@@ -471,7 +471,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "לא נולדתי לסחוב",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=MvnUq3gAUDE&list=PLeSXjAqYXF5w&index=52"
+      "listenUrl": "https://www.youtube.com/watch?v=MvnUq3gAUDE"
     },
     {
       "id": "youtube-2tTCIsnC9-o-53",
@@ -480,7 +480,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "סיכון מחושב",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=2tTCIsnC9-o&list=PLeSXjAqYXF5w&index=53"
+      "listenUrl": "https://www.youtube.com/watch?v=2tTCIsnC9-o"
     },
     {
       "id": "youtube-YlNld5hP2Lk-54",
@@ -489,7 +489,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "צריך אותי?",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=YlNld5hP2Lk&list=PLeSXjAqYXF5w&index=54"
+      "listenUrl": "https://www.youtube.com/watch?v=YlNld5hP2Lk"
     },
     {
       "id": "youtube-JLd5XYKTjB4-55",
@@ -498,7 +498,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "קודם הילדה אוכלת",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=JLd5XYKTjB4&list=PLeSXjAqYXF5w&index=55"
+      "listenUrl": "https://www.youtube.com/watch?v=JLd5XYKTjB4"
     },
     {
       "id": "youtube-SjMgwMRAEEw-56",
@@ -507,7 +507,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "אני כבר יודעת",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=SjMgwMRAEEw&list=PLeSXjAqYXF5w&index=56"
+      "listenUrl": "https://www.youtube.com/watch?v=SjMgwMRAEEw"
     },
     {
       "id": "youtube-2RNroV1SpBA-57",
@@ -516,7 +516,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "למי מחזירים?",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=2RNroV1SpBA&list=PLeSXjAqYXF5w&index=57"
+      "listenUrl": "https://www.youtube.com/watch?v=2RNroV1SpBA"
     },
     {
       "id": "youtube-zIByrQGRZ8E-58",
@@ -525,7 +525,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "כֵּן, אֵלַיִךְ",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=zIByrQGRZ8E&list=PLeSXjAqYXF5w&index=58"
+      "listenUrl": "https://www.youtube.com/watch?v=zIByrQGRZ8E"
     },
     {
       "id": "youtube-xQcIcaPkmlw-59",
@@ -534,7 +534,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "תָּרִימוּ",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=xQcIcaPkmlw&list=PLeSXjAqYXF5w&index=59"
+      "listenUrl": "https://www.youtube.com/watch?v=xQcIcaPkmlw"
     },
     {
       "id": "youtube-SwDfMEgOJSA-60",
@@ -543,7 +543,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "לי יש סיבות",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=SwDfMEgOJSA&list=PLeSXjAqYXF5w&index=60"
+      "listenUrl": "https://www.youtube.com/watch?v=SwDfMEgOJSA"
     },
     {
       "id": "youtube-tDd_Y9hynMk-61",
@@ -552,7 +552,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "הנסיעות לאילת",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=tDd_Y9hynMk&list=PLeSXjAqYXF5w&index=61"
+      "listenUrl": "https://www.youtube.com/watch?v=tDd_Y9hynMk"
     },
     {
       "id": "youtube-ov74eaFAxUo-62",
@@ -561,7 +561,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "7/10 | סתם יום",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=ov74eaFAxUo&list=PLeSXjAqYXF5w&index=62"
+      "listenUrl": "https://www.youtube.com/watch?v=ov74eaFAxUo"
     },
     {
       "id": "youtube-ZYLjYkO9ocI-63",
@@ -570,7 +570,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "גרוב בוקר",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=ZYLjYkO9ocI&list=PLeSXjAqYXF5w&index=63"
+      "listenUrl": "https://www.youtube.com/watch?v=ZYLjYkO9ocI"
     },
     {
       "id": "youtube-BFySSBB9y1c-64",
@@ -579,7 +579,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "רק רגע",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=BFySSBB9y1c&list=PLeSXjAqYXF5w&index=64"
+      "listenUrl": "https://www.youtube.com/watch?v=BFySSBB9y1c"
     },
     {
       "id": "youtube-DMKo5c9BzXI-65",
@@ -588,7 +588,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "הכול בשליטה",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=DMKo5c9BzXI&list=PLeSXjAqYXF5w&index=65"
+      "listenUrl": "https://www.youtube.com/watch?v=DMKo5c9BzXI"
     },
     {
       "id": "youtube-KLdq8Nsz_T4-66",
@@ -597,7 +597,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "שְׁנִיָּה",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=KLdq8Nsz_T4&list=PLeSXjAqYXF5w&index=66"
+      "listenUrl": "https://www.youtube.com/watch?v=KLdq8Nsz_T4"
     },
     {
       "id": "youtube-bSjmIMQ-e_o-67",
@@ -606,7 +606,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "מָחָר לֹא בָּא",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=bSjmIMQ-e_o&list=PLeSXjAqYXF5w&index=67"
+      "listenUrl": "https://www.youtube.com/watch?v=bSjmIMQ-e_o"
     },
     {
       "id": "youtube-alYFNXgBkGo-68",
@@ -615,7 +615,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "מי שם אותי אחראית?",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=alYFNXgBkGo&list=PLeSXjAqYXF5w&index=68"
+      "listenUrl": "https://www.youtube.com/watch?v=alYFNXgBkGo"
     },
     {
       "id": "youtube-3YamJTCuiQs-69",
@@ -624,7 +624,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "פנו לה מקום",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=3YamJTCuiQs&list=PLeSXjAqYXF5w&index=69"
+      "listenUrl": "https://www.youtube.com/watch?v=3YamJTCuiQs"
     },
     {
       "id": "youtube-jrIaQZlY1Ls-70",
@@ -633,7 +633,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "למות ולהיוולד מחדש, אל תיכנסי כמו שבאת",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=jrIaQZlY1Ls&list=PLeSXjAqYXF5w&index=70"
+      "listenUrl": "https://www.youtube.com/watch?v=jrIaQZlY1Ls"
     },
     {
       "id": "youtube-wQ9wKUjjLCE-71",
@@ -642,7 +642,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "אם זה עוד חי בך",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=wQ9wKUjjLCE&list=PLeSXjAqYXF5w&index=71"
+      "listenUrl": "https://www.youtube.com/watch?v=wQ9wKUjjLCE"
     },
     {
       "id": "youtube-KTicIHkNPMA-72",
@@ -651,7 +651,8 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "המצבר",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=KTicIHkNPMA&list=PLeSXjAqYXF5w&index=72"
+      "listenUrl": "https://www.youtube.com/watch?v=KTicIHkNPMA",
+      "visibility": "private"
     },
     {
       "id": "youtube-j1VXc-eKq2w-73",
@@ -660,7 +661,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "רגע, אני באמצע",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=j1VXc-eKq2w&list=PLeSXjAqYXF5w&index=73"
+      "listenUrl": "https://www.youtube.com/watch?v=j1VXc-eKq2w"
     },
     {
       "id": "youtube-mf_DdsN3xQw-74",
@@ -669,7 +670,7 @@ window.KEREN_YOUTUBE_LIBRARY = {
       "title": "אל תהיה נחמד עכשיו",
       "approved": true,
       "quality": "השירים שלי · YouTube",
-      "listenUrl": "https://www.youtube.com/watch?v=mf_DdsN3xQw&list=PLeSXjAqYXF5w&index=74"
+      "listenUrl": "https://www.youtube.com/watch?v=mf_DdsN3xQw"
     }
   ]
 };

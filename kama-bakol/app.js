@@ -1177,7 +1177,7 @@
       const card=document.createElement('article');card.className='song-library-card quality-חיבור';
       const number=document.createElement('small');number.textContent=String(song.playlistIndex||manualSongs.indexOf(song)+1).padStart(2,'0');
       const title=document.createElement('strong');title.textContent=song.title;
-      const source=document.createElement('span');source.textContent='ניגון מוטמע מתוך השירים שלי ביוטיוב';
+      const source=document.createElement('span');source.textContent=song.visibility==='private'?'שיר פרטי ביוטיוב · דורש התחברות לחשבון שלך':'ניגון מוטמע מתוך השירים שלי ביוטיוב';
       const choose=document.createElement('button');choose.type='button';choose.textContent='לבחור את השיר';choose.setAttribute('aria-label',`לבחור את השיר: ${song.title}`);
       choose.addEventListener('click',()=>{stopSound();renderClosingSong(song,true);});card.append(number,title,source,choose);songLibraryCards.appendChild(card);
     });
@@ -1211,11 +1211,20 @@
     const info=youtubePlayer.getVideoData?.()||{};const duration=youtubePlayer.getDuration();
     closingSongStatus.dataset.youtubeState=String(youtubePlayer.getPlayerState());
     if(info.video_id)closingSongStatus.dataset.videoId=info.video_id;
+    // A stale player event must never replace the user's selected song.
+    if(info.video_id && info.video_id !== youtubeVideo){
+      closingSongPlay.disabled=true;
+      if(youtubePlayer.getPlayerState()===1)youtubePlayer.pauseVideo();
+      return;
+    }
+    if(info.video_id===youtubeVideo)closingSongPlay.disabled=false;
     if (duration>0 && info.video_id) {
       if (youtubeMetadataId !== info.video_id) {
-        youtubeMetadataId=info.video_id;youtubeVideo=info.video_id;
+        youtubeMetadataId=info.video_id;
         const song=manualSongs.find(s=>s.youtubeId===info.video_id);
-        if(song){document.getElementById('closingSongName').textContent=song.title;state.closingSongId=song.id;takeClosingSong.href=song.listenUrl;saveState();}
+        if(song){takeClosingSong.href='https://www.youtube.com/watch?v='+song.youtubeId;}
+        closingSongPlay.disabled=false;
+        closingSongStatus.textContent='השיר שבחרת מוכן. לחצי כדי להשמיע.';
         stageDurations['closing-song']=Math.ceil(duration);delete stageTimes['closing-song'];if(stageId()==='closing-song'&&!stageTick)renderStageTimer();
       }
       const current=youtubePlayer.getCurrentTime();closingSongProgress.style.setProperty('--song-progress',`${Math.min(100,current/duration*100)}%`);
@@ -1227,28 +1236,31 @@
     const sequence=++youtubeLoadSequence;
     if(youtubeFade){clearInterval(youtubeFade);youtubeFade=null;}
     youtubeVideo=song.youtubeId||'';youtubeMetadataId='';
-    const frame=document.getElementById('closingYoutubeFrame');frame.hidden=!youtubeVideo;
-    if(!youtubeVideo){if(youtubeReady)youtubePlayer.pauseVideo();return;}
+    const oldFrame=document.getElementById('closingYoutubeFrame');
+    const frame=document.createElement('div');frame.id='closingYoutubeFrame';frame.title='נגן שיר הסגירה';frame.hidden=!youtubeVideo;
+    oldFrame.replaceWith(frame);
+    // Each choice owns a fresh player so an unfinished older load cannot stay visible.
+    if(youtubePlayer){try{youtubePlayer.pauseVideo();youtubePlayer.destroy();}catch(_){} }
+    youtubePlayer=null;youtubeReady=false;
+    if(!youtubeVideo)return;
     closingSongPlay.disabled=true;closingSongStatus.textContent='טוענת את השיר מתוך רשימת השירים שלך...';
     try {
       await ensureYoutubeApi();if(sequence!==youtubeLoadSequence)return;
       const cue=()=>{
         if(sequence!==youtubeLoadSequence)return;
         youtubePlayer.setVolume(100);
-        if(song.playlistIndex)youtubePlayer.cuePlaylist({listType:'playlist',list:'PLeSXjAqYXF5w',index:song.playlistIndex-1});
-        else youtubePlayer.cueVideoById(song.youtubeId);
-        closingSongPlay.disabled=false;closingSongStatus.textContent='השיר מוכן ביוטיוב. אפשר להפעיל כאן או בתוך הנגן.';
+        youtubePlayer.cueVideoById(song.youtubeId);
+        closingSongPlay.disabled=true;closingSongStatus.textContent='טוענת את השיר שבחרת...';
       };
-      if(youtubePlayer){if(youtubeReady)cue();return;}
       youtubePlayer=new YT.Player('closingYoutubeFrame',{host:'https://www.youtube.com',width:'640',height:'360',videoId:song.youtubeId,
-        playerVars:{enablejsapi:1,playsinline:1,rel:0,origin:location.origin,list:'PLeSXjAqYXF5w',listType:'playlist'},
-        events:{onReady:()=>{youtubeReady=true;if(sequence!==youtubeLoadSequence){const latest=manualSongs.find(s=>s.id===state.closingSongId);if(latest?.youtubeId)loadYoutube(latest);else youtubePlayer.pauseVideo();return;}cue();},onStateChange:event=>{
-          if(!youtubeVideo)return;
+        playerVars:{enablejsapi:1,playsinline:1,rel:0,origin:location.origin},
+        events:{onReady:event=>{if(sequence!==youtubeLoadSequence){event.target.pauseVideo();return;}youtubeReady=true;cue();},onStateChange:event=>{
+          if(sequence!==youtubeLoadSequence||!youtubeVideo)return;
           const playing=event.data===1;closingSongPlay.setAttribute('aria-pressed',String(playing));closingSongPlay.querySelector('.sr-only').textContent=playing?'להשהות את השיר':'להשמיע את השיר';
           if(playing)closingSongStatus.textContent='השיר מתנגן.';else if(event.data===2)closingSongStatus.textContent='השיר מושהה.';else if(event.data===0)closingSongStatus.textContent='השיר הסתיים. אפשר לצאת איתו אל היום.';
           updateYoutubeMetadata();
-        },onError:event=>{closingSongPlay.disabled=true;closingSongStatus.textContent=`יוטיוב לא מאפשר כרגע לנגן את הסרטון הזה כאן (${event.data}). אפשר לבחור שיר אחר או לפתוח אותו בקישור.`;}}});
-    } catch(_) {closingSongPlay.disabled=true;closingSongStatus.textContent='נגן יוטיוב לא נטען. אפשר לנסות שוב או לפתוח את השיר בקישור.';}
+        },onError:event=>{if(sequence!==youtubeLoadSequence)return;closingSongPlay.disabled=true;closingSongStatus.textContent=`יוטיוב לא מאפשר כרגע לנגן את הסרטון הזה כאן (${event.data}). אפשר לבחור שיר אחר או לפתוח אותו בקישור.`;}}});
+    } catch(_) {if(sequence!==youtubeLoadSequence)return;closingSongPlay.disabled=true;closingSongStatus.textContent='נגן יוטיוב לא נטען. אפשר לנסות שוב או לפתוח את השיר בקישור.';}
   }
 
   async function renderClosingSong(song, moveFocus = false) {
