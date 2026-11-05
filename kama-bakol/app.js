@@ -615,6 +615,13 @@
 
   function selectSupplements(query) {
     if (!query) return supplementLibrary.slice(0, 64);
+    const normalizedQuery = normalizeHebrew(query);
+    const inspirationThemes = window.KAMA_INSPIRATION_THEMES || [];
+    const exactTheme = inspirationThemes.find(theme => normalizeHebrew(theme.title) === normalizedQuery);
+    const newThemes = inspirationThemes.filter(theme => ["energy-gentle-start", "self-intimacy", "social-ease"].includes(theme.id));
+    const rankedNewThemes = newThemes.map(theme => ({ theme, score: theme.keywords.reduce((sum, word) => sum + (normalizedQuery.includes(normalizeHebrew(word)) ? word.length + 7 : 0), 0) })).sort((a, b) => b.score - a.score);
+    const matchedTheme = exactTheme || (rankedNewThemes[0]?.score > 0 ? rankedNewThemes[0].theme : null);
+    if (matchedTheme) return matchedTheme.items.map((text, index) => ({ id: `inspiration-${matchedTheme.id}-${index}`, category: matchedTheme.title, text }));
     const scored = supplementLibrary.map((item) => ({ item, score: supplementScore(item, query) })).sort((a, b) => b.score - a.score || a.item.id - b.item.id);
     const strong = scored.filter((entry) => entry.score > 0).slice(0, 64).map((entry) => entry.item);
     return strong.length >= 16 ? strong : scored.slice(0, 48).map((entry) => entry.item);

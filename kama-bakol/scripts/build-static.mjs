@@ -7,6 +7,9 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = resolve(root, "dist");
 const files = [
   "index.html",
+  "facilitator-help.css",
+  "facilitator-help.js",
+  "facilitator-help-data.js",
   "selfie-capture.js",
   "inspiration.html",
   "inspiration.js",
@@ -45,4 +48,4 @@ async function hashDirectory(directory, prefix = "") {
   }
 }
 await hashDirectory(dist);
-await writeFile(resolve(dist, "release-manifest.json"), JSON.stringify({release: "2026-11-04-song-selection11", files: hashes}, null, 2));
+await writeFile(resolve(dist, "release-manifest.json"), JSON.stringify({release: "2026-11-05-facilitator-content", files: hashes}, null, 2));
