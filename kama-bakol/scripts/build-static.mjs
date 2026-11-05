@@ -48,4 +48,5 @@ async function hashDirectory(directory, prefix = "") {
   }
 }
 await hashDirectory(dist);
-await writeFile(resolve(dist, "release-manifest.json"), JSON.stringify({release: "2026-11-05-facilitator-content", files: hashes}, null, 2));
+await writeFile(resolve(dist, "release-manifest.json"), JSON.stringify({release: "2026-11-05-selfie-first-friday-sharing", files: hashes}, null, 2));
+

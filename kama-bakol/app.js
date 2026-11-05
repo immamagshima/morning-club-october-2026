@@ -36,6 +36,8 @@
   const defaultState = {
     version: 4,
     sceneOrder: "shower-first",
+    endingOrder: "selfie-first",
+    skipClosingSongAfterSelfie: false,
     scene: 0,
     completedModules: [],
     sleep: 5,
@@ -90,6 +92,11 @@
           else if (previousIndex === 15) parsed.scene = 14;
           parsed.completedModules = (parsed.completedModules || []).map(id => id === 6 ? 7 : id === 7 ? 6 : id);
           parsed.sceneOrder = "shower-first";
+        }
+        if (parsed.endingOrder !== "selfie-first") {
+          if (Number(parsed.scene) === 18) parsed.scene = 19;
+          else if (Number(parsed.scene) === 19) parsed.scene = 18;
+          parsed.endingOrder = "selfie-first";
         }
         return { ...defaultState, ...parsed };
       }
@@ -173,6 +180,7 @@
       state.completedModules.push(leavingModule);
     }
 
+    if (scenes[nextIndex].dataset.sceneId === "closing") state.skipClosingSongAfterSelfie = false;
     currentScene = nextIndex;
     state.scene = currentScene;
     saveState();
@@ -222,10 +230,10 @@
   nextButton.textContent = activeSceneId === "whatsapp-share"
     ? "הבוקר הסתיים"
     : activeSceneId === "closing"
-      ? "לשיר סגירה לבחירה"
+      ? "לסלפי של הבוקר"
       : activeSceneId === "closing-song"
-        ? "לסלפי של הבוקר"
-        : activeSceneId === "selfie" ? "לתזכורת השיתוף"
+        ? "לתזכורת השיתוף"
+        : activeSceneId === "selfie" ? (state.skipClosingSongAfterSelfie ? "לתזכורת השיתוף" : "לשיר סגירה לבחירה")
         : "המשך";
     const onDeep = scenes[currentScene].dataset.theme === "deep";
     document.querySelector(".navigation-dock").classList.toggle("after-deep", onDeep);
@@ -290,7 +298,10 @@
 
   nextButton.addEventListener("click", () => setScene(currentScene + 1));
   backButton.addEventListener("click", () => setScene(currentScene - 1));
-  document.querySelectorAll("[data-next]").forEach((button) => button.addEventListener("click", () => setScene(currentScene + 1)));
+  document.querySelectorAll("[data-next]").forEach((button) => button.addEventListener("click", () => {
+    const skipSong = scenes[currentScene].dataset.sceneId === "selfie" && state.skipClosingSongAfterSelfie;
+    setScene(skipSong ? scenes.findIndex(scene => scene.dataset.sceneId === "whatsapp-share") : currentScene + 1);
+  }));
 
   railItems.forEach((item) => {
     item.querySelector("button").addEventListener("click", () => {
@@ -1404,11 +1415,13 @@
   });
 
   function finishMorning() {
+    const beforeSelfie = scenes[currentScene].dataset.sceneId === "closing";
+    state.skipClosingSongAfterSelfie = beforeSelfie;
     state.finishedAt = new Date().toISOString();
     state.completedModules = [1,2,3,4,5,6,7,8];
     saveState();
     updateRail();
-  setScene(scenes.findIndex(scene => scene.dataset.sceneId === "selfie"));
+  setScene(scenes.findIndex(scene => scene.dataset.sceneId === (beforeSelfie ? "selfie" : "whatsapp-share")));
   showToast("הבוקר הושלם. התנופה ממשיכה איתך אל היום.");
   }
   document.getElementById("finishMorning").addEventListener("click", finishMorning);
@@ -1515,3 +1528,4 @@
 
   setScene(currentScene, { focus: false });
 })();
+
